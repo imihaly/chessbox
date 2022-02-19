@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <sys/time.h>
 #include <map>
 #include <vector>
 #include <iomanip>
