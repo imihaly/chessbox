@@ -74,5 +74,8 @@ jobs:
       - name: create solution
         run: cmake -G "Visual Studio 16 2019" ChessBasics
         
+      - name: list files
+        run: dir
+        
 #      - name: build solution
 #        run: MSBuild.exe cbox.sln //t:Rebuild //p:Configuration=$LAMBDA_build
