@@ -26,5 +26,8 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: cmake and test
-        run: cd ChessBasics && cmake && make test
+      - name: cmake
+        run: cmake ChessBasics
+        
+      - name: test
+        run: make test
