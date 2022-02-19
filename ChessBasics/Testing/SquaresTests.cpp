@@ -34,7 +34,7 @@ TEST(Squares, addSquare) {
                                                            );
 
     squares.add(Square::E4);
-    CHECK(squares == expected);
+    CHECK_TRUE(squares == expected);
 }
 
 TEST(Squares, removeSquare) {
@@ -61,7 +61,7 @@ TEST(Squares, removeSquare) {
                                                            );
 
     squares.remove(Square::E4);
-    CHECK(squares == expected);
+    CHECK_TRUE(squares == expected);
 }
 
 TEST(Squares, orSquare) {
@@ -98,7 +98,7 @@ TEST(Squares, orSquare) {
                                                            );
 
     squares |= other;
-    CHECK(squares == expected);
+    CHECK_TRUE(squares == expected);
 }
 
 TEST(Squares, andSquare) {
@@ -135,7 +135,7 @@ TEST(Squares, andSquare) {
                                                            );
 
     squares &= other;
-    CHECK(squares == expected);
+    CHECK_TRUE(squares == expected);
 }
 
 TEST(Squares, xorSquare) {
@@ -172,7 +172,7 @@ TEST(Squares, xorSquare) {
                                                            );
 
     squares ^= other;
-    CHECK(squares == expected);
+    CHECK_TRUE(squares == expected);
 }
 
 TEST(Squares, negSquare) {
@@ -197,5 +197,5 @@ TEST(Squares, negSquare) {
                                                       ".xxxxxxx"
                                                            );
 
-    CHECK(~squares == expected);
+    CHECK_TRUE(~squares == expected);
 }

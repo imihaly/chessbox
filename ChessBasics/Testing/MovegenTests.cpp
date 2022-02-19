@@ -45,7 +45,7 @@ TEST(Movegen, pawnOnBaseline) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -80,7 +80,7 @@ TEST(Movegen, pawnNotOnBaseline) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -115,7 +115,7 @@ TEST(Movegen, pawnJumpBlocked) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -150,7 +150,7 @@ TEST(Movegen, pawnBlocked) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -185,7 +185,7 @@ TEST(Movegen, pawnCapturing) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -221,7 +221,7 @@ TEST(Movegen, pawnEnpassant) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -297,7 +297,7 @@ TEST(Movegen, rookGeometry) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -332,7 +332,7 @@ TEST(Movegen, rookCapturing) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -367,7 +367,7 @@ TEST(Movegen, rookObstructed) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -403,7 +403,7 @@ TEST(Movegen, knightGeometry) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -438,7 +438,7 @@ TEST(Movegen, knightCaptures) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -473,7 +473,7 @@ TEST(Movegen, knightObstructed) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -508,7 +508,7 @@ TEST(Movegen, bishopGeometry) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -541,7 +541,7 @@ TEST(Movegen, bishopObstruction) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -576,7 +576,7 @@ TEST(Movegen, queenGeometry) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -611,7 +611,7 @@ TEST(Movegen, queenObstruction) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -646,7 +646,7 @@ TEST(Movegen, kingGeometry) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -681,7 +681,7 @@ TEST(Movegen, kingDoesntMovesIntoCheck) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
     
     delete position;
 }
@@ -720,7 +720,7 @@ TEST(Movegen, kingCastle) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -759,7 +759,7 @@ TEST(Movegen, blockedCastle1) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -796,7 +796,7 @@ TEST(Movegen, blockedCastle2) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -833,7 +833,7 @@ TEST(Movegen, blockedCastle3) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -870,7 +870,7 @@ TEST(Movegen, blockedCastle4) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -908,7 +908,7 @@ TEST(Movegen, checkBlockedCastle1) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -946,7 +946,7 @@ TEST(Movegen, checkBlockedCastle2) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -984,7 +984,7 @@ TEST(Movegen, checkBlockedCastle3) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -1022,7 +1022,7 @@ TEST(Movegen, checkBlockedCastle4) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -1060,7 +1060,7 @@ TEST(Movegen, checkBlockedCastle5) {
         landingSquares.add(move.to);
     }
     
-    CHECK(landingSquares == expected);
+    CHECK_TRUE(landingSquares == expected);
 
     delete position;
 }
@@ -1096,7 +1096,7 @@ TEST(Movegen, allPawnMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1131,7 +1131,7 @@ TEST(Movegen, allPawnMovesTo_Jump) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1166,7 +1166,7 @@ TEST(Movegen, allPawnMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1202,7 +1202,7 @@ TEST(Movegen, allPawnMovesTo_EnPassant) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1238,7 +1238,7 @@ TEST(Movegen, allRookMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1273,7 +1273,7 @@ TEST(Movegen, allRookMovesTo_Blocked) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1308,7 +1308,7 @@ TEST(Movegen, allRookMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1344,7 +1344,7 @@ TEST(Movegen, allKnightMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1379,7 +1379,7 @@ TEST(Movegen, allKnightMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1415,7 +1415,7 @@ TEST(Movegen, allBishopMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1450,7 +1450,7 @@ TEST(Movegen, allBishopMovesTo_Blocked) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1485,7 +1485,7 @@ TEST(Movegen, allBishopMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1521,7 +1521,7 @@ TEST(Movegen, allQueenMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1556,7 +1556,7 @@ TEST(Movegen, allQueenMovesTo_Blocked) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1591,7 +1591,7 @@ TEST(Movegen, allQueenMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1629,7 +1629,7 @@ TEST(Movegen, allKingMovesTo) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }
@@ -1666,7 +1666,7 @@ TEST(Movegen, allKingMovesTo_Capture) {
         startingSquares.add(move.from);
     }
     
-    CHECK(startingSquares == expected);
+    CHECK_TRUE(startingSquares == expected);
 
     delete position;
 }

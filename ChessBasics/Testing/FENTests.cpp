@@ -187,13 +187,13 @@ TEST(FEN, validFens) {
     
     for(std::string fen: validFens) {
         Position *position = FEN::positionFromFEN(fen);
-        CHECK(position != NULL);
+        CHECK_TRUE(position != NULL);
         
         if (!position) {
             break;
         }
         std::string reconstructed = FEN::FENFromPosition(position);
         
-        CHECK(reconstructed == fen);
+        CHECK_TRUE(reconstructed == fen);
     }
 }

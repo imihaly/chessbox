@@ -47,7 +47,7 @@ struct Benchmark {
 
     static void checkAll() {
         for(auto it = orderedBenchmarks.begin(); it != orderedBenchmarks.end(); ++it) {
-            (*it)->check();
+            (*it)->CHECK_TRUE();
         }
     }
 
@@ -79,7 +79,7 @@ struct Benchmark {
         return str;
     }
     
-    void check() {
+    void CHECK_TRUE() {
         assert(referenceValue);
         assert(refVal);
         long int avg = count ? sum / count : 0;

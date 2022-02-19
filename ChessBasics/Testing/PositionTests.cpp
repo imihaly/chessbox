@@ -41,7 +41,7 @@ TEST(Position, performMove) {
         
         pos->makeMove(testCase.move);
         
-        CHECK(testCase.endFen == FEN::FENFromPosition(pos));
+        CHECK_TRUE(testCase.endFen == FEN::FENFromPosition(pos));
         delete pos;
     }
 }

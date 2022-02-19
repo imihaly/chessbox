@@ -34,7 +34,7 @@ TEST(Control, rookControl) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }
@@ -62,7 +62,7 @@ TEST(Control, knightControl) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }
@@ -90,7 +90,7 @@ TEST(Control, bishopControl) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }
@@ -118,7 +118,7 @@ TEST(Control, queenControl) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }
@@ -146,7 +146,7 @@ TEST(Control, kingControl) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }
@@ -185,10 +185,10 @@ TEST(Control, pawnControl) {
                                                            );
 
     Squares whiteControlledSquares = Control::squaresControlled(position, Color::White);
-    CHECK( whiteControlledSquares == expectedWhite);
+    CHECK_TRUE( whiteControlledSquares == expectedWhite);
 
     Squares blackControlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( blackControlledSquares == expectedBlack);
+    CHECK_TRUE( blackControlledSquares == expectedBlack);
     
     delete position;
 }
@@ -227,10 +227,10 @@ TEST(Control, complexControl) {
                                                            );
 
     Squares whiteControlledSquares = Control::squaresControlled(position, Color::White);
-    CHECK( whiteControlledSquares == expectedWhite);
+    CHECK_TRUE( whiteControlledSquares == expectedWhite);
 
     Squares blackControlledSquares = Control::squaresControlled(position, Color::Black);
-    CHECK( blackControlledSquares == expectedBlack);
+    CHECK_TRUE( blackControlledSquares == expectedBlack);
     
     delete position;
 }
@@ -258,7 +258,7 @@ TEST(Control, controllingSquares) {
                                                            );
 
     Squares controlledSquares = Control::squaresControlling(Square::E3, position, Color::Black);
-    CHECK( controlledSquares == expected);
+    CHECK_TRUE( controlledSquares == expected);
     
     delete position;
 }

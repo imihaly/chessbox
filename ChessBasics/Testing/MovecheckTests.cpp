@@ -174,7 +174,7 @@ TEST(Movecheck, rookGeometry) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -207,7 +207,7 @@ TEST(Movecheck, rookObstruction) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -243,7 +243,7 @@ TEST(Movecheck, knightGeometry) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -276,7 +276,7 @@ TEST(Movecheck, knightInCorner) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::A1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::A1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::A1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -309,7 +309,7 @@ TEST(Movecheck, knightOnBorder) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::A4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::A4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::A4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -345,7 +345,7 @@ TEST(Movecheck, bishopGeometry) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -379,7 +379,7 @@ TEST(Movecheck, bishopObstruction) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
             Move move = Move(Square::E4, sq);
-            CHECK(Movecheck::isValidMove(position, move) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, move) == validSquares.contains(sq));
         }
     }
     
@@ -415,7 +415,7 @@ TEST(Movecheck, queenGeometry) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -449,7 +449,7 @@ TEST(Movecheck, queenObstruction) {
         Square sq = Square(idx);
         Move move = Move(Square::E4, sq);
         if (sq !=Square:: E4) {
-            CHECK(Movecheck::isValidMove(position, move) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, move) == validSquares.contains(sq));
         }
     }
     
@@ -485,7 +485,7 @@ TEST(Movecheck, kingGeometry) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -517,7 +517,7 @@ TEST(Movecheck, kingDoesntMovesIntoCheck) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E4) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E4, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -554,7 +554,7 @@ TEST(Movecheck, kingCastle) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -591,7 +591,7 @@ TEST(Movecheck, blockedCastle1) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -626,7 +626,7 @@ TEST(Movecheck, blockedCastle2) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -661,7 +661,7 @@ TEST(Movecheck, blockedCastle3) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -696,7 +696,7 @@ TEST(Movecheck, blockedCastle4) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E1) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E1, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -732,7 +732,7 @@ TEST(Movecheck, checkBlockedCastle1) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E8) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -768,7 +768,7 @@ TEST(Movecheck, checkBlockedCastle2) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E8) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -804,7 +804,7 @@ TEST(Movecheck, checkBlockedCastle3) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E8) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -840,7 +840,7 @@ TEST(Movecheck, checkBlockedCastle4) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E8) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -876,7 +876,7 @@ TEST(Movecheck, checkBlockedCastle5) {
     for(int idx = 0; idx < Count; idx++) {
         Square sq = Square(idx);
         if (sq != Square::E8) {
-            CHECK(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
+            CHECK_TRUE(Movecheck::isValidMove(position, Move(Square::E8, sq)) == validSquares.contains(sq));
         }
     }
     
@@ -897,11 +897,11 @@ TEST(Movecheck, detectChecks) {
                                                          "K......."
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::A7, Square::B6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::B2, Square::A3)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::B2, Square::C1)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::B2, Square::C3)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::H2, Square::H3)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::A7, Square::B6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::B2, Square::A3)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::B2, Square::C1)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::B2, Square::C3)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::H2, Square::H3)) == false);
 }
 
 TEST(Movecheck, kingMovingIntoRookCheck) {
@@ -916,15 +916,15 @@ TEST(Movecheck, kingMovingIntoRookCheck) {
                                                          "........"
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == true);
 
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
 }
 
 TEST(Movecheck, kingMovingIntoQueenCheck) {
@@ -939,14 +939,14 @@ TEST(Movecheck, kingMovingIntoQueenCheck) {
                                                          "........"
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
 }
 
 TEST(Movecheck, kingMovingIntoBishopCheck) {
@@ -961,14 +961,14 @@ TEST(Movecheck, kingMovingIntoBishopCheck) {
                                                          "........"
                                                      );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
 }
 
 TEST(Movecheck, kingMovingIntoPawnCheck) {
@@ -983,14 +983,14 @@ TEST(Movecheck, kingMovingIntoPawnCheck) {
                                                          "........"
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
 }
 
 TEST(Movecheck, kingMovingIntoKnightCheck) {
@@ -1005,14 +1005,14 @@ TEST(Movecheck, kingMovingIntoKnightCheck) {
                                                          "........"
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
-    CHECK(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F5)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::F4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E6)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D6)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D5)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::D4)) == false);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E5, Square::E4)) == false);
 }
 
 TEST(Movecheck, kingLeftInKnightCheck) {
@@ -1027,7 +1027,7 @@ TEST(Movecheck, kingLeftInKnightCheck) {
                                                          "........"
                                                          );
     
-    CHECK(Movecheck::detectChecks(position, Move(Square::A2, Square::A4)) == true);
+    CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::A2, Square::A4)) == true);
 }
 
 TEST(Movecheck, kingInBlockedCheck) {
