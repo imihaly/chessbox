@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "ChessBasics.hpp"
 
+using namespace chessbox;
 Move decodeMove(std::string move);
 
 #endif /* Movedecoder_hpp */
