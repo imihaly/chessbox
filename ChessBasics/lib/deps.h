@@ -19,5 +19,6 @@
 #include <sstream>
 #include <array>
 #include <vector>
+#include <algorithm>
 
 #endif /* deps_h */
