@@ -34,6 +34,29 @@ jobs:
             compiler: g++-10
             target: Macos
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+     
+      - name: cmake
+        run: cmake ChessBasics
+        
+      - name: test
+        run: make unit_tests
+
+  build_and_test_on_windows:
+    name: Build & test chessbox on ${{ matrix.os }} with ${{ matrix.compiler }}.
+    
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+        compiler: [cl]
+        include:
           - os: windows-latest
             compiler: cl
             target: Windows            
@@ -46,11 +69,10 @@ jobs:
           submodules: true
      
       - name: Add msbuild to PATH
-        if: ${{ matrix.os == 'windows-latest' }}
         uses: microsoft/setup-msbuild@v1.0.2
         
-      - name: cmake
-        run: cmake ChessBasics
+      - name: create solution
+        run: cmake -G "Visual Studio 16 2019" ChessBasics
         
-      - name: test
-        run: make unit_tests
+#      - name: build solution
+#        run: MSBuild.exe cbox.sln //t:Rebuild //p:Configuration=$LAMBDA_build
