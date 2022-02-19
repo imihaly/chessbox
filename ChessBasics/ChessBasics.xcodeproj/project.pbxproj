@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		616F3D7827A281EF00B1357F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3D7727A281EF00B1357F /* main.cpp */; };
+		616F3D7D27A282BF00B1357F /* libChessBasics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616F3D0E278AE7BC00B1357F /* libChessBasics.a */; };
+		616F3D9827B011CD00B1357F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3D9727B011CD00B1357F /* main.cpp */; };
+		616F3D9E27B011E700B1357F /* Benchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3D9C27B011E600B1357F /* Benchmark.cpp */; };
+		616F3D9F27B0127400B1357F /* libChessBasics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616F3D0E278AE7BC00B1357F /* libChessBasics.a */; };
+		616F3DA127B029C800B1357F /* GeometryTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DA027B029C800B1357F /* GeometryTests.cpp */; };
+		616F3DA427B02AB900B1357F /* SquareTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DA227B02AB900B1357F /* SquareTests.cpp */; };
+		616F3DA627B03A4100B1357F /* SquaresTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DA527B03A4100B1357F /* SquaresTests.cpp */; };
+		616F3DA827B03A9500B1357F /* DirectionTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DA727B03A9500B1357F /* DirectionTests.cpp */; };
+		616F3DAA27B03AD600B1357F /* StepsTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DA927B03AD600B1357F /* StepsTests.cpp */; };
+		616F3DB027B03B7000B1357F /* UnitTesting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DAE27B03B7000B1357F /* UnitTesting.cpp */; };
+		616F3DB227B03B8900B1357F /* MoveTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DB127B03B8900B1357F /* MoveTests.cpp */; };
+		616F3DB427B03BBC00B1357F /* ColorTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DB327B03BBC00B1357F /* ColorTests.cpp */; };
+		616F3DB627B03BF000B1357F /* PositionTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DB527B03BF000B1357F /* PositionTests.cpp */; };
+		616F3DB827B03CA600B1357F /* PieceTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DB727B03CA600B1357F /* PieceTests.cpp */; };
+		616F3DBA27B03CD300B1357F /* ControlTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DB927B03CD300B1357F /* ControlTests.cpp */; };
+		616F3DBC27B03D1000B1357F /* MovecheckTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DBB27B03D1000B1357F /* MovecheckTests.cpp */; };
+		616F3DBE27B03D7C00B1357F /* MovegenTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DBD27B03D7C00B1357F /* MovegenTests.cpp */; };
+		616F3DC027B03E0B00B1357F /* FENTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DBF27B03E0B00B1357F /* FENTests.cpp */; };
+		616F3DC827B04D2500B1357F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DC727B04D2500B1357F /* main.cpp */; };
+		616F3DCE27B0509C00B1357F /* Movedecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DCC27B0509C00B1357F /* Movedecoder.cpp */; };
+		616F3DCF27B050CD00B1357F /* libChessBasics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 616F3D0E278AE7BC00B1357F /* libChessBasics.a */; };
+		616F3DD227B050FD00B1357F /* Movetest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DD027B050FD00B1357F /* Movetest.cpp */; };
+		616F3DD527B0570C00B1357F /* Gentest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616F3DD327B0570C00B1357F /* Gentest.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		616F3D7327A281EF00B1357F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		616F3D9327B011CD00B1357F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		616F3DC327B04D2500B1357F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		616F3D0E278AE7BC00B1357F /* libChessBasics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChessBasics.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		616F3D7527A281EF00B1357F /* Testing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Testing; sourceTree = BUILT_PRODUCTS_DIR; };
+		616F3D7727A281EF00B1357F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		616F3D9527B011CD00B1357F /* Benchmarking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Benchmarking; sourceTree = BUILT_PRODUCTS_DIR; };
+		616F3D9727B011CD00B1357F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		616F3D9C27B011E600B1357F /* Benchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Benchmark.cpp; sourceTree = "<group>"; };
+		616F3D9D27B011E700B1357F /* Benchmark.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Benchmark.hpp; sourceTree = "<group>"; };
+		616F3DA027B029C800B1357F /* GeometryTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryTests.cpp; sourceTree = "<group>"; };
+		616F3DA227B02AB900B1357F /* SquareTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SquareTests.cpp; sourceTree = "<group>"; };
+		616F3DA527B03A4100B1357F /* SquaresTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SquaresTests.cpp; sourceTree = "<group>"; };
+		616F3DA727B03A9500B1357F /* DirectionTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionTests.cpp; sourceTree = "<group>"; };
+		616F3DA927B03AD600B1357F /* StepsTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StepsTests.cpp; sourceTree = "<group>"; };
+		616F3DAE27B03B7000B1357F /* UnitTesting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTesting.cpp; sourceTree = "<group>"; };
+		616F3DAF27B03B7000B1357F /* UnitTesting.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UnitTesting.hpp; sourceTree = "<group>"; };
+		616F3DB127B03B8900B1357F /* MoveTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MoveTests.cpp; sourceTree = "<group>"; };
+		616F3DB327B03BBC00B1357F /* ColorTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColorTests.cpp; sourceTree = "<group>"; };
+		616F3DB527B03BF000B1357F /* PositionTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PositionTests.cpp; sourceTree = "<group>"; };
+		616F3DB727B03CA600B1357F /* PieceTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PieceTests.cpp; sourceTree = "<group>"; };
+		616F3DB927B03CD300B1357F /* ControlTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ControlTests.cpp; sourceTree = "<group>"; };
+		616F3DBB27B03D1000B1357F /* MovecheckTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovecheckTests.cpp; sourceTree = "<group>"; };
+		616F3DBD27B03D7C00B1357F /* MovegenTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovegenTests.cpp; sourceTree = "<group>"; };
+		616F3DBF27B03E0B00B1357F /* FENTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FENTests.cpp; sourceTree = "<group>"; };
+		616F3DC527B04D2500B1357F /* Loadtesting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Loadtesting; sourceTree = BUILT_PRODUCTS_DIR; };
+		616F3DC727B04D2500B1357F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		616F3DCC27B0509C00B1357F /* Movedecoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Movedecoder.cpp; sourceTree = "<group>"; };
+		616F3DCD27B0509C00B1357F /* Movedecoder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movedecoder.hpp; sourceTree = "<group>"; };
+		616F3DD027B050FD00B1357F /* Movetest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Movetest.cpp; sourceTree = "<group>"; };
+		616F3DD127B050FD00B1357F /* Movetest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movetest.hpp; sourceTree = "<group>"; };
+		616F3DD327B0570C00B1357F /* Gentest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Gentest.cpp; sourceTree = "<group>"; };
+		616F3DD427B0570C00B1357F /* Gentest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Gentest.hpp; sourceTree = "<group>"; };
+		616F3DE327C0E82300B1357F /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		616F3D0C278AE7BC00B1357F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3D7227A281EF00B1357F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3D7D27A282BF00B1357F /* libChessBasics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3D9227B011CD00B1357F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3D9F27B0127400B1357F /* libChessBasics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3DC227B04D2500B1357F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3DCF27B050CD00B1357F /* libChessBasics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		616F3D05278AE7BC00B1357F = {
+			isa = PBXGroup;
+			children = (
+				616F3DE327C0E82300B1357F /* lib */,
+				616F3D7627A281EF00B1357F /* Testing */,
+				616F3D9627B011CD00B1357F /* Benchmarking */,
+				616F3DC627B04D2500B1357F /* Loadtesting */,
+				616F3D0F278AE7BC00B1357F /* Products */,
+				616F3D7C27A282BF00B1357F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		616F3D0F278AE7BC00B1357F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				616F3D0E278AE7BC00B1357F /* libChessBasics.a */,
+				616F3D7527A281EF00B1357F /* Testing */,
+				616F3D9527B011CD00B1357F /* Benchmarking */,
+				616F3DC527B04D2500B1357F /* Loadtesting */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		616F3D7627A281EF00B1357F /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				616F3D7727A281EF00B1357F /* main.cpp */,
+				616F3DAE27B03B7000B1357F /* UnitTesting.cpp */,
+				616F3DAF27B03B7000B1357F /* UnitTesting.hpp */,
+				616F3DA027B029C800B1357F /* GeometryTests.cpp */,
+				616F3DA227B02AB900B1357F /* SquareTests.cpp */,
+				616F3DA527B03A4100B1357F /* SquaresTests.cpp */,
+				616F3DA727B03A9500B1357F /* DirectionTests.cpp */,
+				616F3DA927B03AD600B1357F /* StepsTests.cpp */,
+				616F3DB127B03B8900B1357F /* MoveTests.cpp */,
+				616F3DB327B03BBC00B1357F /* ColorTests.cpp */,
+				616F3DB527B03BF000B1357F /* PositionTests.cpp */,
+				616F3DB727B03CA600B1357F /* PieceTests.cpp */,
+				616F3DB927B03CD300B1357F /* ControlTests.cpp */,
+				616F3DBB27B03D1000B1357F /* MovecheckTests.cpp */,
+				616F3DBD27B03D7C00B1357F /* MovegenTests.cpp */,
+				616F3DBF27B03E0B00B1357F /* FENTests.cpp */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		616F3D7C27A282BF00B1357F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		616F3D9627B011CD00B1357F /* Benchmarking */ = {
+			isa = PBXGroup;
+			children = (
+				616F3D9C27B011E600B1357F /* Benchmark.cpp */,
+				616F3D9D27B011E700B1357F /* Benchmark.hpp */,
+				616F3D9727B011CD00B1357F /* main.cpp */,
+			);
+			path = Benchmarking;
+			sourceTree = "<group>";
+		};
+		616F3DC627B04D2500B1357F /* Loadtesting */ = {
+			isa = PBXGroup;
+			children = (
+				616F3DC727B04D2500B1357F /* main.cpp */,
+				616F3DCC27B0509C00B1357F /* Movedecoder.cpp */,
+				616F3DCD27B0509C00B1357F /* Movedecoder.hpp */,
+				616F3DD027B050FD00B1357F /* Movetest.cpp */,
+				616F3DD127B050FD00B1357F /* Movetest.hpp */,
+				616F3DD327B0570C00B1357F /* Gentest.cpp */,
+				616F3DD427B0570C00B1357F /* Gentest.hpp */,
+			);
+			path = Loadtesting;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		616F3D0A278AE7BC00B1357F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		616F3D0D278AE7BC00B1357F /* ChessBasics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 616F3D12278AE7BC00B1357F /* Build configuration list for PBXNativeTarget "ChessBasics" */;
+			buildPhases = (
+				616F3D0A278AE7BC00B1357F /* Headers */,
+				616F3D0B278AE7BC00B1357F /* Sources */,
+				616F3D0C278AE7BC00B1357F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChessBasics;
+			productName = ChessBasics;
+			productReference = 616F3D0E278AE7BC00B1357F /* libChessBasics.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		616F3D7427A281EF00B1357F /* Testing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 616F3D7927A281EF00B1357F /* Build configuration list for PBXNativeTarget "Testing" */;
+			buildPhases = (
+				616F3D7127A281EF00B1357F /* Sources */,
+				616F3D7227A281EF00B1357F /* Frameworks */,
+				616F3D7327A281EF00B1357F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Testing;
+			productName = Testing;
+			productReference = 616F3D7527A281EF00B1357F /* Testing */;
+			productType = "com.apple.product-type.tool";
+		};
+		616F3D9427B011CD00B1357F /* Benchmarking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 616F3D9927B011CD00B1357F /* Build configuration list for PBXNativeTarget "Benchmarking" */;
+			buildPhases = (
+				616F3D9127B011CD00B1357F /* Sources */,
+				616F3D9227B011CD00B1357F /* Frameworks */,
+				616F3D9327B011CD00B1357F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Benchmarking;
+			productName = Benchmarking;
+			productReference = 616F3D9527B011CD00B1357F /* Benchmarking */;
+			productType = "com.apple.product-type.tool";
+		};
+		616F3DC427B04D2500B1357F /* Loadtesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 616F3DC927B04D2500B1357F /* Build configuration list for PBXNativeTarget "Loadtesting" */;
+			buildPhases = (
+				616F3DC127B04D2500B1357F /* Sources */,
+				616F3DC227B04D2500B1357F /* Frameworks */,
+				616F3DC327B04D2500B1357F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Loadtesting;
+			productName = Loadtesting;
+			productReference = 616F3DC527B04D2500B1357F /* Loadtesting */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		616F3D06278AE7BC00B1357F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					616F3D0D278AE7BC00B1357F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					616F3D7427A281EF00B1357F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					616F3D9427B011CD00B1357F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					616F3DC427B04D2500B1357F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 616F3D09278AE7BC00B1357F /* Build configuration list for PBXProject "ChessBasics" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 616F3D05278AE7BC00B1357F;
+			productRefGroup = 616F3D0F278AE7BC00B1357F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				616F3D0D278AE7BC00B1357F /* ChessBasics */,
+				616F3D7427A281EF00B1357F /* Testing */,
+				616F3D9427B011CD00B1357F /* Benchmarking */,
+				616F3DC427B04D2500B1357F /* Loadtesting */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		616F3D0B278AE7BC00B1357F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3D7127A281EF00B1357F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3DB227B03B8900B1357F /* MoveTests.cpp in Sources */,
+				616F3DA627B03A4100B1357F /* SquaresTests.cpp in Sources */,
+				616F3DBC27B03D1000B1357F /* MovecheckTests.cpp in Sources */,
+				616F3DC027B03E0B00B1357F /* FENTests.cpp in Sources */,
+				616F3DB427B03BBC00B1357F /* ColorTests.cpp in Sources */,
+				616F3D7827A281EF00B1357F /* main.cpp in Sources */,
+				616F3DA127B029C800B1357F /* GeometryTests.cpp in Sources */,
+				616F3DA427B02AB900B1357F /* SquareTests.cpp in Sources */,
+				616F3DB827B03CA600B1357F /* PieceTests.cpp in Sources */,
+				616F3DB627B03BF000B1357F /* PositionTests.cpp in Sources */,
+				616F3DA827B03A9500B1357F /* DirectionTests.cpp in Sources */,
+				616F3DBA27B03CD300B1357F /* ControlTests.cpp in Sources */,
+				616F3DBE27B03D7C00B1357F /* MovegenTests.cpp in Sources */,
+				616F3DAA27B03AD600B1357F /* StepsTests.cpp in Sources */,
+				616F3DB027B03B7000B1357F /* UnitTesting.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3D9127B011CD00B1357F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3D9827B011CD00B1357F /* main.cpp in Sources */,
+				616F3D9E27B011E700B1357F /* Benchmark.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		616F3DC127B04D2500B1357F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616F3DD227B050FD00B1357F /* Movetest.cpp in Sources */,
+				616F3DC827B04D2500B1357F /* main.cpp in Sources */,
+				616F3DD527B0570C00B1357F /* Gentest.cpp in Sources */,
+				616F3DCE27B0509C00B1357F /* Movedecoder.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		616F3D10278AE7BC00B1357F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		616F3D11278AE7BC00B1357F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		616F3D13278AE7BC00B1357F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../tau";
+				OTHER_LDFLAGS = "-all_load";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		616F3D14278AE7BC00B1357F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../tau";
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "-DNDEBUG=1";
+				OTHER_LDFLAGS = "-all_load";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Release;
+		};
+		616F3D7A27A281EF00B1357F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ../tau;
+				OTHER_LDFLAGS = "-all_load";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		616F3D7B27A281EF00B1357F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ../tau;
+				OTHER_LDFLAGS = "-all_load";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Release;
+		};
+		616F3D9A27B011CD00B1357F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		616F3D9B27B011CD00B1357F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		616F3DCA27B04D2500B1357F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		616F3DCB27B04D2500B1357F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		616F3D09278AE7BC00B1357F /* Build configuration list for PBXProject "ChessBasics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616F3D10278AE7BC00B1357F /* Debug */,
+				616F3D11278AE7BC00B1357F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		616F3D12278AE7BC00B1357F /* Build configuration list for PBXNativeTarget "ChessBasics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616F3D13278AE7BC00B1357F /* Debug */,
+				616F3D14278AE7BC00B1357F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		616F3D7927A281EF00B1357F /* Build configuration list for PBXNativeTarget "Testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616F3D7A27A281EF00B1357F /* Debug */,
+				616F3D7B27A281EF00B1357F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		616F3D9927B011CD00B1357F /* Build configuration list for PBXNativeTarget "Benchmarking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616F3D9A27B011CD00B1357F /* Debug */,
+				616F3D9B27B011CD00B1357F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		616F3DC927B04D2500B1357F /* Build configuration list for PBXNativeTarget "Loadtesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616F3DCA27B04D2500B1357F /* Debug */,
+				616F3DCB27B04D2500B1357F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 616F3D06278AE7BC00B1357F /* Project object */;
+}
