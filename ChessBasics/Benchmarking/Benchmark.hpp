@@ -15,6 +15,7 @@
 #include <map>
 #include <vector>
 #include <iomanip>
+#include <cassert>
 
 long int millis();
 long int usecs();

@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
 
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::uniform_real_distribution<uint64_t> dist(0, 0xffffffffffffffffull);
+    std::uniform_real_distribution<long double> dist(0, 0xffffffffffffffffull);
     
     BENCHMARK_CALIBRATE() {
         Squares a;
