@@ -15,6 +15,8 @@
 #include "Position.hpp"
 #include "Square.hpp"
 
+using namespace chessbox;
+
 class UnitTesting {
 public:
     static Position *positionFromString(const char *string);

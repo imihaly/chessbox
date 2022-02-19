@@ -10,9 +10,10 @@
 #ifndef RankGenerator_h
 #define RankGenerator_h
 
-template<int r>
-struct BBRankGenerator {
-    static const BitBoard v =
+namespace chessbox {
+    template<int r>
+    struct BBRankGenerator {
+        static const BitBoard v =
         BBSquareGenerator<0, r>::v |
         BBSquareGenerator<1, r>::v |
         BBSquareGenerator<2, r>::v |
@@ -21,7 +22,7 @@ struct BBRankGenerator {
         BBSquareGenerator<5, r>::v |
         BBSquareGenerator<6, r>::v |
         BBSquareGenerator<7, r>::v;
-};
-
+    };
+}
 
 #endif /* RankGenerator_h */

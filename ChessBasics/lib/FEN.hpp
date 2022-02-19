@@ -13,10 +13,14 @@
 #include "deps.h"
 #include "Position.hpp"
 
-class FEN {
-public:
-    static Position * positionFromFEN(std::string FEN, const char **parseErrorAt = NULL);
-    static const std::string FENFromPosition(const Position *position, bool addMoveFields = true);
-};
-
+namespace chessbox {
+    
+    class FEN {
+    public:
+        static Position * positionFromFEN(std::string FEN, const char **parseErrorAt = NULL);
+        static const std::string FENFromPosition(const Position *position, bool addMoveFields = true);
+    };
+    
+}
 #endif /* FEN_hpp */
+

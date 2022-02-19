@@ -8,37 +8,42 @@
 
 #include "Piece.hpp"
 
-Piece Piece::NoPiece = {Color::White, Piece::Type::None};
-
-char Piece::typeName(Type type) {
-    static const char pieceNames[] = {
-        '.',
-        'P',
-        'R',
-        'N',
-        'B',
-        'Q',
-        'K'
-    };
-    return pieceNames[type];
-}
-
-char Piece::typeName() const {
-    return Piece::typeName(type);
-}
+namespace chessbox {
     
-std::string Piece::description() const {
-    char pieceName = typeName();
-
-    if(color == Color::Black) {
-        static int shift = 'A' - 'a';
-        pieceName -= shift;
+    Piece Piece::NoPiece = {Color::White, Piece::Type::None};
+    
+    char Piece::typeName(Type type) {
+        static const char pieceNames[] = {
+            '.',
+            'P',
+            'R',
+            'N',
+            'B',
+            'Q',
+            'K'
+        };
+        return pieceNames[type];
     }
-    return std::string(&pieceName, 1);
+    
+    char Piece::typeName() const {
+        return Piece::typeName(type);
+    }
+    
+    std::string Piece::description() const {
+        char pieceName = typeName();
+        
+        if(color == Color::Black) {
+            static int shift = 'A' - 'a';
+            pieceName -= shift;
+        }
+        return std::string(&pieceName, 1);
+    }
+    
 }
 
-std::ostream& operator<<(std::ostream& os, const Piece& piece) {
+std::ostream& operator<<(std::ostream& os, const chessbox::Piece& piece) {
     os << piece.description();
     return os;
 }
+
 

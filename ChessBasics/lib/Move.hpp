@@ -14,32 +14,37 @@
 #include "Piece.hpp"
 #include "Step.hpp"
 
-struct Move {
-    Square from;
-    Square to;
-    Piece::Type promotion;
+namespace chessbox {
     
-    Move(const Square from = Square::None, const Square to = Square::None, Piece::Type promotion = Piece::Type::None) : from(from), to(to), promotion(promotion) {}
-    const Step step() const;
+    struct Move {
+        Square from;
+        Square to;
+        Piece::Type promotion;
+        
+        Move(const Square from = Square::None, const Square to = Square::None, Piece::Type promotion = Piece::Type::None) : from(from), to(to), promotion(promotion) {}
+        const Step step() const;
+        
+        bool operator==(const Move& other) const;
+        
+        std::string description() const;
+    };
     
-    bool operator==(const Move& other) const;
+    std::ostream& operator<<(std::ostream& os, const Move& move);
     
-    std::string description() const;
-};
+    class Moves: public std::vector<Move> {
+    public:
+        Moves();
+        Moves& operator+=(Move move);
+        Moves& operator+=(Moves moves);
+        bool contains(const Move& move) const;
+        
+        std::string description() const;
+    };
+    
+}
 
-std::ostream& operator<<(std::ostream& os, const Move& move);
-
-class Moves: public std::vector<Move> {
-public:
-    Moves();
-    Moves& operator+=(Move move);
-    Moves& operator+=(Moves moves);
-    bool contains(const Move& move) const;
-    
-    std::string description() const;
-};
-
-std::ostream& operator<<(std::ostream& os, const Moves& moves);
+std::ostream& operator<<(std::ostream& os, const chessbox::Moves& moves);
 
 
 #endif /* Move_hpp */
+

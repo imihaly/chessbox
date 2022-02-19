@@ -13,6 +13,7 @@
 #include <vector>
 #include <fstream>
 
+using namespace chessbox;
 using TestValueType = char;
 
 struct TestVal {

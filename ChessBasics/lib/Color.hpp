@@ -11,15 +11,19 @@
 
 #include "deps.h"
 
-enum Color: int {
-    White,
-    Black
-};
+namespace chessbox {
+    
+    enum Color: int {
+        White,
+        Black
+    };
+    
+    inline Color flip(Color c) {
+        return Color(1 - c);
+    }
 
-inline Color flip(Color c) {
-    return Color(1 - c);
 }
 
-std::ostream& operator<<(std::ostream& os, const Color color);
+std::ostream& operator<<(std::ostream& os, const chessbox::Color color);
 
 #endif /* Color_hpp */

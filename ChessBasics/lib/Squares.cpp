@@ -9,15 +9,17 @@
 
 #include "Squares.hpp"
 
-std::string Squares::description() const {
-    std::string ret;
-    for(Squares::Iterator it = begin(); it != end(); it++) {
-        ret += (*it).description() + " ";
+namespace chessbox {
+    std::string Squares::description() const {
+        std::string ret;
+        for(Squares::Iterator it = begin(); it != end(); it++) {
+            ret += (*it).description() + " ";
+        }
+        return ret;
     }
-    return ret;
 }
 
-std::ostream& operator<<(std::ostream& os, const Squares& squares) {
+std::ostream& operator<<(std::ostream& os, const chessbox::Squares& squares) {
     os << squares.description();
     return os;
 }
