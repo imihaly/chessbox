@@ -67,7 +67,7 @@ bool parsePiecesField(const char*& buff, Position *position) {
             return true;
         }
 
-        if(isnumber(*buff)) {
+        if(isdigit(*buff)) {
             col += atoi(buff);
             if (col > 8) {
                 return false;
@@ -199,7 +199,7 @@ bool parseHalfMoveField(const char*& buff, Position *position) {
     }
     position->setHalfMovesSinceLastPawnMoveOrCapture(atoi(buff));
     while(*buff) {
-        if (isnumber(*buff)) {
+        if (isdigit(*buff)) {
             buff++;
         } else if (*buff == ' ') {
             buff++;
@@ -217,7 +217,7 @@ bool parseMoveIndexField(const char*& buff, Position *position) {
     }
     position->setMoveIndex(atoi(buff));
     while(*buff) {
-        if (isnumber(*buff)) {
+        if (isdigit(*buff)) {
             buff++;
         } else if (*buff == ' ') {
             buff++;
