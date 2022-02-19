@@ -75,7 +75,7 @@ jobs:
         run: cmake -G "Visual Studio 16 2019" ChessBasics
         
       - name: build unit tests
-        run: MSBuild.exe Chessbox.sln /t:unit_tests /p:Configuration=Release
+        run: MSBuild.exe Chessbox.sln /t:Rebuild /p:Configuration=Release
 
       - name: list files
         run: dir
@@ -83,6 +83,3 @@ jobs:
       - name: execute tests
         run: unit_tests.exe
         
-        
-#      - name: build solution
-#        run: MSBuild.exe cbox.sln //t:Rebuild //p:Configuration=$LAMBDA_build
