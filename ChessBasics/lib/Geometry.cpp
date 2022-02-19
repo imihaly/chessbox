@@ -95,8 +95,6 @@ const BitBoard Geometry::bishopLines(const Square square) {
 
 #include "Generators/DirectionsGenerator.hpp"
 
-//constexpr std::array<Direction, 64 * 64> directionsTable = BBDirectionsTableGenerator<>::table;
-
 constexpr std::array<std::array<Direction, 64>, 64> directionsTable = {
     BBDirectionsSubTableGenerator<0>::v,
     BBDirectionsSubTableGenerator<1>::v,
@@ -182,11 +180,86 @@ const Direction Geometry::dir(const Square from, const Square to) {
 
 #include "Generators/RangesGenerator.hpp"
 
-constexpr std::array<BitBoard, 64 * 64> rangesTable = BBRangeTableGenerator<>::table;
+//constexpr std::array<BitBoard, 64 * 64> rangesTable = BBRangeTableGenerator<>::table;
+
+constexpr std::array<std::array<BitBoard, 64>, 64> rangesTable = {
+    BBRangeSubTableGenerator<0>::v,
+    BBRangeSubTableGenerator<1>::v,
+    BBRangeSubTableGenerator<2>::v,
+    BBRangeSubTableGenerator<3>::v,
+    BBRangeSubTableGenerator<4>::v,
+    BBRangeSubTableGenerator<5>::v,
+    BBRangeSubTableGenerator<6>::v,
+    BBRangeSubTableGenerator<7>::v,
+    
+    BBRangeSubTableGenerator<8>::v,
+    BBRangeSubTableGenerator<9>::v,
+    BBRangeSubTableGenerator<10>::v,
+    BBRangeSubTableGenerator<11>::v,
+    BBRangeSubTableGenerator<12>::v,
+    BBRangeSubTableGenerator<13>::v,
+    BBRangeSubTableGenerator<14>::v,
+    BBRangeSubTableGenerator<15>::v,
+    
+    BBRangeSubTableGenerator<16>::v,
+    BBRangeSubTableGenerator<17>::v,
+    BBRangeSubTableGenerator<18>::v,
+    BBRangeSubTableGenerator<19>::v,
+    BBRangeSubTableGenerator<20>::v,
+    BBRangeSubTableGenerator<21>::v,
+    BBRangeSubTableGenerator<22>::v,
+    BBRangeSubTableGenerator<23>::v,
+    
+    BBRangeSubTableGenerator<24>::v,
+    BBRangeSubTableGenerator<25>::v,
+    BBRangeSubTableGenerator<26>::v,
+    BBRangeSubTableGenerator<27>::v,
+    BBRangeSubTableGenerator<28>::v,
+    BBRangeSubTableGenerator<29>::v,
+    BBRangeSubTableGenerator<30>::v,
+    BBRangeSubTableGenerator<31>::v,
+    
+    BBRangeSubTableGenerator<32>::v,
+    BBRangeSubTableGenerator<33>::v,
+    BBRangeSubTableGenerator<34>::v,
+    BBRangeSubTableGenerator<35>::v,
+    BBRangeSubTableGenerator<36>::v,
+    BBRangeSubTableGenerator<37>::v,
+    BBRangeSubTableGenerator<38>::v,
+    BBRangeSubTableGenerator<39>::v,
+    
+    BBRangeSubTableGenerator<40>::v,
+    BBRangeSubTableGenerator<41>::v,
+    BBRangeSubTableGenerator<42>::v,
+    BBRangeSubTableGenerator<43>::v,
+    BBRangeSubTableGenerator<44>::v,
+    BBRangeSubTableGenerator<45>::v,
+    BBRangeSubTableGenerator<46>::v,
+    BBRangeSubTableGenerator<47>::v,
+    
+    BBRangeSubTableGenerator<48>::v,
+    BBRangeSubTableGenerator<49>::v,
+    BBRangeSubTableGenerator<50>::v,
+    BBRangeSubTableGenerator<51>::v,
+    BBRangeSubTableGenerator<52>::v,
+    BBRangeSubTableGenerator<53>::v,
+    BBRangeSubTableGenerator<54>::v,
+    BBRangeSubTableGenerator<55>::v,
+    
+    BBRangeSubTableGenerator<56>::v,
+    BBRangeSubTableGenerator<57>::v,
+    BBRangeSubTableGenerator<58>::v,
+    BBRangeSubTableGenerator<59>::v,
+    BBRangeSubTableGenerator<60>::v,
+    BBRangeSubTableGenerator<61>::v,
+    BBRangeSubTableGenerator<62>::v,
+    BBRangeSubTableGenerator<63>::v,
+};
+
 
 const BitBoard Geometry::range(const Square from, const Square to) {
-    int idx = (int)from * 64 + (int)to;
-    return rangesTable[idx];
+    // int idx = (int)from * 64 + (int)to;
+    return rangesTable[(int)from][(int)to];
 }
 
 #pragma mark - knight

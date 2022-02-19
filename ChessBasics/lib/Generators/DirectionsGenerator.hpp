@@ -50,10 +50,4 @@ struct BBDirectionsSubTableGenerator<from, 64, D...> {
     static constexpr std::array<Direction, 64> v = { D... };
 };
 
-struct BBDirectionsTableGenerator2 {
-    static constexpr std::array<std::array<Direction, 64>, 64> table = {
-        BBDirectionsSubTableGenerator<0>::v,
-    };
-};
-
 #endif /* DirectionsGenerator_h */

@@ -13,15 +13,15 @@
 // North
 template<int c, int r, Direction dir>
 struct BBLineGenerator {
-    static const int dc =
+    static constexpr int dc =
         (dir == NorthWest || dir == West || dir == SouthWest) ? -1 :
         ((dir == NorthEast || dir == East || dir == SouthEast) ? 1 : 0);
 
-    static const int dr =
+    static constexpr int dr =
         (dir == NorthEast || dir == North || dir == NorthWest) ? 1 :
         ((dir == SouthEast || dir == South || dir == SouthWest) ? -1 : 0);
     
-    static const BitBoard v  =
+    static constexpr BitBoard v  =
         BBSquareGenerator<c + 1 * dc, r + 1 * dr>::v |
         BBSquareGenerator<c + 2 * dc, r + 2 * dr>::v |
         BBSquareGenerator<c + 3 * dc, r + 3 * dr>::v |

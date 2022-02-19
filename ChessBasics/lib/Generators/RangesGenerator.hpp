@@ -12,15 +12,15 @@
 
 template<int c1, int r1, int c2, int r2>
 struct BBRangeGenerator {
-    static const BitBoard v =
-        (lineTable[(r1 * 8 + c1) * 8 + North] & lineTable[(r2 * 8 + c2) * 8 + South]) |
-        (lineTable[(r1 * 8 + c1) * 8 + South] & lineTable[(r2 * 8 + c2) * 8 + North]) |
-        (lineTable[(r1 * 8 + c1) * 8 + East] & lineTable[(r2 * 8 + c2) * 8 + West]) |
-        (lineTable[(r1 * 8 + c1) * 8 + West] & lineTable[(r2 * 8 + c2) * 8 + East]) |
-        (lineTable[(r1 * 8 + c1) * 8 + NorthEast] & lineTable[(r2 * 8 + c2) * 8 + SouthWest]) |
-        (lineTable[(r1 * 8 + c1) * 8 + SouthWest] & lineTable[(r2 * 8 + c2) * 8 + NorthEast]) |
-        (lineTable[(r1 * 8 + c1) * 8 + NorthWest] & lineTable[(r2 * 8 + c2) * 8 + SouthEast]) |
-        (lineTable[(r1 * 8 + c1) * 8 + SouthEast] & lineTable[(r2 * 8 + c2) * 8 + NorthWest]);
+    static constexpr BitBoard v =
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + North] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + South]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + South] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + North]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + East] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + West]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + West] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + East]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + NorthEast] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + SouthWest]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + SouthWest] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + NorthEast]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + NorthWest] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + SouthEast]) |
+        (BBLinesTableGenerator<>::table[(r1 * 8 + c1) * 8 + SouthEast] & BBLinesTableGenerator<>::table[(r2 * 8 + c2) * 8 + NorthWest]);
 };
 
 template<int idx = 0, BitBoard ...D>
@@ -38,6 +38,15 @@ struct BBRangeTableGenerator : BBRangeTableGenerator<idx + 8, D...,
 template<BitBoard ...D>
 struct BBRangeTableGenerator<64 * 64, D...> {
     static constexpr std::array<BitBoard, 64 * 64> table = { D... };
+};
+
+template<int from = 0, int idx = 0, BitBoard ...D>
+struct BBRangeSubTableGenerator : BBRangeSubTableGenerator<from, idx + 1, D...,
+    BBRangeGenerator<from % 8, from / 8, idx % 8, idx / 8>::v> {};
+
+template<int from, BitBoard ...D>
+struct BBRangeSubTableGenerator<from, 64, D...> {
+    static constexpr std::array<BitBoard, 64> v = { D... };
 };
 
 #endif /* RangesGenerator_h */

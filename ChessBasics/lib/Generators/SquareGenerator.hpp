@@ -12,7 +12,7 @@
 
 template <int col, int row>
 struct BBSquareGenerator {
-    static const BitBoard v = (col < 0 || col > 7 || row < 0 || row > 7) ? 0 : BitBoard(1) << (row * 8 + col);
+    static constexpr BitBoard v = (col < 0 || col > 7 || row < 0 || row > 7) ? 0 : BitBoard(1) << (row * 8 + col);
 };
 
 template<int idx = 0, BitBoard ...D>
