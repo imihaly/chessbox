@@ -8,6 +8,7 @@
 
 
 #include "Geometry.hpp"
+#include "bitscan.hpp"
 
 #pragma mark - square
 
@@ -94,11 +95,86 @@ const BitBoard Geometry::bishopLines(const Square square) {
 
 #include "Generators/DirectionsGenerator.hpp"
 
-constexpr std::array<Direction, 64 * 64> directionsTable = BBDirectionsTableGenerator<>::table;
+//constexpr std::array<Direction, 64 * 64> directionsTable = BBDirectionsTableGenerator<>::table;
+
+constexpr std::array<std::array<Direction, 64>, 64> directionsTable = {
+    BBDirectionsSubTableGenerator<0>::v,
+    BBDirectionsSubTableGenerator<1>::v,
+    BBDirectionsSubTableGenerator<2>::v,
+    BBDirectionsSubTableGenerator<3>::v,
+    BBDirectionsSubTableGenerator<4>::v,
+    BBDirectionsSubTableGenerator<5>::v,
+    BBDirectionsSubTableGenerator<6>::v,
+    BBDirectionsSubTableGenerator<7>::v,
+
+    BBDirectionsSubTableGenerator<8>::v,
+    BBDirectionsSubTableGenerator<9>::v,
+    BBDirectionsSubTableGenerator<10>::v,
+    BBDirectionsSubTableGenerator<11>::v,
+    BBDirectionsSubTableGenerator<12>::v,
+    BBDirectionsSubTableGenerator<13>::v,
+    BBDirectionsSubTableGenerator<14>::v,
+    BBDirectionsSubTableGenerator<15>::v,
+
+    BBDirectionsSubTableGenerator<16>::v,
+    BBDirectionsSubTableGenerator<17>::v,
+    BBDirectionsSubTableGenerator<18>::v,
+    BBDirectionsSubTableGenerator<19>::v,
+    BBDirectionsSubTableGenerator<20>::v,
+    BBDirectionsSubTableGenerator<21>::v,
+    BBDirectionsSubTableGenerator<22>::v,
+    BBDirectionsSubTableGenerator<23>::v,
+
+    BBDirectionsSubTableGenerator<24>::v,
+    BBDirectionsSubTableGenerator<25>::v,
+    BBDirectionsSubTableGenerator<26>::v,
+    BBDirectionsSubTableGenerator<27>::v,
+    BBDirectionsSubTableGenerator<28>::v,
+    BBDirectionsSubTableGenerator<29>::v,
+    BBDirectionsSubTableGenerator<30>::v,
+    BBDirectionsSubTableGenerator<31>::v,
+
+    BBDirectionsSubTableGenerator<32>::v,
+    BBDirectionsSubTableGenerator<33>::v,
+    BBDirectionsSubTableGenerator<34>::v,
+    BBDirectionsSubTableGenerator<35>::v,
+    BBDirectionsSubTableGenerator<36>::v,
+    BBDirectionsSubTableGenerator<37>::v,
+    BBDirectionsSubTableGenerator<38>::v,
+    BBDirectionsSubTableGenerator<39>::v,
+
+    BBDirectionsSubTableGenerator<40>::v,
+    BBDirectionsSubTableGenerator<41>::v,
+    BBDirectionsSubTableGenerator<42>::v,
+    BBDirectionsSubTableGenerator<43>::v,
+    BBDirectionsSubTableGenerator<44>::v,
+    BBDirectionsSubTableGenerator<45>::v,
+    BBDirectionsSubTableGenerator<46>::v,
+    BBDirectionsSubTableGenerator<47>::v,
+
+    BBDirectionsSubTableGenerator<48>::v,
+    BBDirectionsSubTableGenerator<49>::v,
+    BBDirectionsSubTableGenerator<50>::v,
+    BBDirectionsSubTableGenerator<51>::v,
+    BBDirectionsSubTableGenerator<52>::v,
+    BBDirectionsSubTableGenerator<53>::v,
+    BBDirectionsSubTableGenerator<54>::v,
+    BBDirectionsSubTableGenerator<55>::v,
+
+    BBDirectionsSubTableGenerator<56>::v,
+    BBDirectionsSubTableGenerator<57>::v,
+    BBDirectionsSubTableGenerator<58>::v,
+    BBDirectionsSubTableGenerator<59>::v,
+    BBDirectionsSubTableGenerator<60>::v,
+    BBDirectionsSubTableGenerator<61>::v,
+    BBDirectionsSubTableGenerator<62>::v,
+    BBDirectionsSubTableGenerator<63>::v,
+};
+
 
 const Direction Geometry::dir(const Square from, const Square to) {
-    int idx = (int)from * 64 + (int)to;
-    return directionsTable[idx];
+    //int idx = (int)from * 64 + (int)to;
+    return directionsTable[(int)from][(int)to];
 }
 
 
@@ -191,11 +267,11 @@ const Square Geometry::firstByDir(const Square square, Direction dir, const BitB
         case Direction::NorthEast:
         case Direction::East:
             // least significant bit
-            return Square(__builtin_ctzl(lineValue));
+            return Square(ctz64(lineValue));
             break;
         default:
             // most significant bit
-            return Square(63 - __builtin_clzl(lineValue));
+            return Square(63 - clz64(lineValue));
             break;
     }
 }

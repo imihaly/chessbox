@@ -41,4 +41,19 @@ struct BBDirectionsTableGenerator<64 * 64, D...> {
     static constexpr std::array<Direction, 64 * 64> table = { D... };
 };
 
+template<int from = 0, int idx = 0, Direction ...D>
+struct BBDirectionsSubTableGenerator : BBDirectionsSubTableGenerator<from, idx + 1, D...,
+BBDirectionGenerator<from % 8, from / 8, idx % 8, idx / 8>::v> {};
+
+template<int from, Direction ...D>
+struct BBDirectionsSubTableGenerator<from, 64, D...> {
+    static constexpr std::array<Direction, 64> v = { D... };
+};
+
+struct BBDirectionsTableGenerator2 {
+    static constexpr std::array<std::array<Direction, 64>, 64> table = {
+        BBDirectionsSubTableGenerator<0>::v,
+    };
+};
+
 #endif /* DirectionsGenerator_h */

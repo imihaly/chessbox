@@ -9,7 +9,7 @@
 
 #include "Movecheck.hpp"
 #include "Control.hpp"
-#import "Geometry.hpp"
+#include "Geometry.hpp"
 
 bool Movecheck::isValidMove(const Position *position, const Move& move) {
     if(!precheckMove(position, move)) return false;

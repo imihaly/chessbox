@@ -13,6 +13,7 @@
 #include "deps.h"
 #include "Square.hpp"
 #include "Geometry.hpp"
+#include "bitscan.hpp"
 
 struct Squares {
     BitBoard v;
@@ -61,7 +62,7 @@ struct Squares {
         }
         
         Square operator*() {
-            return Square(__builtin_ctzl(squares));
+            return Square(ctz64(squares));
         }
         
         Iterator& operator++() {
