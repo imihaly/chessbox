@@ -57,7 +57,7 @@ TEST(FEN, invalidFens) {
     
     
     for(std::string fen: invalidFens) {
-        REQUIRE(NULL == FEN::positionFromFEN(fen));
+        CHECK_TRUE(NULL == FEN::positionFromFEN(fen));
     }
 }
 
