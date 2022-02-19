@@ -1,0 +1,3 @@
+[submodule "ChessBasics/Testing/tau"]
+	path = ChessBasics/Testing/tau
+	url = https://github.com/jasmcaus/tau.git
