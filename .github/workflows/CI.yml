@@ -42,7 +42,7 @@ jobs:
           submodules: true
      
       - name: cmake
-        run: cmake
+        run: cmake .
         
       - name: test
         run: make unit_tests
