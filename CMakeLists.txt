@@ -48,8 +48,8 @@ message("libfiles: ${LIB_SOURCES}")
 add_library(cbox STATIC ${LIB_SOURCES})
 
 # unit tests
-add_subdirectory(Testing/tau)
-include_directories(Testing/tau lib)
+add_subdirectory(tests/unit_tests/tau)
+include_directories(tests/unit_tests/tau lib)
 
 set (TEST_SOURCES
     tests/unit_tests/ColorTests.cpp
