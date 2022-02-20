@@ -44,9 +44,12 @@ jobs:
       - name: cmake
         run: cmake .
         
-      - name: test
+      - name: run unit test
         run: make unit_tests
 
+      - name: run performance tests
+        run: make perf_tests
+        
   build_and_test_on_windows:
     name: Build & test chessbox on ${{ matrix.os }} with ${{ matrix.compiler }}.
     
