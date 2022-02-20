@@ -80,6 +80,8 @@ jobs:
       - name: build unit tests
         run: MSBuild.exe Chessbox.sln /t:Rebuild /p:Configuration=Release
         
-      - name: execute tests
+      - name: execute unit tests
         run: Release\cbox_tests.exe
         
+      - name: execute perf tests
+        run: Release\cbox_perf_tests.exe
