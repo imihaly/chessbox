@@ -76,10 +76,7 @@ jobs:
         
       - name: build unit tests
         run: MSBuild.exe Chessbox.sln /t:Rebuild /p:Configuration=Release
-
-      - name: list files
-        run: dir
         
       - name: execute tests
-        run: unit_tests.exe
+        run: Release\cbox_tests.exe
         
