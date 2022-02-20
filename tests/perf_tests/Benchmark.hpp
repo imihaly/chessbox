@@ -16,6 +16,7 @@
 #include <vector>
 #include <iomanip>
 #include <cassert>
+#include <climits>
 
 long int millis();
 long int usecs();
