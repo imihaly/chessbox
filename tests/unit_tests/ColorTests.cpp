@@ -10,6 +10,10 @@
 #include "UnitTesting.hpp"
 #include "Color.hpp"
 
+TEST(Color, fail_test) {
+    CHECK_TRUE(false);
+}
+
 TEST(Color, equality) {
     REQUIRE_EQ(Color::White, Color::White);
     REQUIRE_EQ(Color::Black, Color::Black);
