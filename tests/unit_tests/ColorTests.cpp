@@ -25,9 +25,3 @@ TEST(Color, other) {
     CHECK_TRUE(flip(Color::Black) == Color::White);
 }
 
-//TEST(Color, description) {
-//    CHECK_TRUE(Color::White.description() == "white");
-//    CHECK_TRUE(Color::Black.description() == "black");
-//    CHECK_TRUE(Color::Unknown.description() == "unknown");
-//}
-

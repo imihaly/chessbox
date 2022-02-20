@@ -40,10 +40,7 @@ namespace chessbox {
     };
     
     // Returns the opposite direction
-    // for Any and Unknown returns themseves.
     inline Direction opposite(Direction dir) {
-        // optimisation
-        // if (dir == Direction::Any || dir == Direction::Unknown) return dir;
         return Direction((dir + 4) % 8);
     };
     

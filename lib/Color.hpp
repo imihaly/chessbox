@@ -21,8 +21,8 @@ namespace chessbox {
     inline Color flip(Color c) {
         return Color(1 - c);
     }
-
-}
+    
+} // namespace chessbox
 
 std::ostream& operator<<(std::ostream& os, const chessbox::Color color);
 
