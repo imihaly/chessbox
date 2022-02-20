@@ -42,7 +42,7 @@ jobs:
           submodules: true
      
       - name: cmake
-        run: cmake ChessBasics
+        run: cmake
         
       - name: test
         run: make unit_tests
@@ -72,7 +72,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
         
       - name: create solution
-        run: cmake -G "Visual Studio 16 2019" ChessBasics
+        run: cmake -G "Visual Studio 16 2019"
         
       - name: build unit tests
         run: MSBuild.exe Chessbox.sln /t:Rebuild /p:Configuration=Release
