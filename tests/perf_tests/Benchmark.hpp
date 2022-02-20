@@ -36,7 +36,8 @@ struct Benchmark {
     }
     
     static void calibrate(long int value) {
-        referenceValue = value;
+        // TODO: how can 0 come in as calibration value? Is it an optimisation issue?
+        referenceValue = value ? value : 1;
     }
 
     
@@ -46,10 +47,12 @@ struct Benchmark {
         }
     }
 
-    static void checkAll() {
+    static bool checkAll() {
+        bool success = true;
         for(auto it = orderedBenchmarks.begin(); it != orderedBenchmarks.end(); ++it) {
-            (*it)->CHECK_TRUE();
+            if(! (*it)->CHECK_TRUE() ) success = false;
         }
+        return success;
     }
 
     
@@ -80,7 +83,7 @@ struct Benchmark {
         return str;
     }
     
-    void CHECK_TRUE() {
+    bool CHECK_TRUE() {
         assert(referenceValue);
         assert(refVal);
         long int avg = count ? sum / count : 0;
@@ -94,6 +97,8 @@ struct Benchmark {
             << "   " << truncate(name, 40) << ": "
             << min << "/" << avg << "/" << max
         << std::endl;
+        
+        return succeed;
     }
 
 };

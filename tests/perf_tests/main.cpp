@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     std::uniform_real_distribution<long double> dist(0, 0xffffffffffffffffull);
     
     BENCHMARK_CALIBRATE() {
-        Squares a;
+        Squares a = dist(mt);
         Squares b(0xaaaaaaaaaaaaaaaa);
         Squares c(0x5555555555555555);
         Squares d(0xffffffffffffffff);
@@ -108,6 +108,6 @@ int main(int argc, const char * argv[]) {
 
 #endif
 
-    Benchmark::checkAll();
+    if (!Benchmark::checkAll()) return -1;
     return 0;
 }
