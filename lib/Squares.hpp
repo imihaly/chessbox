@@ -12,7 +12,7 @@
 
 #include "deps.h"
 #include "Square.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 #include "bitscan.hpp"
 
 namespace chessbox {

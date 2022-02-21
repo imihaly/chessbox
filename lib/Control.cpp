@@ -8,7 +8,7 @@
 
 
 #include "Control.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 
 namespace chessbox {
     
@@ -40,22 +40,22 @@ namespace chessbox {
         const Squares occupied = position->squaresOccupied();
         
         if (piece.type == Piece::Type::Pawn) {
-            squares |= Geometry::pawnCaptures(square, color);
+            squares |= BB::pawnCaptures(square, color);
         } else if (piece.type == Piece::Type::Knight) {
-            squares |= Geometry::knightDistances(square);
+            squares |= BB::knightDistances(square);
         } else if (piece.type == Piece::Type::King) {
-            squares |= Geometry::adjacents(square);
+            squares |= BB::adjacents(square);
         }
         
         if(piece.type == Piece::Type::Rook || piece.type == Piece::Type::Queen) {
             for(Direction dir: {Direction::North, Direction::East, Direction::South, Direction::West }) {
-                squares |= Geometry::tillFirstByDir(square, dir, occupied);
+                squares |= BB::tillFirstByDir(square, dir, occupied);
             }
         }
         
         if(piece.type == Piece::Type::Bishop || piece.type == Piece::Type::Queen) {
             for(Direction dir: {Direction::NorthEast, Direction::SouthEast, Direction::SouthWest, Direction::NorthWest }) {
-                squares |= Geometry::tillFirstByDir(square, dir, occupied);
+                squares |= BB::tillFirstByDir(square, dir, occupied);
             }
         }
         
@@ -80,10 +80,10 @@ namespace chessbox {
         
         // rooks aligned with the square
         Squares rooks = position->squaresOccupied(side, Piece::Type::Rook);
-        rooks &= Geometry::rookLines(square);
+        rooks &= BB::rookLines(square);
         for(Squares::Iterator it = rooks.begin(); it != rooks.end(); it++) {
-            if((Geometry::range(*it, square) & occupied) == 0) {
-                squares |= Geometry::bitboard(*it);
+            if((BB::range(*it, square) & occupied) == 0) {
+                squares |= BB::bitboard(*it);
             }
         }
         
@@ -96,10 +96,10 @@ namespace chessbox {
         
         // rooks aligned with the square
         Squares bishops = position->squaresOccupied(side, Piece::Type::Bishop);
-        bishops &= Geometry::rookLines(square);
+        bishops &= BB::rookLines(square);
         for(Squares::Iterator it = bishops.begin(); it != bishops.end(); it++) {
-            if((Geometry::range(*it, square) & occupied) == 0) {
-                squares |= Geometry::bitboard(*it);
+            if((BB::range(*it, square) & occupied) == 0) {
+                squares |= BB::bitboard(*it);
             }
         }
         
@@ -112,10 +112,10 @@ namespace chessbox {
         
         // rooks aligned with the square
         Squares queens = position->squaresOccupied(side, Piece::Type::Queen);
-        queens &= Geometry::lines(square);
+        queens &= BB::lines(square);
         for(Squares::Iterator it = queens.begin(); it != queens.end(); it++) {
-            if((Geometry::range(*it, square) & occupied) == 0) {
-                squares |= Geometry::bitboard(*it);
+            if((BB::range(*it, square) & occupied) == 0) {
+                squares |= BB::bitboard(*it);
             }
         }
         
@@ -124,15 +124,15 @@ namespace chessbox {
     }
     
     Squares Control::knightsControlling(const Square square, const Position *position, Color side) {
-        return position->squaresOccupied(side, Piece::Type::Knight) & Geometry::knightDistances(square);
+        return position->squaresOccupied(side, Piece::Type::Knight) & BB::knightDistances(square);
     }
     
     Squares Control::pawnsControlling(const Square square, const Position *position, Color side) {
-        return position->squaresOccupied(side, Piece::Type::Pawn) & Geometry::pawnCaptures(square, flip(side));
+        return position->squaresOccupied(side, Piece::Type::Pawn) & BB::pawnCaptures(square, flip(side));
     }
     
     Squares Control::kingsControlling(const Square square, const Position *position, Color side) {
-        return position->squaresOccupied(side, Piece::Type::King) & Geometry::adjacents(square);
+        return position->squaresOccupied(side, Piece::Type::King) & BB::adjacents(square);
     }
     
     Squares Control::squaresControlling(const Square square, const Position *position) {
@@ -184,11 +184,11 @@ namespace chessbox {
         // rooks and queens aligned with the square
         Squares rooksAndQueens = position->squaresOccupied(side, Piece::Type::Rook);
         rooksAndQueens |= position->squaresOccupied(side, Piece::Type::Queen);
-        rooksAndQueens &= Geometry::rookLines(square);
+        rooksAndQueens &= BB::rookLines(square);
         rooksAndQueens &= mask;
         rooksAndQueens &= ~changedSquares;
         for(Squares::Iterator it = rooksAndQueens.begin(); it != rooksAndQueens.end(); it++) {
-            if((Geometry::range(*it, square) & occupied) == 0) {
+            if((BB::range(*it, square) & occupied) == 0) {
                 return true;
             }
         }
@@ -206,12 +206,12 @@ namespace chessbox {
         
         Squares bishopsAndQueens = position->squaresOccupied(side, Piece::Type::Bishop);
         bishopsAndQueens |= position->squaresOccupied(side, Piece::Type::Queen);
-        bishopsAndQueens &= Geometry::bishopLines(square);
+        bishopsAndQueens &= BB::bishopLines(square);
         bishopsAndQueens &= mask;
         bishopsAndQueens &= ~changedSquares;
         
         for(Squares::Iterator it = bishopsAndQueens.begin(); it != bishopsAndQueens.end(); it++) {
-            if((Geometry::range(*it, square) & occupied) == 0) {
+            if((BB::range(*it, square) & occupied) == 0) {
                 return true;
             }
         }
@@ -226,7 +226,7 @@ namespace chessbox {
         
         Squares changedSquares = piecesRemoved | piecesAdded;
         
-        Squares attackingKnights = position->squaresOccupied(side, Piece::Type::Knight) & Geometry::knightDistances(square) & mask;
+        Squares attackingKnights = position->squaresOccupied(side, Piece::Type::Knight) & BB::knightDistances(square) & mask;
         attackingKnights &= ~changedSquares;
         
         if(attackingKnights) return true;
@@ -242,7 +242,7 @@ namespace chessbox {
         
         Squares changedSquares = piecesRemoved | piecesAdded;
         
-        Squares attackingPawns = position->squaresOccupied(side, Piece::Type::Pawn) & Geometry::pawnCaptures(square, flip(side)) & mask;
+        Squares attackingPawns = position->squaresOccupied(side, Piece::Type::Pawn) & BB::pawnCaptures(square, flip(side)) & mask;
         attackingPawns &= ~changedSquares;
         
         if(attackingPawns) return true;
@@ -258,7 +258,7 @@ namespace chessbox {
         
         Squares changedSquares = piecesRemoved | piecesAdded;
         
-        Squares attackingKings = position->squaresOccupied(side, Piece::Type::King) & Geometry::adjacents(square) & mask;
+        Squares attackingKings = position->squaresOccupied(side, Piece::Type::King) & BB::adjacents(square) & mask;
         attackingKings &= ~changedSquares;
         
         if(attackingKings) return true;

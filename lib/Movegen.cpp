@@ -10,7 +10,7 @@
 #include "Movegen.hpp"
 #include "Control.hpp"
 #include "Movecheck.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 
 #pragma mark - move generation
 
@@ -100,7 +100,7 @@ namespace chessbox {
         Color side = position->sideToMove();
         Color other = flip(side);
         
-        Squares captures = Geometry::pawnCaptures(from, side);
+        Squares captures = BB::pawnCaptures(from, side);
         Squares capturables = position->squaresOccupied(other);
         capturables.remove(position->kingPosition(other));
         if(position->enPassantSquare().isValid()) {
@@ -128,7 +128,7 @@ namespace chessbox {
             }
         }
         
-        Squares targets = Geometry::pawnMoves(from, side);
+        Squares targets = BB::pawnMoves(from, side);
         targets &= ~position->squaresOccupied(); // limit targets to empty squares
         
         for(Squares::Iterator it = targets.begin(); it != targets.end(); it++) {
@@ -183,7 +183,7 @@ namespace chessbox {
     const void Movegen::allKingMovesFrom(Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::King));
         
-        Squares controlledSquares = Geometry::adjacents(from);
+        Squares controlledSquares = BB::adjacents(from);
         controlledSquares &= ~position->squaresOccupied(position->sideToMove());
         controlledSquares.remove(position->kingPosition(flip(position->sideToMove())));
         
@@ -263,7 +263,7 @@ namespace chessbox {
     }
     
     const void Movegen::allKnightMovesTo(Position *position, const Square to, Moves& result) {
-        Squares from = Geometry::knightDistances(to);
+        Squares from = BB::knightDistances(to);
         from &= position->squaresOccupied(position->sideToMove(), Piece::Type::Knight);
         for(Squares::Iterator it = from.begin(); it != from.end(); ++it) {
             Move move(*it, to);
@@ -288,7 +288,7 @@ namespace chessbox {
         
         Color us = position->sideToMove();
         
-        Squares from = Geometry::adjacents(to);
+        Squares from = BB::adjacents(to);
         from &= position->squaresOccupied(position->sideToMove(), Piece::Type::King);
         for(Squares::Iterator it = from.begin(); it != from.end(); ++it) {
             Move move(*it, to);
@@ -330,7 +330,7 @@ namespace chessbox {
         }
         
         Squares from = position->squaresOccupied(position->sideToMove(), type);
-        from &= Geometry::lines(to);
+        from &= BB::lines(to);
         
         for(Squares::Iterator it = from.begin(); it != from.end(); ++it) {
             Move move(*it, to);

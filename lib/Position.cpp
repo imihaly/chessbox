@@ -9,7 +9,7 @@
 #include "Position.hpp"
 #include "Control.hpp"
 #include "Movecheck.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 
 #define assertm(exp, msg) assert(((void)msg, exp))
 
@@ -384,10 +384,10 @@ namespace chessbox {
             
             _kingDangerLines = 0;
             Square kingsSquare = _kingPositions[side];
-            Squares rooksBishopsAndQueens = (squaresOccupied(other, Piece::Type::Rook) | squaresOccupied(other, Piece::Type::Bishop) | squaresOccupied(other, Piece::Type::Queen)) & Geometry::lines(kingsSquare);
+            Squares rooksBishopsAndQueens = (squaresOccupied(other, Piece::Type::Rook) | squaresOccupied(other, Piece::Type::Bishop) | squaresOccupied(other, Piece::Type::Queen)) & BB::lines(kingsSquare);
             for(Squares::Iterator it = rooksBishopsAndQueens.begin(); it != rooksBishopsAndQueens.end(); it++) {
-                Direction dir = Geometry::dir(kingsSquare, *it);
-                _kingDangerLines |= Geometry::line(kingsSquare, dir);
+                Direction dir = BB::dir(kingsSquare, *it);
+                _kingDangerLines |= BB::line(kingsSquare, dir);
             }
             
             _kingDangerLinesMessed = false;

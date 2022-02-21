@@ -15,6 +15,6 @@
 #include "Movecheck.hpp"
 #include "Movegen.hpp"
 #include "FEN.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 
 #endif /* ChessBasics_h */

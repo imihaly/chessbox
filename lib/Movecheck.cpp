@@ -9,7 +9,7 @@
 
 #include "Movecheck.hpp"
 #include "Control.hpp"
-#include "Geometry.hpp"
+#include "BB.hpp"
 
 namespace chessbox {
     bool Movecheck::isValidMove(const Position *position, const Move& move) {
@@ -93,7 +93,7 @@ namespace chessbox {
         if (dRow != 0 && dCol != 0) return false;
         
         const Squares& occupied = position->squaresOccupied();
-        return (0 == (Geometry::range(move.from, move.to) & occupied));
+        return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
 #pragma mark - knoght moves
@@ -120,7 +120,7 @@ namespace chessbox {
         if(dRow != dCol && dRow != -dCol) return  false;
         
         const Squares& occupied = position->squaresOccupied();
-        return (0 == (Geometry::range(move.from, move.to) & occupied));
+        return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
 #pragma mark - queen moves
@@ -132,7 +132,7 @@ namespace chessbox {
         if(dRow != 0 && dCol != 0 && dRow != dCol && dRow != -dCol) return  false;
         
         const Squares& occupied = position->squaresOccupied();
-        return (0 == (Geometry::range(move.from, move.to) & occupied));
+        return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
 #pragma mark - king moves
@@ -146,10 +146,10 @@ namespace chessbox {
             if (!position->canCastleKingside(us)) return false;
             
             Squares occupied = position->squaresOccupied();
-            Squares ooSquares = Geometry::ooFreeRange(us);
+            Squares ooSquares = BB::ooFreeRange(us);
             if (occupied & ooSquares) return false;
             
-            Squares toCheck = Geometry::ooUncontrolledRange(us);
+            Squares toCheck = BB::ooUncontrolledRange(us);
             
             return !Control::isControlling(toCheck, position, flip(us));
         }
@@ -160,10 +160,10 @@ namespace chessbox {
             if (!position->canCastleQueenside(us)) return false;
             
             Squares occupied = position->squaresOccupied();
-            Squares oooSquares = Geometry::oooFreeRange(us);
+            Squares oooSquares = BB::oooFreeRange(us);
             if (occupied & oooSquares) return false;
             
-            Squares toCheck = Geometry::oooUncontrolledRange(us);
+            Squares toCheck = BB::oooUncontrolledRange(us);
             
             return !Control::isControlling(toCheck, position, flip(us));
         }
@@ -222,17 +222,17 @@ namespace chessbox {
     bool Movecheck::detectChecks(const Position *position, const Move& move) {
         Color side = position->sideToMove();
         
-        Squares removed =  Geometry::bitboard(move.from);
+        Squares removed =  BB::bitboard(move.from);
         if (move.to == position->enPassantSquare() && position->pieceOnSquare(move.from).type == Piece::Type::Pawn) {
             Square captured = Square(move.to.col(), move.from.row());
             removed.add(captured);
         }
-        Squares added = Geometry::bitboard(move.to);
+        Squares added = BB::bitboard(move.to);
         
         Square kingsPosition = position->kingPosition(side);
         if (move.from == kingsPosition) {
             kingsPosition = move.to;
-            return Control::isControlling(kingsPosition, position, flip(side), removed, Geometry::bitboard(move.to));
+            return Control::isControlling(kingsPosition, position, flip(side), removed, BB::bitboard(move.to));
         }
         
         Squares dangerLines = position->kingDangerLines();

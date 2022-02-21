@@ -63,11 +63,11 @@ namespace chessbox {
         static bool isControlling(const Squares& squares, const Position *position, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
         static bool isControlling(const Square square, const Position *position, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
         
-        static bool isControllingByRookOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
-        static bool isControllingByBishopOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
-        static bool isControllingByKnight(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
-        static bool isControllingByPawn(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
-        static bool isControllingByKing(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
+        static bool isControllingByRookOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);
+        static bool isControllingByBishopOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);
+        static bool isControllingByKnight(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);
+        static bool isControllingByPawn(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);
+        static bool isControllingByKing(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);
         
     };
     

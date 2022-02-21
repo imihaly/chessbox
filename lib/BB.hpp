@@ -1,5 +1,5 @@
 //
-// Geometry.hpp
+// BB.hpp
 //
 // Created by Imre Mihaly on 2022.
 //
@@ -18,7 +18,7 @@ namespace chessbox {
     
     using BitBoard = uint64_t;
     
-    class Geometry {
+    class BB {
     public:
         static constexpr BitBoard allSquares = -1;
         
@@ -43,8 +43,8 @@ namespace chessbox {
         static const BitBoard ooUncontrolledRange(const Color color);
         static const BitBoard oooUncontrolledRange(const Color color);
         
-        static const Square firstByDir(const Square square, Direction dir, const BitBoard mask = Geometry::allSquares);
-        static const BitBoard tillFirstByDir(const Square square, Direction dir, const BitBoard mask = Geometry::allSquares);
+        static const Square firstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
+        static const BitBoard tillFirstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
     };
     
 } // namespace chessbox

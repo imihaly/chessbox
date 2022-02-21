@@ -1,5 +1,5 @@
 //
-// Geometry.cpp
+// BB.cpp
 //
 // Created by Imre Mihaly on 2022.
 //
@@ -7,7 +7,7 @@
 //
 
 
-#include "Geometry.hpp"
+#include "BB.hpp"
 #include "bitscan.hpp"
 
 #include "Generators/SquareGenerator.hpp"
@@ -27,7 +27,7 @@ namespace chessbox {
     
     constexpr std::array<BitBoard, 64> squaresTable = BBSquaresTableGenerator<>::table;
     
-    const BitBoard Geometry::bitboard(const Square square) {
+    const BitBoard BB::bitboard(const Square square) {
         return squaresTable[(int)square];
     }
     
@@ -37,7 +37,7 @@ namespace chessbox {
         BBRankGenerator<0>::v, BBRankGenerator<1>::v, BBRankGenerator<2>::v, BBRankGenerator<3>::v, BBRankGenerator<4>::v, BBRankGenerator<5>::v, BBRankGenerator<6>::v, BBRankGenerator<7>::v
     };
     
-    const BitBoard Geometry::rank(int rankIdx) {
+    const BitBoard BB::rank(int rankIdx) {
         return ranksTable[rankIdx];
     }
     
@@ -48,7 +48,7 @@ namespace chessbox {
         BBFileGenerator<0>::v, BBFileGenerator<1>::v, BBFileGenerator<2>::v, BBFileGenerator<3>::v, BBFileGenerator<4>::v, BBFileGenerator<5>::v, BBFileGenerator<6>::v, BBFileGenerator<7>::v
     };
     
-    const BitBoard Geometry::file(int fileIdx) {
+    const BitBoard BB::file(int fileIdx) {
         return filesTable[fileIdx];
     }
     
@@ -56,13 +56,13 @@ namespace chessbox {
         
     constexpr std::array<BitBoard, 512> adjacentsPerDirectionTable = BBAdjacentsPerDirectionTableGenerator<>::table;
     
-    const BitBoard Geometry::adjacent(const Square square, Direction dir) {
+    const BitBoard BB::adjacent(const Square square, Direction dir) {
         return adjacentsPerDirectionTable[(int)square * 8 + dir];
     }
     
     constexpr std::array<BitBoard, 64> adjacentsTable = BBAdjacentsTableGenerator<>::table;
     
-    const BitBoard Geometry::adjacents(const Square square) {
+    const BitBoard BB::adjacents(const Square square) {
         return adjacentsTable[(int)square];
     }
     
@@ -72,11 +72,11 @@ namespace chessbox {
     constexpr std::array<BitBoard, 64> rookLineTable = BBRookLinesTableGenerator<>::table;
     constexpr std::array<BitBoard, 64> bishopLinesTable = BBBishopLinesTableGenerator<>::table;
     
-    const BitBoard Geometry::line(const Square square, Direction dir) {
+    const BitBoard BB::line(const Square square, Direction dir) {
         return lineTable[(int)square * 8 + dir];
     }
     
-    const BitBoard Geometry::lines(const Square square) {
+    const BitBoard BB::lines(const Square square) {
         return lineTable[(int)square * 8 + Direction::North] |
         lineTable[(int)square * 8 + Direction::NorthEast] |
         lineTable[(int)square * 8 + Direction::East] |
@@ -87,11 +87,11 @@ namespace chessbox {
         lineTable[(int)square * 8 + Direction::NorthWest];
     }
     
-    const BitBoard Geometry::rookLines(const Square square) {
+    const BitBoard BB::rookLines(const Square square) {
         return rookLineTable[(int)square];
     }
     
-    const BitBoard Geometry::bishopLines(const Square square) {
+    const BitBoard BB::bishopLines(const Square square) {
         return bishopLinesTable[(int)square];
     }
     
@@ -172,7 +172,7 @@ namespace chessbox {
     };
     
     
-    const Direction Geometry::dir(const Square from, const Square to) {
+    const Direction BB::dir(const Square from, const Square to) {
         //int idx = (int)from * 64 + (int)to;
         return directionsTable[(int)from][(int)to];
     }
@@ -257,7 +257,7 @@ namespace chessbox {
     };
     
     
-    const BitBoard Geometry::range(const Square from, const Square to) {
+    const BitBoard BB::range(const Square from, const Square to) {
         // int idx = (int)from * 64 + (int)to;
         return rangesTable[(int)from][(int)to];
     }
@@ -266,7 +266,7 @@ namespace chessbox {
         
     constexpr std::array<BitBoard, 64> knightMovesTable = BBKnightMovesTableGenerator<>::table;
     
-    const BitBoard Geometry::knightDistances(const Square square) {
+    const BitBoard BB::knightDistances(const Square square) {
         return knightMovesTable[(int)square];
     }
     
@@ -274,7 +274,7 @@ namespace chessbox {
         
     constexpr std::array<BitBoard, 128> pawnCapturesTable = BBPawnCapturesTableGenerator<>::table;
     
-    const BitBoard Geometry::pawnCaptures(const Square square, const Color color) {
+    const BitBoard BB::pawnCaptures(const Square square, const Color color) {
         return pawnCapturesTable[(int)square * 2 + color];
     }
     
@@ -282,13 +282,13 @@ namespace chessbox {
         
     constexpr std::array<BitBoard, 128> pawnMovesTable = BBPawnMovesTableGenerator<>::table;
     
-    const BitBoard Geometry::pawnMoves(const Square square, const Color color) {
+    const BitBoard BB::pawnMoves(const Square square, const Color color) {
         return pawnMovesTable[(int)square * 2 + color];
     }
     
 #pragma mark - castle ranges
     
-    const BitBoard Geometry::ooFreeRange(const Color color) {
+    const BitBoard BB::ooFreeRange(const Color color) {
         if(color == White) {
             return range(Square::E1, Square::H1);
         } else {
@@ -296,7 +296,7 @@ namespace chessbox {
         }
     }
     
-    const BitBoard Geometry::oooFreeRange(const Color color) {
+    const BitBoard BB::oooFreeRange(const Color color) {
         if(color == White) {
             return range(Square::E1, Square::A1);
         } else {
@@ -304,7 +304,7 @@ namespace chessbox {
         }
     }
     
-    const BitBoard Geometry::ooUncontrolledRange(const Color color) {
+    const BitBoard BB::ooUncontrolledRange(const Color color) {
         if(color == White) {
             return range(Square::E1, Square::H1);
         } else {
@@ -312,7 +312,7 @@ namespace chessbox {
         }
     }
     
-    const BitBoard Geometry::oooUncontrolledRange(const Color color) {
+    const BitBoard BB::oooUncontrolledRange(const Color color) {
         if(color == White) {
             return range(Square::E1, Square::B1) | bitboard(Square::E1);
         } else {
@@ -322,7 +322,7 @@ namespace chessbox {
     
 #pragma mark - hits
     
-    const Square Geometry::firstByDir(const Square square, Direction dir, const BitBoard mask) {
+    const Square BB::firstByDir(const Square square, Direction dir, const BitBoard mask) {
         BitBoard lineValue = lineTable[(int)square * 8 + dir];
         lineValue = lineValue & mask;
         
@@ -343,7 +343,7 @@ namespace chessbox {
         }
     }
     
-    const BitBoard Geometry::tillFirstByDir(const Square square, Direction dir, const BitBoard mask) {
+    const BitBoard BB::tillFirstByDir(const Square square, Direction dir, const BitBoard mask) {
         Square first = firstByDir(square, dir, mask);
         BitBoard lineValue = lineTable[(int)square * 8 + dir];
         if (first == Square::None) {
@@ -352,7 +352,7 @@ namespace chessbox {
         
         BitBoard oppositeLine = lineTable[(int)first * 8 + opposite(dir)];
         
-        return (lineValue & oppositeLine) | Geometry::bitboard(first);
+        return (lineValue & oppositeLine) | BB::bitboard(first);
     }
     
 }
