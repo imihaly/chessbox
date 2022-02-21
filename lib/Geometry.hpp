@@ -46,7 +46,8 @@ namespace chessbox {
         static const Square firstByDir(const Square square, Direction dir, const BitBoard mask = Geometry::allSquares);
         static const BitBoard tillFirstByDir(const Square square, Direction dir, const BitBoard mask = Geometry::allSquares);
     };
-}
+    
+} // namespace chessbox
 
 #endif /* Geometry_hpp */
 

@@ -14,6 +14,7 @@
 #include "Position.hpp"
 
 namespace chessbox {
+    
     class Control {
         friend class Movecheck;
         
@@ -69,6 +70,7 @@ namespace chessbox {
         static bool isControllingByKing(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = Geometry::allSquares);
         
     };
-}
+    
+} // namespace chessbox
 
 #endif /* Control_hpp */

@@ -11,17 +11,18 @@
 #define KnightMoveGenerator_h
 
 namespace chessbox {
+    
     template<int c, int r>
     struct BBKnightMoveGenerator {
         static const BitBoard v =
-        BBSquareGenerator<c+1, r+2>::v |
-        BBSquareGenerator<c+2, r+1>::v |
-        BBSquareGenerator<c+2, r-1>::v |
-        BBSquareGenerator<c+1, r-2>::v |
-        BBSquareGenerator<c-1, r-2>::v |
-        BBSquareGenerator<c-2, r-1>::v |
-        BBSquareGenerator<c-2, r+1>::v |
-        BBSquareGenerator<c-1, r+2>::v;
+            BBSquareGenerator<c+1, r+2>::v |
+            BBSquareGenerator<c+2, r+1>::v |
+            BBSquareGenerator<c+2, r-1>::v |
+            BBSquareGenerator<c+1, r-2>::v |
+            BBSquareGenerator<c-1, r-2>::v |
+            BBSquareGenerator<c-2, r-1>::v |
+            BBSquareGenerator<c-2, r+1>::v |
+            BBSquareGenerator<c-1, r+2>::v ;
     };
     
     
@@ -34,6 +35,7 @@ namespace chessbox {
     struct BBKnightMovesTableGenerator<64, D...> {
         static constexpr std::array<BitBoard, 64> table = { D... };
     };
-}
+    
+} // namespace chessbox
 
 #endif /* KnightMoveGenerator_h */

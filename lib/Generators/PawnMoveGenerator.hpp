@@ -11,6 +11,7 @@
 #define PawnMoveGenerator_h
 
 namespace chessbox {
+    
     template<int c, int r>
     struct BBPawnMoveGenerator {
         static const BitBoard whiteMove = BBSquareGenerator<c, r+1>::v;
@@ -39,6 +40,7 @@ namespace chessbox {
     struct BBPawnMovesTableGenerator<64, D...> {
         static constexpr std::array<BitBoard, 128> table = { D... };
     };
-}
+    
+} // namespace chessbox
 
 #endif /* PawnMoveGenerator_h */

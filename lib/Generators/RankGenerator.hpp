@@ -11,6 +11,7 @@
 #define RankGenerator_h
 
 namespace chessbox {
+    
     template<int r>
     struct BBRankGenerator {
         static const BitBoard v =
@@ -23,6 +24,7 @@ namespace chessbox {
         BBSquareGenerator<6, r>::v |
         BBSquareGenerator<7, r>::v;
     };
-}
+    
+} // namespace chessbox
 
 #endif /* RankGenerator_h */

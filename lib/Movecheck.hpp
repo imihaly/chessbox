@@ -79,6 +79,8 @@ namespace chessbox {
         static bool isCapturableType(Piece::Type type);
         
     };
-}
+    
+} // namespace chessbox
+
 #endif /* Movecheck_hpp */
 

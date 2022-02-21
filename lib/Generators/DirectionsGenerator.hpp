@@ -11,6 +11,8 @@
 #define DirectionsGenerator_h
 
 namespace chessbox {
+    
+    // Utility template struct to produce a constant direction for a pair of squares( from = (c1, r1), to = (c2, r2) ).
     template<int c1, int r1, int c2, int r2>
     struct BBDirectionGenerator {
         static const Direction v =
@@ -26,30 +28,16 @@ namespace chessbox {
         Direction::Unknown;
     };
     
-    template<int idx = 0, Direction ...D>
-    struct BBDirectionsTableGenerator : BBDirectionsTableGenerator<idx + 8, D...,
-    BBDirectionGenerator<((idx + 0)/64) % 8, ((idx + 0)/64) / 8, (idx + 0) % 8, ((idx + 0)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 1)/64) % 8, ((idx + 1)/64) / 8, (idx + 1) % 8, ((idx + 1)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 2)/64) % 8, ((idx + 2)/64) / 8, (idx + 2) % 8, ((idx + 2)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 3)/64) % 8, ((idx + 3)/64) / 8, (idx + 3) % 8, ((idx + 3)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 4)/64) % 8, ((idx + 4)/64) / 8, (idx + 4) % 8, ((idx + 4)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 5)/64) % 8, ((idx + 5)/64) / 8, (idx + 5) % 8, ((idx + 5)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 6)/64) % 8, ((idx + 6)/64) / 8, (idx + 6) % 8, ((idx + 6)%64) / 8>::v,
-    BBDirectionGenerator<((idx + 7)/64) % 8, ((idx + 7)/64) / 8, (idx + 7) % 8, ((idx + 7)%64) / 8>::v> {};
-    
-    template<Direction ...D>
-    struct BBDirectionsTableGenerator<64 * 64, D...> {
-        static constexpr std::array<Direction, 64 * 64> table = { D... };
-    };
-    
+    // Utility template struct generating a table containing direections to each 64 squares from the square `from`
     template<int from = 0, int idx = 0, Direction ...D>
-    struct BBDirectionsSubTableGenerator : BBDirectionsSubTableGenerator<from, idx + 1, D...,
-    BBDirectionGenerator<from % 8, from / 8, idx % 8, idx / 8>::v> {};
+    struct BBDirectionTableGenerator : BBDirectionTableGenerator<from, idx + 1, D...,
+        BBDirectionGenerator<from % 8, from / 8, idx % 8, idx / 8>::v> {};
     
     template<int from, Direction ...D>
-    struct BBDirectionsSubTableGenerator<from, 64, D...> {
+    struct BBDirectionTableGenerator<from, 64, D...> {
         static constexpr std::array<Direction, 64> v = { D... };
     };
-}
+    
+} // namespace chessbox
 
 #endif /* DirectionsGenerator_h */

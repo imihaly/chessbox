@@ -50,6 +50,7 @@ namespace chessbox {
         
     };
     
-}
+} // namespace chessbox
+
 #endif /* Movegen_hpp */
 

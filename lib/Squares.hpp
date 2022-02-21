@@ -112,7 +112,8 @@ namespace chessbox {
         
     };
     
-}
+} // namespace chessbox
+
 std::ostream& operator<<(std::ostream& os, const chessbox::Squares& squares);
 
 

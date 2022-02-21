@@ -11,6 +11,7 @@
 #define PawnCaptureGenerator_h
 
 namespace chessbox {
+    
     template<int c, int r>
     struct BBPawnCaptureGenerator {
         static const BitBoard whiteControl = BBSquareGenerator<c-1, r+1>::v | BBSquareGenerator<c+1, r+1>::v;
@@ -27,6 +28,7 @@ namespace chessbox {
     struct BBPawnCapturesTableGenerator<64, D...> {
         static constexpr std::array<BitBoard, 128> table = { D... };
     };
-}
+    
+} // namespace chessbox
 
 #endif /* PawnCaptureGenerator_h */

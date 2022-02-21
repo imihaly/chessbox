@@ -61,7 +61,8 @@ namespace chessbox {
         std::string description() const;
     };
     
-}
+} // namespace chessbox
+
 std::ostream& operator<<(std::ostream& os, const chessbox::Step& step);
 
 #endif /* Step_hpp */

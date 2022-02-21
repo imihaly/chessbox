@@ -28,22 +28,12 @@ namespace chessbox {
         Count,
     };
     
-    const Direction allDirections[] = {
-        North,
-        NorthEast,
-        East,
-        SouthEast,
-        South,
-        SouthWest,
-        West,
-        NorthWest
-    };
-    
     // Returns the opposite direction
     inline Direction opposite(Direction dir) {
         return Direction((dir + 4) % 8);
     };
     
-}
+} // namespace chessbox
+
 #endif /* Direction_hpp */
 

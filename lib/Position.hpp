@@ -144,9 +144,9 @@ namespace chessbox {
         const Squares& kingDangerLines() const;
     };
     
-}
-std::ostream& operator<<(std::ostream& os, const chessbox::Position& position);
+} // namespace chessbox
 
+std::ostream& operator<<(std::ostream& os, const chessbox::Position& position);
 
 #endif /* Position_hpp */
 

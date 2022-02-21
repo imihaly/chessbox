@@ -11,6 +11,7 @@
 #define SquareGenerator_h
 
 namespace chessbox {
+    
     template <int col, int row>
     struct BBSquareGenerator {
         static constexpr BitBoard v = (col < 0 || col > 7 || row < 0 || row > 7) ? 0 : BitBoard(1) << (row * 8 + col);
@@ -24,8 +25,7 @@ namespace chessbox {
     struct BBSquaresTableGenerator<64, D...> {
         static constexpr std::array<BitBoard, 64> table = { D... };
     };
-}
-
-
+    
+} // namespace chessbox
 
 #endif /* SquareGenerator_h */

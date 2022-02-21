@@ -82,6 +82,6 @@ namespace chessbox {
         static constexpr std::array<BitBoard, 64> table = { D... };
     };
 
-}
+} // namespace chessbox
 
 #endif /* LinesGenerator_h */

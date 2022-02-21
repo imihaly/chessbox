@@ -48,10 +48,9 @@ namespace chessbox {
         std::string description() const;
     };
     
-}
+} // namespace chessbox
 
 std::ostream& operator<<(std::ostream& os, const chessbox::Piece& piece);
-
 
 #endif /* Piece_hpp */
 

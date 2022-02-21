@@ -41,7 +41,7 @@ namespace chessbox {
         std::string description() const;
     };
     
-}
+} // namespace chessbox
 
 std::ostream& operator<<(std::ostream& os, const chessbox::Moves& moves);
 

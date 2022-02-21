@@ -85,7 +85,8 @@ namespace chessbox {
         return Square(c, r);
     };
     
-}
+} // namespace chessbox
+
 #endif /* Square_hpp */
 
 
