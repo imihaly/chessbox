@@ -13,8 +13,8 @@ set(LIB_SOURCES
     lib/Direction.hpp
     lib/FEN.cpp
     lib/FEN.hpp
-    lib/Geometry.cpp
-    lib/Geometry.hpp
+    lib/BB.cpp
+    lib/BB.hpp
     lib/Move.cpp
     lib/Move.hpp
     lib/Movecheck.cpp
