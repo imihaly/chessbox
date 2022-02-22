@@ -8,7 +8,7 @@
 
 
 #include <iostream>
-#include "ChessBasics.hpp"
+#include "chessbox.hpp"
 #include "Benchmark.hpp"
 #include <vector>
 #include <fstream>

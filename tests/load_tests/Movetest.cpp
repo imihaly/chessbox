@@ -10,7 +10,7 @@
 #include "Movetest.hpp"
 #include <vector>
 #include <fstream>
-#include "ChessBasics.hpp"
+#include "chessbox.hpp"
 #include "Movedecoder.hpp"
 
 Movetest::Movetest(std::string testfile): _testfile(testfile) {

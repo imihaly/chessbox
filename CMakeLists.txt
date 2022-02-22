@@ -4,7 +4,7 @@ project(Chessbox)
 set(CMAKE_CXX_STANDARD 14)
 
 set(LIB_SOURCES
-    lib/ChessBasics.hpp
+    lib/chessbox.hpp
     lib/Color.cpp
     lib/Color.hpp
     lib/Control.cpp

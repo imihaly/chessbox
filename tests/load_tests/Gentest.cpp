@@ -10,7 +10,7 @@
 #include "Gentest.hpp"
 #include <vector>
 #include <fstream>
-#include "ChessBasics.hpp"
+#include "chessbox.hpp"
 #include "Movedecoder.hpp"
 
 std::vector<std::string> split(const std::string& s, char seperator)

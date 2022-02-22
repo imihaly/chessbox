@@ -1,13 +1,13 @@
 //
-// ChessBasics.hpp
+// chessbox.hpp
 //
 // Created by Imre Mihaly on 2022.
 //
 // All rights reserved.
 //
 
-#ifndef ChessBasics_h
-#define ChessBasics_h
+#ifndef chessbox_h
+#define chessbox_h
 
 #include "Position.hpp"
 #include "Move.hpp"
@@ -17,4 +17,4 @@
 #include "FEN.hpp"
 #include "BB.hpp"
 
-#endif /* ChessBasics_h */
+#endif /* chessbox_h */

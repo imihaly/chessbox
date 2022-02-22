@@ -11,7 +11,7 @@
 #define Movedecoder_hpp
 
 #include <stdio.h>
-#include "ChessBasics.hpp"
+#include "chessbox.hpp"
 
 using namespace chessbox;
 Move decodeMove(std::string move);

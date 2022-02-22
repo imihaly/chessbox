@@ -8,7 +8,7 @@
 
 
 #include <iostream>
-#include "ChessBasics.hpp"
+#include "chessbox.hpp"
 #include <tau/tau.h>
 
 int main(int argc, char** argv) {
