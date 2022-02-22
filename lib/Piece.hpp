@@ -15,7 +15,10 @@
 
 namespace chessbox {
     
+    // Represents a piece with it's type and color.
     struct Piece {
+        
+        // Available piece types.
         enum Type : char{
             None,
             Pawn,
@@ -27,10 +30,13 @@ namespace chessbox {
             Count
         };
         
-        
+        // A special piece meaning no piece, usualy on a given aquare.
         static Piece NoPiece;
         
+        // The color of the piece.
         Color color;
+        
+        // The type of the piece.
         Piece::Type type;
         
         Piece(Color color, Piece::Type type) : color(color), type(type) {};

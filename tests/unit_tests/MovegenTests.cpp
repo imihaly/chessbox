@@ -39,7 +39,7 @@ TEST(Movegen, pawnOnBaseline) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::E2, moves);
+    Movegen::allMovesFrom(position, Square::E2, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -74,7 +74,7 @@ TEST(Movegen, pawnNotOnBaseline) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::E3, moves);
+    Movegen::allMovesFrom(position, Square::E3, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -109,7 +109,7 @@ TEST(Movegen, pawnJumpBlocked) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::E2, moves);
+    Movegen::allMovesFrom(position, Square::E2, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -144,7 +144,7 @@ TEST(Movegen, pawnBlocked) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::E2, moves);
+    Movegen::allMovesFrom(position, Square::E2, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -179,7 +179,7 @@ TEST(Movegen, pawnCapturing) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::E2, moves);
+    Movegen::allMovesFrom(position, Square::E2, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -215,7 +215,7 @@ TEST(Movegen, pawnEnpassant) {
     
 
     Moves moves;
-    Movegen::allPawnMovesFrom(position, Square::G5, moves);
+    Movegen::allMovesFrom(position, Square::G5, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -232,7 +232,7 @@ TEST(Movegen, pawnPromotion) {
     pos->setPiece(Piece(Color::White, Piece::Pawn), Square::A7);
 
     Moves moves;
-    Movegen::allPawnMovesFrom(pos, Square::A7, moves);
+    Movegen::allMovesFrom(pos, Square::A7, moves);
     
     // Checking that a pawn reaching the last row promotes
     CHECK_FALSE(moves.contains(Move(Square::A7, Square::A8)));
@@ -255,7 +255,7 @@ TEST(Movegen, pawnPromotion) {
     pos->setPiece(Piece(Color::White, Piece::Pawn), Square::A6);
     
     moves.clear();
-    Movegen::allPawnMovesFrom(pos, Square::A6, moves);
+    Movegen::allMovesFrom(pos, Square::A6, moves);
 
     CHECK_TRUE(moves.contains(Move(Square::A6, Square::A7)));
     CHECK_FALSE(moves.contains(Move(Square::A6, Square::A7, Piece::Rook)));
@@ -291,7 +291,7 @@ TEST(Movegen, rookGeometry) {
     
 
     Moves moves;
-    Movegen::allRookMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -326,7 +326,7 @@ TEST(Movegen, rookCapturing) {
     
 
     Moves moves;
-    Movegen::allRookMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -361,7 +361,7 @@ TEST(Movegen, rookObstructed) {
     
 
     Moves moves;
-    Movegen::allRookMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -397,7 +397,7 @@ TEST(Movegen, knightGeometry) {
     
 
     Moves moves;
-    Movegen::allKnightMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -432,7 +432,7 @@ TEST(Movegen, knightCaptures) {
     
 
     Moves moves;
-    Movegen::allKnightMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -467,7 +467,7 @@ TEST(Movegen, knightObstructed) {
     
 
     Moves moves;
-    Movegen::allKnightMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -502,7 +502,7 @@ TEST(Movegen, bishopGeometry) {
                                                            );
     
     Moves moves;
-    Movegen::allBishopMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -535,7 +535,7 @@ TEST(Movegen, bishopObstruction) {
                                                            ".x......"
                                                            );
     Moves moves;
-    Movegen::allBishopMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -570,7 +570,7 @@ TEST(Movegen, queenGeometry) {
                                                            );
     
     Moves moves;
-    Movegen::allQueenMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -605,7 +605,7 @@ TEST(Movegen, queenObstruction) {
     
 
     Moves moves;
-    Movegen::allQueenMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -640,7 +640,7 @@ TEST(Movegen, kingGeometry) {
                                                            );
     
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -675,7 +675,7 @@ TEST(Movegen, kingDoesntMovesIntoCheck) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E4, moves);
+    Movegen::allMovesFrom(position, Square::E4, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -714,7 +714,7 @@ TEST(Movegen, kingCastle) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E1, moves);
+    Movegen::allMovesFrom(position, Square::E1, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -753,7 +753,7 @@ TEST(Movegen, blockedCastle1) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E1, moves);
+    Movegen::allMovesFrom(position, Square::E1, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -790,7 +790,7 @@ TEST(Movegen, blockedCastle2) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E1, moves);
+    Movegen::allMovesFrom(position, Square::E1, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -827,7 +827,7 @@ TEST(Movegen, blockedCastle3) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E1, moves);
+    Movegen::allMovesFrom(position, Square::E1, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -864,7 +864,7 @@ TEST(Movegen, blockedCastle4) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E1, moves);
+    Movegen::allMovesFrom(position, Square::E1, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -902,7 +902,7 @@ TEST(Movegen, checkBlockedCastle1) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E8, moves);
+    Movegen::allMovesFrom(position, Square::E8, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -940,7 +940,7 @@ TEST(Movegen, checkBlockedCastle2) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E8, moves);
+    Movegen::allMovesFrom(position, Square::E8, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -978,7 +978,7 @@ TEST(Movegen, checkBlockedCastle3) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E8, moves);
+    Movegen::allMovesFrom(position, Square::E8, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -1016,7 +1016,7 @@ TEST(Movegen, checkBlockedCastle4) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E8, moves);
+    Movegen::allMovesFrom(position, Square::E8, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -1054,7 +1054,7 @@ TEST(Movegen, checkBlockedCastle5) {
     
 
     Moves moves;
-    Movegen::allKingMovesFrom(position, Square::E8, moves);
+    Movegen::allMovesFrom(position, Square::E8, moves);
     Squares landingSquares = 0;
     for(Move move: moves) {
         landingSquares.add(move.to);
@@ -1090,7 +1090,7 @@ TEST(Movegen, allPawnMovesTo) {
 
 
     Moves moves;
-    Movegen::allPawnMovesTo(position, Square::E3, moves);
+    Movegen::allMovesTo(position, Square::E3, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1125,7 +1125,7 @@ TEST(Movegen, allPawnMovesTo_Jump) {
 
 
     Moves moves;
-    Movegen::allPawnMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1160,7 +1160,7 @@ TEST(Movegen, allPawnMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allPawnMovesTo(position, Square::E3, moves);
+    Movegen::allMovesTo(position, Square::E3, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1196,7 +1196,7 @@ TEST(Movegen, allPawnMovesTo_EnPassant) {
 
 
     Moves moves;
-    Movegen::allPawnMovesTo(position, Square::E6, moves);
+    Movegen::allMovesTo(position, Square::E6, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1232,7 +1232,7 @@ TEST(Movegen, allRookMovesTo) {
 
 
     Moves moves;
-    Movegen::allRookMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1267,7 +1267,7 @@ TEST(Movegen, allRookMovesTo_Blocked) {
 
 
     Moves moves;
-    Movegen::allRookMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1302,7 +1302,7 @@ TEST(Movegen, allRookMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allRookMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1338,7 +1338,7 @@ TEST(Movegen, allKnightMovesTo) {
 
 
     Moves moves;
-    Movegen::allKnightMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1373,7 +1373,7 @@ TEST(Movegen, allKnightMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allKnightMovesTo(position, Square::E4, moves);
+    Movegen::allMovesTo(position, Square::E4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1409,7 +1409,7 @@ TEST(Movegen, allBishopMovesTo) {
 
 
     Moves moves;
-    Movegen::allBishopMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1444,7 +1444,7 @@ TEST(Movegen, allBishopMovesTo_Blocked) {
 
 
     Moves moves;
-    Movegen::allBishopMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1479,7 +1479,7 @@ TEST(Movegen, allBishopMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allBishopMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1515,7 +1515,7 @@ TEST(Movegen, allQueenMovesTo) {
 
 
     Moves moves;
-    Movegen::allQueenMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1550,7 +1550,7 @@ TEST(Movegen, allQueenMovesTo_Blocked) {
 
 
     Moves moves;
-    Movegen::allBishopMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1585,7 +1585,7 @@ TEST(Movegen, allQueenMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allQueenMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1623,7 +1623,7 @@ TEST(Movegen, allKingMovesTo) {
 
 
     Moves moves;
-    Movegen::allKingMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
@@ -1660,7 +1660,7 @@ TEST(Movegen, allKingMovesTo_Capture) {
 
 
     Moves moves;
-    Movegen::allKingMovesTo(position, Square::D4, moves);
+    Movegen::allMovesTo(position, Square::D4, moves);
     Squares startingSquares = 0;
     for(Move move: moves) {
         startingSquares.add(move.from);
