@@ -151,7 +151,7 @@ namespace chessbox {
             
             Squares toCheck = BB::ooUncontrolledRange(us);
             
-            return !Control::isControlling(toCheck, position, flip(us));
+            return !Control::isControlling(position, toCheck, flip(us));
         }
         
         if (diff == Step(-2, 0)) {
@@ -165,7 +165,7 @@ namespace chessbox {
             
             Squares toCheck = BB::oooUncontrolledRange(us);
             
-            return !Control::isControlling(toCheck, position, flip(us));
+            return !Control::isControlling(position, toCheck, flip(us));
         }
         
         Step s = move.step();
@@ -232,15 +232,15 @@ namespace chessbox {
         Square kingsPosition = position->kingPosition(side);
         if (move.from == kingsPosition) {
             kingsPosition = move.to;
-            return Control::isControlling(kingsPosition, position, flip(side), removed, BB::bitboard(move.to));
+            return Control::isControlling(position, kingsPosition, flip(side), removed, BB::bitboard(move.to));
         }
         
         Squares dangerLines = position->kingDangerLines();
-        if (Control::isControllingByRookOrQueen(kingsPosition, position, flip(side), removed, added, dangerLines)) return true;
-        if (Control::isControllingByBishopOrQueen(kingsPosition, position, flip(side), removed, added, dangerLines)) return true;
-        if (Control::isControllingByKnight(kingsPosition, position, flip(side), removed, added)) return true;
-        if (Control::isControllingByPawn(kingsPosition, position, flip(side), removed, added)) return true;
-        if (Control::isControllingByKing(kingsPosition, position, flip(side), removed, added)) return true;
+        if (Control::isControllingByRookOrQueen(position, kingsPosition, flip(side), removed, added, dangerLines)) return true;
+        if (Control::isControllingByBishopOrQueen(position, kingsPosition, flip(side), removed, added, dangerLines)) return true;
+        if (Control::isControllingByKnight(position, kingsPosition, flip(side), removed, added)) return true;
+        if (Control::isControllingByPawn(position, kingsPosition, flip(side), removed, added)) return true;
+        if (Control::isControllingByKing(position, kingsPosition, flip(side), removed, added)) return true;
         
         return false;
     }

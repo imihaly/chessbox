@@ -257,7 +257,7 @@ TEST(Control, controllingSquares) {
                                                       "..x....."
                                                            );
 
-    Squares controlledSquares = Control::squaresControlling(Square::E3, position, Color::Black);
+    Squares controlledSquares = Control::squaresControlling(position, Square::E3, Color::Black);
     CHECK_TRUE( controlledSquares == expected);
     
     delete position;

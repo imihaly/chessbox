@@ -62,19 +62,20 @@ namespace chessbox {
         return squares;
     }
     
-    Squares Control::squaresControlling(const Square square, const Position *position, Color side) {
+    Squares Control::squaresControlling(const Position *position, const Square square, Color side) {
         Squares squares = 0;
         
-        squares |= rooksControlling(square, position, side);
-        squares |= bishopsControlling(square, position, side);
-        squares |= queensControlling(square, position, side);
-        squares |= knightsControlling(square, position, side);
-        squares |= pawnsControlling(square, position, side);
-        squares |= kingsControlling(square, position, side);
+        squares |= rooksControlling(position, square, side);
+        squares |= bishopsControlling(position, square, side);
+        squares |= queensControlling(position, square, side);
+        squares |= knightsControlling(position, square, side);
+        squares |= pawnsControlling(position, square, side);
+        squares |= kingsControlling(position, square, side);
         
         return squares;
     }
-    Squares Control::rooksControlling(const Square square, const Position *position, Color side) {
+    
+    Squares Control::rooksControlling(const Position *position, const Square square, Color side) {
         Squares squares = 0;
         Squares occupied = position->squaresOccupied();
         
@@ -90,7 +91,7 @@ namespace chessbox {
         return squares;
     }
     
-    Squares Control::bishopsControlling(const Square square, const Position *position, Color side) {
+    Squares Control::bishopsControlling(const Position *position, const Square square, Color side) {
         Squares squares = 0;
         Squares occupied = position->squaresOccupied();
         
@@ -106,7 +107,7 @@ namespace chessbox {
         return squares;
     }
     
-    Squares Control::queensControlling(const Square square, const Position *position, Color side) {
+    Squares Control::queensControlling(const Position *position, const Square square, Color side) {
         Squares squares = 0;
         Squares occupied = position->squaresOccupied();
         
@@ -123,57 +124,57 @@ namespace chessbox {
         
     }
     
-    Squares Control::knightsControlling(const Square square, const Position *position, Color side) {
+    Squares Control::knightsControlling(const Position *position, const Square square, Color side) {
         return position->squaresOccupied(side, Piece::Type::Knight) & BB::knightDistances(square);
     }
     
-    Squares Control::pawnsControlling(const Square square, const Position *position, Color side) {
+    Squares Control::pawnsControlling(const Position *position, const Square square, Color side) {
         return position->squaresOccupied(side, Piece::Type::Pawn) & BB::pawnCaptures(square, flip(side));
     }
     
-    Squares Control::kingsControlling(const Square square, const Position *position, Color side) {
+    Squares Control::kingsControlling(const Position *position, const Square square, Color side) {
         return position->squaresOccupied(side, Piece::Type::King) & BB::adjacents(square);
     }
     
-    Squares Control::squaresControlling(const Square square, const Position *position) {
-        Squares ret = squaresControlling(square, position, Color::White);
-        ret |= squaresControlling(square, position, Color::Black);
+    Squares Control::squaresControlling(const Position *position, const Square square) {
+        Squares ret = squaresControlling(position, square, Color::White);
+        ret |= squaresControlling(position, square, Color::Black);
         return ret;
     }
-    Squares Control::squaresControlling(const Squares& squares, const Position *position, Color side) {
+    Squares Control::squaresControlling(const Position *position, const Squares& squares, Color side) {
         Squares ret = 0;
         for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
-            ret |= squaresControlling(*it, position, side);
+            ret |= squaresControlling(position, *it, side);
         }
         return ret;
     }
-    Squares Control::squaresControlling(const Squares& squares, const Position *position) {
+    Squares Control::squaresControlling(const Position *position, const Squares& squares) {
         Squares ret = 0;
         for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
-            ret |= squaresControlling(*it, position);
+            ret |= squaresControlling(position, *it);
         }
         return ret;
     }
     
-    bool Control::isControlling(const Squares& squares, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded) {
+    bool Control::isControlling(const Position *position, const Squares& squares, Color side, const Squares& piecesRemoved, const Squares& piecesAdded) {
         for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
-            if(isControlling(*it, position, side, piecesRemoved, piecesAdded)) return true;
+            if(isControlling(position, *it, side, piecesRemoved, piecesAdded)) return true;
         }
         return false;
     }
     
-    bool Control::isControlling(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded) {
+    bool Control::isControlling(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded) {
         
-        if (isControllingByRookOrQueen(square, position, side, piecesRemoved, piecesAdded)) return true;
-        if (isControllingByBishopOrQueen(square, position, side, piecesRemoved, piecesAdded)) return true;
-        if (isControllingByKnight(square, position, side, piecesRemoved, piecesAdded)) return true;
-        if (isControllingByPawn(square, position, side, piecesRemoved, piecesAdded)) return true;
-        if (isControllingByKing(square, position, side, piecesRemoved, piecesAdded)) return true;
+        if (isControllingByRookOrQueen(position, square, side, piecesRemoved, piecesAdded)) return true;
+        if (isControllingByBishopOrQueen(position, square, side, piecesRemoved, piecesAdded)) return true;
+        if (isControllingByKnight(position, square, side, piecesRemoved, piecesAdded)) return true;
+        if (isControllingByPawn(position, square, side, piecesRemoved, piecesAdded)) return true;
+        if (isControllingByKing(position, square, side, piecesRemoved, piecesAdded)) return true;
         
         return false;
     }
     
-    bool Control::isControllingByRookOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
+    bool Control::isControllingByRookOrQueen(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
         Squares occupied = position->squaresOccupied();
         
         occupied&= ~piecesRemoved;
@@ -196,7 +197,7 @@ namespace chessbox {
         return false;
     }
     
-    bool Control::isControllingByBishopOrQueen(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
+    bool Control::isControllingByBishopOrQueen(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
         Squares occupied = position->squaresOccupied();
         
         occupied&= ~piecesRemoved;
@@ -218,7 +219,7 @@ namespace chessbox {
         return false;
     }
     
-    bool Control::isControllingByKnight(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
+    bool Control::isControllingByKnight(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
         Squares occupied = position->squaresOccupied();
         
         occupied&= ~piecesRemoved;
@@ -234,7 +235,7 @@ namespace chessbox {
         return false;
     }
     
-    bool Control::isControllingByPawn(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
+    bool Control::isControllingByPawn(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
         Squares occupied = position->squaresOccupied();
         
         occupied&= ~piecesRemoved;
@@ -250,7 +251,7 @@ namespace chessbox {
         return false;
     }
     
-    bool Control::isControllingByKing(const Square square, const Position *position, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
+    bool Control::isControllingByKing(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask) {
         Squares occupied = position->squaresOccupied();
         
         occupied&= ~piecesRemoved;
