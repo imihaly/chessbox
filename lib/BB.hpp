@@ -60,18 +60,35 @@ namespace chessbox {
         
         // returns the collection of rookLines (file or rank) containing the given `square`.
         static const BitBoard rookLines(const Square square);
-        
-        
+                
+        // returns the collection of diagonals containing the given `square`.
         static const BitBoard bishopLines(const Square square);
+        
+        // returns the collection of squares in knight-step distance from the given `square`.
         static const BitBoard knightDistances(const Square square);
+        
+        // returns the squares to which a pawn standing on the given `square` and `color` can capture.
         static const BitBoard pawnCaptures(const Square square, const Color color);
+        
+        // returns the squares to which a pawn standing on the given `square` and `color` can move.
         static const BitBoard pawnMoves(const Square square, const Color color);
+        
+        // returns the square-range required to be free in order to be kingside castling possible for the side `color`.
         static const BitBoard ooFreeRange(const Color color);
+        
+        // returns the square-range required to be free in order to be queenside castling possible for the side `color`.
         static const BitBoard oooFreeRange(const Color color);
+        
+        // returns the square-range required to be uncontrolled by the enemy  in order to be kingside castling possible for the side `color`.
         static const BitBoard ooUncontrolledRange(const Color color);
+
+        // returns the square-range required to be uncontrolled by the enemy  in order to be queenside castling possible for the side `color`.
         static const BitBoard oooUncontrolledRange(const Color color);
         
+        // returns the bitboard of the first square out of `mask` which is in the given direction from the reference square.
         static const Square firstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
+        
+        // returns the range between `square` and teh first out of `mask` in teh given direction..
         static const BitBoard tillFirstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
     };
     

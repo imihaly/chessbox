@@ -18,16 +18,24 @@ namespace chessbox {
     class Movegen {
         
     public:
+        // Generates the collection of all valid moves from teh given square.
         static const Moves allMovesFrom(Position *position, const Square from);
+        
+        // Generates the collection of all valid landing on the given square.
         static const Moves allMovesTo(Position *position, const Square to);
+        
+        // Adds all possible moves from the square `from` to the existing moves collection `result`.
         static const void allMovesFrom(Position *position, const Square from, Moves& result);
+
+        // Adds all possible moves landing on the square `to` to the existing moves collection `result`.
         static const void allMovesTo(Position *position, const Square to, Moves& result);
         
-        // deriverables
+        // Returns the collection of all legal moves in the given position.
         static const Moves allMoves(Position *position);
+
+        // Appends all legal moves in the given position to teh given collection `result`.
         static const void allMoves(Position *position, Moves& result);
         
-        // helpers
         static const void allPawnMovesFrom(Position *position, const Square from, Moves& result);
         static const void allRookMovesFrom(Position *position, const Square from, Moves& result);
         static const void allKnightMovesFrom(Position *position, const Square from, Moves& result);

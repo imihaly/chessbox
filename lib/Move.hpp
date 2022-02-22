@@ -16,6 +16,7 @@
 
 namespace chessbox {
     
+    // represents a chess move.
     struct Move {
         Square from;
         Square to;

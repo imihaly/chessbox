@@ -14,6 +14,7 @@
 
 namespace chessbox {
     
+    // represents the meaningfull directions on teh chessboard.
     enum Direction {
         Unknown = -2,
         Any = -1,

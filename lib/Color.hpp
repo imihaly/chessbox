@@ -13,11 +13,13 @@
 
 namespace chessbox {
     
+    // represents the two playing sides
     enum Color: int {
         White,
         Black
     };
     
+    // returns the "other" color, the enemy.
     inline Color flip(Color c) {
         return Color(1 - c);
     }
