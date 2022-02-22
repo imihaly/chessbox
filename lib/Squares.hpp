@@ -16,6 +16,7 @@
 #include "bitscan.hpp"
 
 namespace chessbox {
+    
     struct Squares {
         BitBoard v;
         Squares(): v(0) {}

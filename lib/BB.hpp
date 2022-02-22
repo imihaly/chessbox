@@ -88,7 +88,7 @@ namespace chessbox {
         // returns the bitboard of the first square out of `mask` which is in the given direction from the reference square.
         static const Square firstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
         
-        // returns the range between `square` and teh first out of `mask` in teh given direction..
+        // returns the range between `square` and teh first out of `mask` in teh given direction.
         static const BitBoard tillFirstByDir(const Square square, Direction dir, const BitBoard mask = BB::allSquares);
     };
     
