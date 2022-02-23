@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
 
     std::string fen = "K1k5/8/P7/8/8/8/8/8 w - - 0 1";
     Position* position = FEN::positionFromFEN(fen);
-    BENCHMARK(std::string("allMoves: ") + fen, 0.15) {
+    BENCHMARK(std::string("allMoves: ") + fen, 0.2) {
         for(int idx = 0; idx < count; idx++) {
             moves.clear();
             Movegen::allMoves(position, moves);
@@ -32,7 +32,7 @@ int main(int argc, const char * argv[]) {
 
     fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 0";
     position = FEN::positionFromFEN(fen);
-    BENCHMARK(std::string("allMoves: ") + fen, 2.5) {
+    BENCHMARK(std::string("allMoves: ") + fen, 3) {
         for(int idx = 0; idx < count; idx++) {
             moves.clear();
             Movegen::allMoves(position, moves);
@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
 
     fen = "4k3/1P6/8/8/8/8/K7/8 w - - 0 1";
     position = FEN::positionFromFEN(fen);
-    BENCHMARK(std::string("allMoves: ") + fen, 0.25) {
+    BENCHMARK(std::string("allMoves: ") + fen, 0.4) {
         for(int idx = 0; idx < count; idx++) {
             moves.clear();
             Movegen::allMoves(position, moves);
@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
 
     fen = "r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10";
     position = FEN::positionFromFEN(fen);
-    BENCHMARK(std::string("allMoves: ") + fen, 2.5) {
+    BENCHMARK(std::string("allMoves: ") + fen, 3) {
         for(int idx = 0; idx < count; idx++) {
             moves.clear();
             Movegen::allMoves(position, moves);
