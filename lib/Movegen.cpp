@@ -12,7 +12,7 @@
 #include "Movecheck.hpp"
 #include "BB.hpp"
 
-#pragma mark - move generation
+// MARK: - move generation
 
 namespace chessbox {
     
@@ -74,7 +74,8 @@ namespace chessbox {
         }
     }
     
-#pragma mark - helpers
+// MARK: - helpers
+    
     const void Movegen::movesToControlledSquares(Position *position, const Square from, Moves& result) {
         Squares controlledSquares = Control::squaresControlled(position, from);
         controlledSquares &= ~position->squaresOccupied(position->sideToMove());
@@ -340,5 +341,5 @@ namespace chessbox {
         }
     }
     
-}
+}  // namespace chessbox
 

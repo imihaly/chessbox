@@ -267,7 +267,7 @@ namespace chessbox {
         setCastleKingside(side, false);
     }
     
-#pragma mark - square control
+// MARK: - square control
     
     const Squares& Position::squaresControlledBy(Color side) const {
         if (_controlledSquaresNeedsRefresh) {
@@ -279,12 +279,7 @@ namespace chessbox {
         return _controlledSquares[side];
     }
     
-    std::ostream& operator<<(std::ostream& os, const Position& position) {
-        os << position.description();
-        return os;
-    }
-    
-#pragma mark - properties
+// MARK: - properties
     
     void Position::setSideToMove(Color side) {
         _sideToMove = side;
@@ -396,4 +391,4 @@ namespace chessbox {
         return _kingDangerLines;
     }
 
-}
+}  // namespace chessbox

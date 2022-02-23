@@ -9,7 +9,8 @@
 #ifndef Move_hpp
 #define Move_hpp
 
-#include "deps.h"
+#include <vector>
+
 #include "Square.hpp"
 #include "Piece.hpp"
 #include "Step.hpp"
@@ -23,18 +24,20 @@ namespace chessbox {
         Piece::Type promotion;
         
         Move(const Square from = Square::None, const Square to = Square::None, Piece::Type promotion = Piece::Type::None) : from(from), to(to), promotion(promotion) {}
+        
+        // Returns the step represented by the move.
         const Step step() const;
         
+        // Checks for move equality.
         bool operator==(const Move& other) const;
         
         std::string description() const;
     };
-    
-    std::ostream& operator<<(std::ostream& os, const Move& move);
-    
+        
+    // Collection of moves.
     class Moves: public std::vector<Move> {
+
     public:
-        Moves();
         Moves& operator+=(Move move);
         Moves& operator+=(Moves moves);
         bool contains(const Move& move) const;
@@ -43,9 +46,6 @@ namespace chessbox {
     };
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Moves& moves);
-
 
 #endif /* Move_hpp */
 

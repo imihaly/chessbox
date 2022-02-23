@@ -10,7 +10,7 @@
 #ifndef Step_hpp
 #define Step_hpp
 
-#include "deps.h"
+#include <string>
 
 namespace chessbox {
     
@@ -62,8 +62,6 @@ namespace chessbox {
     };
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Step& step);
 
 #endif /* Step_hpp */
 

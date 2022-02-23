@@ -17,9 +17,5 @@ namespace chessbox {
         }
         return ret;
     }
-}
+}  // namespace chessbox
 
-std::ostream& operator<<(std::ostream& os, const chessbox::Squares& squares) {
-    os << squares.description();
-    return os;
-}

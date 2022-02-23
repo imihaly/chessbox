@@ -9,12 +9,12 @@
 #ifndef Movegen_hpp
 #define Movegen_hpp
 
-#include "deps.h"
 #include "Position.hpp"
 #include "Move.hpp"
 
 namespace chessbox {
     
+    // Collection of functions dealing with move generation.
     class Movegen {
         
     public:

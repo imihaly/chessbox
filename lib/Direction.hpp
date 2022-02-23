@@ -10,8 +10,6 @@
 #ifndef Direction_hpp
 #define Direction_hpp
 
-#include "deps.h"
-
 namespace chessbox {
     
     // represents the meaningfull directions on teh chessboard.

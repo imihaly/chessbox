@@ -9,7 +9,6 @@
 #ifndef Position_hpp
 #define Position_hpp
 
-#include "deps.h"
 #include "Color.hpp"
 #include "Square.hpp"
 #include "Squares.hpp"
@@ -145,8 +144,6 @@ namespace chessbox {
     };
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Position& position);
 
 #endif /* Position_hpp */
 

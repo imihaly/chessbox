@@ -12,7 +12,7 @@
 #include "FEN.hpp"
 
 
-#pragma mark - helpers
+// MARK: - helpers
 
 TEST(Movegen, pawnOnBaseline) {
     Position *position = UnitTesting::positionFromString(

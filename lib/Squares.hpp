@@ -10,17 +10,21 @@
 #ifndef Squares_hpp
 #define Squares_hpp
 
-#include "deps.h"
 #include "Square.hpp"
 #include "BB.hpp"
 #include "bitscan.hpp"
 
 namespace chessbox {
     
+    // Wrapper around a `BitBoard` to act like a standard container when representing a set of squares (as usually does).
     struct Squares {
         BitBoard v;
+        
+    public:
         Squares(): v(0) {}
         Squares(BitBoard v) : v(v) {}
+        
+    public:
         operator BitBoard() const {
             return v;
         }
@@ -114,9 +118,6 @@ namespace chessbox {
     };
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Squares& squares);
-
 
 #endif /* Squares_hpp */
 

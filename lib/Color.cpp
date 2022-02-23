@@ -8,7 +8,3 @@
 
 #include "Color.hpp"
 
-std::ostream& operator<<(std::ostream& os, const chessbox::Color color) {
-    os << (color == chessbox::Color::White ? "white" : "black");
-    return os;
-}

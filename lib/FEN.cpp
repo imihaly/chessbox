@@ -8,6 +8,7 @@
 
 
 #include "FEN.hpp"
+#include <sstream>
 
 namespace chessbox {
     char charFromPiece(Piece piece);
@@ -294,7 +295,7 @@ namespace chessbox {
         return fen.str();
     }
     
-#pragma mark - helpers
+// MARK: - helpers
     
     char charFromPiece(Piece piece) {
         static const char pieceNames[] = {

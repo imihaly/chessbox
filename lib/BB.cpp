@@ -8,22 +8,24 @@
 
 
 #include "BB.hpp"
-#include "bitscan.hpp"
 
+#include <array>
+
+#include "bitscan.hpp"
 #include "Generators/SquareGenerator.hpp"
 #include "Generators/RankGenerator.hpp"
 #include "Generators/FileGenerator.hpp"
 #include "Generators/AdjacentsGenerator.hpp"
-#include "Generators/LinesGenerator.hpp"
+#include "Generators/LineGenerator.hpp"
 #include "Generators/DirectionsGenerator.hpp"
-#include "Generators/RangesGenerator.hpp"
+#include "Generators/RangeGenerator.hpp"
 #include "Generators/KnightMoveGenerator.hpp"
 #include "Generators/PawnCaptureGenerator.hpp"
 #include "Generators/PawnMoveGenerator.hpp"
 
 namespace chessbox {
-#pragma mark - square
     
+// MARK: - square
     
     constexpr std::array<BitBoard, 64> squaresTable = BBSquaresTableGenerator<>::table;
     
@@ -31,7 +33,7 @@ namespace chessbox {
         return squaresTable[(int)square];
     }
     
-#pragma mark - rank
+// MARK: - rank
         
     static constexpr BitBoard ranksTable[] = {
         BBRankGenerator<0>::v, BBRankGenerator<1>::v, BBRankGenerator<2>::v, BBRankGenerator<3>::v, BBRankGenerator<4>::v, BBRankGenerator<5>::v, BBRankGenerator<6>::v, BBRankGenerator<7>::v
@@ -41,7 +43,7 @@ namespace chessbox {
         return ranksTable[rankIdx];
     }
     
-#pragma mark - file
+// MARK: - file
     
     
     static const BitBoard filesTable[] = {
@@ -52,7 +54,7 @@ namespace chessbox {
         return filesTable[fileIdx];
     }
     
-#pragma mark - adjacent
+// MARK: - adjacent
         
     constexpr std::array<BitBoard, 512> adjacentsPerDirectionTable = BBAdjacentsPerDirectionTableGenerator<>::table;
     
@@ -66,7 +68,7 @@ namespace chessbox {
         return adjacentsTable[(int)square];
     }
     
-#pragma mark - lines
+// MARK: - lines
         
     constexpr std::array<BitBoard, 512> lineTable = BBLinesTableGenerator<>::table;
     constexpr std::array<BitBoard, 64> rookLineTable = BBRookLinesTableGenerator<>::table;
@@ -95,7 +97,7 @@ namespace chessbox {
         return bishopLinesTable[(int)square];
     }
     
-#pragma mark - directions defined by 2 squares
+// MARK: - directions defined by 2 squares
         
     constexpr std::array<std::array<Direction, 64>, 64> directionsTable = {
         BBDirectionTableGenerator<0>::v,
@@ -173,15 +175,12 @@ namespace chessbox {
     
     
     const Direction BB::dir(const Square from, const Square to) {
-        //int idx = (int)from * 64 + (int)to;
         return directionsTable[(int)from][(int)to];
     }
     
     
-#pragma mark - squares between 2 squares if they are on the same line
+// MARK: - squares between 2 squares if they are on the same line
         
-    //constexpr std::array<BitBoard, 64 * 64> rangesTable = BBRangeTableGenerator<>::table;
-    
     constexpr std::array<std::array<BitBoard, 64>, 64> rangesTable = {
         BBRangeTableGenerator<0>::v,
         BBRangeTableGenerator<1>::v,
@@ -258,11 +257,10 @@ namespace chessbox {
     
     
     const BitBoard BB::range(const Square from, const Square to) {
-        // int idx = (int)from * 64 + (int)to;
         return rangesTable[(int)from][(int)to];
     }
     
-#pragma mark - knight
+// MARK: - knight
         
     constexpr std::array<BitBoard, 64> knightMovesTable = BBKnightMovesTableGenerator<>::table;
     
@@ -270,7 +268,7 @@ namespace chessbox {
         return knightMovesTable[(int)square];
     }
     
-#pragma mark - pawn control
+// MARK: - pawn control
         
     constexpr std::array<BitBoard, 128> pawnCapturesTable = BBPawnCapturesTableGenerator<>::table;
     
@@ -278,7 +276,7 @@ namespace chessbox {
         return pawnCapturesTable[(int)square * 2 + color];
     }
     
-#pragma mark - pawn move
+// MARK: - pawn move
         
     constexpr std::array<BitBoard, 128> pawnMovesTable = BBPawnMovesTableGenerator<>::table;
     
@@ -286,7 +284,7 @@ namespace chessbox {
         return pawnMovesTable[(int)square * 2 + color];
     }
     
-#pragma mark - castle ranges
+// MARK: - castle ranges
     
     const BitBoard BB::ooFreeRange(const Color color) {
         if(color == White) {
@@ -320,7 +318,7 @@ namespace chessbox {
         }
     }
     
-#pragma mark - hits
+// MARK: - hits
     
     const Square BB::firstByDir(const Square square, Direction dir, const BitBoard mask) {
         BitBoard lineValue = lineTable[(int)square * 8 + dir];
@@ -355,4 +353,4 @@ namespace chessbox {
         return (lineValue & oppositeLine) | BB::bitboard(first);
     }
     
-}
+}  // namespace chessbox

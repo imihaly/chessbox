@@ -28,15 +28,6 @@ namespace chessbox {
         return from == other.from && to == other.to && promotion == other.promotion;
     }
     
-    std::ostream& operator<<(std::ostream& os, const Move& move) {
-        os << move.description();
-        return os;
-    }
-    
-    Moves::Moves(): std::vector<Move>() {
-        // reserve(20); strangely it slows down
-    }
-    
     Moves& Moves::operator+=(Move move) {
         push_back(move);
         return *this;
@@ -59,8 +50,4 @@ namespace chessbox {
         return ret;
     }
     
-    std::ostream& operator<<(std::ostream& os, const Moves& moves) {
-        os << moves.description();
-        return os;
-    }
-}
+}  // namespace chessbox

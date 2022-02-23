@@ -10,7 +10,7 @@
 #include "UnitTesting.hpp"
 #include <array>
 
-#pragma mark - testing pawn control
+// MARK: - testing pawn control
 
 TEST(Geometry, directions) {
     

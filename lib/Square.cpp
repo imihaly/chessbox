@@ -27,9 +27,4 @@ namespace chessbox {
         buff[1] = '1' + row();
         return std::string(buff, 2);
     }
-}
-
-//std::ostream& operator<<(std::ostream& os, const Square square) {
-//    os << description(square);
-//    return os;
-//}
+}  // namespace chessbox

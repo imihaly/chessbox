@@ -9,9 +9,7 @@
 #ifndef Piece_hpp
 #define Piece_hpp
 
-#include "deps.h"
 #include "Color.hpp"
-
 
 namespace chessbox {
     
@@ -55,8 +53,6 @@ namespace chessbox {
     };
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Piece& piece);
 
 #endif /* Piece_hpp */
 

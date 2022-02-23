@@ -34,7 +34,7 @@ namespace chessbox {
         ;
     };
     
-#pragma mark - lines table
+// MARK: - lines table
     
     template<int idx = 0, BitBoard ...D>
     struct BBLinesTableGenerator : BBLinesTableGenerator<idx + 1, D...,
@@ -53,7 +53,7 @@ namespace chessbox {
         static constexpr std::array<BitBoard, 512> table = { D... };
     };
     
-#pragma mark - rook lines table generator
+// MARK: - rook lines table generator
     
     template<int idx = 0, BitBoard ...D>
     struct BBRookLinesTableGenerator : BBRookLinesTableGenerator<idx + 1, D...,
@@ -68,7 +68,7 @@ namespace chessbox {
         static constexpr std::array<BitBoard, 64> table = { D... };
     };
     
-#pragma mark - bishop lines table generator
+// MARK: - bishop lines table generator
     
     template<int idx = 0, BitBoard ...D>
     struct BBBishopLinesTableGenerator : BBBishopLinesTableGenerator<idx + 1, D...,

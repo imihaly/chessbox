@@ -31,15 +31,14 @@ set(LIB_SOURCES
     lib/Squares.hpp
     lib/Step.cpp
     lib/Step.hpp
-    lib/deps.h
     lib/Generators/AdjacentsGenerator.hpp
     lib/Generators/DirectionsGenerator.hpp
     lib/Generators/FileGenerator.hpp
     lib/Generators/KnightMoveGenerator.hpp
-    lib/Generators/LinesGenerator.hpp
+    lib/Generators/LineGenerator.hpp
     lib/Generators/PawnCaptureGenerator.hpp
     lib/Generators/PawnMoveGenerator.hpp
-    lib/Generators/RangesGenerator.hpp
+    lib/Generators/RangeGenerator.hpp
     lib/Generators/RankGenerator.hpp
     lib/Generators/SquareGenerator.hpp
     )

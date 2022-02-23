@@ -15,6 +15,5 @@
 #include "Movecheck.hpp"
 #include "Movegen.hpp"
 #include "FEN.hpp"
-#include "BB.hpp"
 
 #endif /* chessbox_h */

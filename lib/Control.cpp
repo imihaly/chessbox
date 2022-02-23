@@ -267,5 +267,5 @@ namespace chessbox {
         return false;
     }
     
-}
+}  // namespace chessbox
 

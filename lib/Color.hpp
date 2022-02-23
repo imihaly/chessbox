@@ -9,7 +9,8 @@
 #ifndef Color_hpp
 #define Color_hpp
 
-#include "deps.h"
+#include <stdlib.h>
+#include <iostream>
 
 namespace chessbox {
     
@@ -25,7 +26,5 @@ namespace chessbox {
     }
     
 } // namespace chessbox
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Color color);
 
 #endif /* Color_hpp */

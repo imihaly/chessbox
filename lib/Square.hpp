@@ -9,7 +9,6 @@
 #ifndef Square_hpp
 #define Square_hpp
 
-#include "deps.h"
 #include "Step.hpp"
 
 namespace chessbox {

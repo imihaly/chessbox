@@ -85,7 +85,7 @@ namespace chessbox {
         return false;
     }
     
-#pragma mark - rook moves
+// MARK: - rook moves
     
     bool Movecheck::isValidRookMove(const Position *position, const Move& move) {
         int dRow = move.to.row() - move.from.row();
@@ -96,7 +96,7 @@ namespace chessbox {
         return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
-#pragma mark - knoght moves
+// MARK: - knoght moves
     
     bool Movecheck::isValidKnightMove(const Position *position, const Move& move) {
         // checking the geometry
@@ -111,7 +111,7 @@ namespace chessbox {
         return true;
     }
     
-#pragma mark - bishop moves
+// MARK: - bishop moves
     
     bool Movecheck::isValidBishopMove(const Position *position, const Move& move) {
         int dRow = move.to.row() - move.from.row();
@@ -123,7 +123,7 @@ namespace chessbox {
         return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
-#pragma mark - queen moves
+// MARK: - queen moves
     
     bool Movecheck::isValidQueenMove(const Position *position, const Move& move) {
         int dRow = move.to.row() - move.from.row();
@@ -135,7 +135,7 @@ namespace chessbox {
         return (0 == (BB::range(move.from, move.to) & occupied));
     }
     
-#pragma mark - king moves
+// MARK: - king moves
     
     bool Movecheck::isValidKingMove(const Position *position, const Move& move) {
         Color us = position->sideToMove();
@@ -174,7 +174,7 @@ namespace chessbox {
         return true;
     }
     
-#pragma mark - helpers
+// MARK: - helpers
     
     bool Movecheck::isValidPromotionType(Piece::Type type) {
         switch(type) {
@@ -244,4 +244,4 @@ namespace chessbox {
         
         return false;
     }
-}
+}  // namespace chessbox

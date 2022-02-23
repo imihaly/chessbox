@@ -26,7 +26,7 @@ namespace chessbox {
     };
     
     
-#pragma mark - adjacents per direction table
+// MARK: - adjacents per direction table
     
     template<int idx = 0, BitBoard ...D>
     struct BBAdjacentsPerDirectionTableGenerator : BBAdjacentsPerDirectionTableGenerator<idx + 1, D...,
@@ -45,7 +45,7 @@ namespace chessbox {
         static constexpr std::array<BitBoard, 512> table = { D... };
     };
     
-#pragma mark - adjacents table generator
+// MARK: - adjacents table generator
     
     template<int idx = 0, BitBoard ...D>
     struct BBAdjacentsTableGenerator : BBAdjacentsTableGenerator<idx + 1, D...,

@@ -145,7 +145,7 @@ TEST(Movecheck, enPassantCapture) {
     delete pos;
 }
 
-#pragma mark - rook moves
+// MARK: - rook moves
 
 TEST(Movecheck, rookGeometry) {
     Position *position = UnitTesting::positionFromString(
@@ -214,7 +214,7 @@ TEST(Movecheck, rookObstruction) {
     delete position;
 }
 
-#pragma mark - knight moves
+// MARK: - knight moves
 
 TEST(Movecheck, knightGeometry) {
     Position *position = UnitTesting::positionFromString(
@@ -316,7 +316,7 @@ TEST(Movecheck, knightOnBorder) {
     delete position;
 }
 
-#pragma mark - bishop moves
+// MARK: - bishop moves
 
 TEST(Movecheck, bishopGeometry) {
     Position *position = UnitTesting::positionFromString(
@@ -386,7 +386,7 @@ TEST(Movecheck, bishopObstruction) {
     delete position;
 }
 
-#pragma mark - queen moves
+// MARK: - queen moves
 
 TEST(Movecheck, queenGeometry) {
     Position *position = UnitTesting::positionFromString(
@@ -456,7 +456,7 @@ TEST(Movecheck, queenObstruction) {
     delete position;
 }
 
-#pragma mark - king moves
+// MARK: - king moves
 
 TEST(Movecheck, kingGeometry) {
     Position *position = UnitTesting::positionFromString(
@@ -883,7 +883,7 @@ TEST(Movecheck, checkBlockedCastle5) {
     delete position;
 }
 
-#pragma mark - helpers
+// MARK: - helpers
 
 TEST(Movecheck, detectChecks) {
     Position *position = UnitTesting::positionFromString(

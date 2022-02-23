@@ -10,7 +10,6 @@
 #ifndef FEN_hpp
 #define FEN_hpp
 
-#include "deps.h"
 #include "Position.hpp"
 
 namespace chessbox {

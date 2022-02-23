@@ -39,11 +39,4 @@ namespace chessbox {
         return std::string(&pieceName, 1);
     }
     
-}
-
-std::ostream& operator<<(std::ostream& os, const chessbox::Piece& piece) {
-    os << piece.description();
-    return os;
-}
-
-
+}  // namespace chessbox

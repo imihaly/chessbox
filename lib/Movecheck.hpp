@@ -10,10 +10,11 @@
 #ifndef Movecheck_hpp
 #define Movecheck_hpp
 
-#include "deps.h"
 #include "Position.hpp"
 
 namespace chessbox {
+    
+    // Collection of functions dealing with move validation.
     class Movecheck {
         
         friend class Movegen;
