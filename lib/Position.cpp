@@ -9,6 +9,7 @@
 #include "Position.hpp"
 
 #include <cassert>
+#include <string.h>
 
 #include "Control.hpp"
 #include "Movecheck.hpp"

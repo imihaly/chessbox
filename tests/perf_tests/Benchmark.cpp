@@ -24,5 +24,3 @@ long int usecs() {
 
 std::map<std::string, Benchmark* > Benchmark::benchmarks;
 std::vector<Benchmark* > Benchmark::orderedBenchmarks;
-
-long int Benchmark::referenceValue = 0;

@@ -24,7 +24,6 @@ long int usecs();
 struct Benchmark {
     static std::map<std::string, Benchmark* > benchmarks;
     static std::vector<Benchmark* > orderedBenchmarks;
-    static long int referenceValue;
         
     static void reg(std::string name, long int value, long int refVal) {
         if (benchmarks.find(name) == benchmarks.end()) {
@@ -34,13 +33,7 @@ struct Benchmark {
         }
         benchmarks[name]->reg(value);
     }
-    
-    static void calibrate(long int value) {
-        // TODO: how can 0 come in as calibration value? Is it an optimisation issue?
-        referenceValue = value ? value : 1;
-    }
-
-    
+        
     static void printAll() {
         for(auto it = orderedBenchmarks.begin(); it != orderedBenchmarks.end(); ++it) {
             (*it)->print();
@@ -87,13 +80,13 @@ struct Benchmark {
         assert(referenceValue);
         assert(refVal);
         long int avg = count ? sum / count : 0;
-        bool succeed = avg < refVal * referenceValue;
-        long percent = (refVal * referenceValue - avg) * 100 / avg;
+        bool succeed = avg < refVal;
+        long percent = (refVal - avg) * 100 / avg;
         
         std::cout << (succeed ? "[🟢] " : "[🔴] " )
             << std::setw(4) << percent << "% "
             << "/"
-            << std::setw(8) << 1.0 * avg/referenceValue
+            << std::setw(8) << 1.0 * avg
             << "   " << truncate(name, 40) << ": "
             << min << "/" << avg << "/" << max
         << std::endl;
@@ -104,7 +97,6 @@ struct Benchmark {
 };
 
 
-#define BENCHMARK_CALIBRATE() for(long int start = usecs(), run = 1; run; run=0, Benchmark::calibrate(usecs() - start))
 #define BENCHMARK(name, refVal) for(long int start = usecs(), run = 1; run; run=0, Benchmark::reg(name, usecs() - start, refVal))
 
 
