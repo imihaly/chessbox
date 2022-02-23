@@ -7,6 +7,9 @@
 //
 
 #include "Move.hpp"
+
+#include <algorithm>
+
 #include "Square.hpp"
 #include "Piece.hpp"
 
