@@ -72,20 +72,6 @@ add_executable(cbox_tests ${TEST_SOURCES})
 target_link_libraries(cbox_tests cbox)
 add_custom_target(unit_tests COMMAND cbox_tests)
 
-# load tests
-set (LOAD_TEST_SOURCES
-    tests/load_tests/Gentest.cpp
-    tests/load_tests/Gentest.hpp
-    tests/load_tests/Movedecoder.cpp
-    tests/load_tests/Movedecoder.hpp
-    tests/load_tests/Movetest.cpp
-    tests/load_tests/Movetest.hpp
-    tests/load_tests/main.cpp)
-    
-add_executable(cbox_load_tests ${LOAD_TEST_SOURCES})
-target_link_libraries(cbox_load_tests cbox)
-add_custom_target(load_tests COMMAND cbox_load_tests)
-
 
 set(PERF_TEST_SOURCES
     tests/perf_tests/Benchmark.cpp
