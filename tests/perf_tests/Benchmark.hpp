@@ -34,16 +34,10 @@ struct Benchmark {
         benchmarks[name]->reg(value);
     }
         
-    static void printAll() {
-        for(auto it = orderedBenchmarks.begin(); it != orderedBenchmarks.end(); ++it) {
-            (*it)->print();
-        }
-    }
-
     static bool checkAll() {
         bool success = true;
         for(auto it = orderedBenchmarks.begin(); it != orderedBenchmarks.end(); ++it) {
-            if(! (*it)->CHECK_TRUE() ) success = false;
+            if(! (*it)->check() ) success = false;
         }
         return success;
     }
@@ -60,11 +54,6 @@ struct Benchmark {
         if (value > max) max = value;
     }
     
-    void print() {
-        long int avg = count ? sum / count : 0;
-        std::cout << name << ": " << min << "/" << avg << "/" << max << " - from: " << count << std::endl;
-    }
-    
     std::string truncate(std::string input, int width) {
         std::string str = input;
         if (str.length() > width) {
@@ -76,7 +65,7 @@ struct Benchmark {
         return str;
     }
     
-    bool CHECK_TRUE() {
+    bool check() {
         assert(referenceValue);
         assert(refVal);
         long int avg = count ? sum / count : 0;
@@ -97,7 +86,7 @@ struct Benchmark {
 };
 
 
-#define BENCHMARK(name, refVal) for(long int start = usecs(), run = 1; run; run=0, Benchmark::reg(name, usecs() - start, refVal))
+#define BENCHMARK(name, refVal) for(long int start = usecs(), run = 1; run; run=0, Benchmark::reg(name, usecs() - start, refVal * 1000000 ))
 
 
 #endif /* Benchmark_hpp */
