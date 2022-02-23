@@ -8,6 +8,9 @@
 
 
 #include "Movegen.hpp"
+
+#include <cassert>
+
 #include "Control.hpp"
 #include "Movecheck.hpp"
 #include "BB.hpp"
@@ -16,13 +19,13 @@
 
 namespace chessbox {
     
-    const Moves Movegen::allMovesFrom(Position *position, const Square from) {
+    const Moves Movegen::allMovesFrom(const Position *position, const Square from) {
         Moves result;
         allMovesFrom(position, from, result);
         return result;
     }
     
-    const void Movegen::allMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allMovesFrom(const Position *position, const Square from, Moves& result) {
         const Piece& piece = position->pieceOnSquare(from);
         if (piece == Piece::NoPiece || piece.color != position->sideToMove()) {
             return;
@@ -46,13 +49,13 @@ namespace chessbox {
         }
     }
     
-    const Moves Movegen::allMovesTo(Position *position, const Square to) {
+    const Moves Movegen::allMovesTo(const Position *position, const Square to) {
         Moves result;
         allMovesTo(position, to, result);
         return result;
     }
     
-    const void Movegen::allMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allMovesTo(const Position *position, const Square to, Moves& result) {
         allPawnMovesTo(position, to, result);
         allRookMovesTo(position, to, result);
         allKnightMovesTo(position, to, result);
@@ -61,13 +64,13 @@ namespace chessbox {
         allKingMovesTo(position, to, result);
     }
     
-    const Moves Movegen::allMoves(Position *position) {
+    const Moves Movegen::allMoves(const Position *position) {
         Moves result;
         allMoves(position, result);
         return result;
     }
     
-    const void Movegen::allMoves(Position *position, Moves& result) {
+    const void Movegen::allMoves(const Position *position, Moves& result) {
         const Squares squares = position->squaresOccupied(position->sideToMove());
         for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
             allMovesFrom(position, *it, result);
@@ -76,13 +79,13 @@ namespace chessbox {
     
 // MARK: - helpers
     
-    const void Movegen::movesToControlledSquares(Position *position, const Square from, Moves& result) {
+    const void Movegen::movesToControlledSquares(const Position *position, const Square from, Moves& result) {
         Squares controlledSquares = Control::squaresControlled(position, from);
         controlledSquares &= ~position->squaresOccupied(position->sideToMove());
         movesToSquares(position, from, controlledSquares, result);
     }
     
-    const void Movegen::movesToSquares(Position *position, const Square from, const Squares& squaresTo, Moves& result) {
+    const void Movegen::movesToSquares(const Position *position, const Square from, const Squares& squaresTo, Moves& result) {
         const Piece& movingPiece = position->pieceOnSquare(from);
         for(Squares::Iterator it = squaresTo.begin(); it != squaresTo.end(); it++) {
             const Piece& piece = position->pieceOnSquare(*it);
@@ -95,7 +98,7 @@ namespace chessbox {
         }
     }
     
-    const void Movegen::allPawnMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allPawnMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Pawn));
         
         Color side = position->sideToMove();
@@ -157,31 +160,31 @@ namespace chessbox {
         }
     }
     
-    const void Movegen::allRookMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allRookMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Rook));
         
         movesToControlledSquares(position, from, result);
     }
     
-    const void Movegen::allKnightMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allKnightMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Knight));
         
         movesToControlledSquares(position, from, result);
     }
     
-    const void Movegen::allBishopMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allBishopMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Bishop));
         
         movesToControlledSquares(position, from, result);
     }
     
-    const void Movegen::allQueenMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allQueenMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Queen));
         
         movesToControlledSquares(position, from, result);
     }
     
-    const void Movegen::allKingMovesFrom(Position *position, const Square from, Moves& result) {
+    const void Movegen::allKingMovesFrom(const Position *position, const Square from, Moves& result) {
         assert(position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::King));
         
         Squares controlledSquares = BB::adjacents(from);
@@ -206,7 +209,7 @@ namespace chessbox {
         }
     }
     
-    const void Movegen::allPawnMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allPawnMovesTo(const Position *position, const Square to, Moves& result) {
         if(!position->isEmpty(to) && position->pieceOnSquare(to).color == position->sideToMove()) {
             return;
         }
@@ -259,11 +262,11 @@ namespace chessbox {
         }
     }
     
-    const void Movegen::allRookMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allRookMovesTo(const Position *position, const Square to, Moves& result) {
         allLineMovesTo(position, to, Piece::Type::Rook, result);
     }
     
-    const void Movegen::allKnightMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allKnightMovesTo(const Position *position, const Square to, Moves& result) {
         Squares from = BB::knightDistances(to);
         from &= position->squaresOccupied(position->sideToMove(), Piece::Type::Knight);
         for(Squares::Iterator it = from.begin(); it != from.end(); ++it) {
@@ -274,15 +277,15 @@ namespace chessbox {
         }
     }
     
-    const void Movegen::allBishopMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allBishopMovesTo(const Position *position, const Square to, Moves& result) {
         allLineMovesTo(position, to, Piece::Type::Bishop, result);
     }
     
-    const void Movegen::allQueenMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allQueenMovesTo(const Position *position, const Square to, Moves& result) {
         allLineMovesTo(position, to, Piece::Type::Queen, result);
     }
     
-    const void Movegen::allKingMovesTo(Position *position, const Square to, Moves& result) {
+    const void Movegen::allKingMovesTo(const Position *position, const Square to, Moves& result) {
         if(!position->isEmpty(to) && position->pieceOnSquare(to).color == position->sideToMove()) {
             return;
         }
@@ -325,7 +328,7 @@ namespace chessbox {
         } while(false);
     }
     
-    const void Movegen::allLineMovesTo(Position *position, const Square to, Piece::Type type, Moves& result) {
+    const void Movegen::allLineMovesTo(const Position *position, const Square to, Piece::Type type, Moves& result) {
         if(!position->isEmpty(to) && position->pieceOnSquare(to).color == position->sideToMove()) {
             return;
         }

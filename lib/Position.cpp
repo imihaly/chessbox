@@ -7,8 +7,12 @@
 //
 
 #include "Position.hpp"
+
+#include <cassert>
+
 #include "Control.hpp"
 #include "Movecheck.hpp"
+#include "Movegen.hpp"
 #include "BB.hpp"
 
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -75,7 +79,6 @@ namespace chessbox {
         _moveIndex = 1;
         
         // castle availabilities
-        _status = Ongoing;
         _castlingRights[Color::White] = 0;
         _castlingRights[Color::Black] = 0;
     }
@@ -102,7 +105,6 @@ namespace chessbox {
         }
         
         // castle availabilities
-        _status = other._status;
         _castlingRights[Color::White] = other._castlingRights[Color::White];
         _castlingRights[Color::Black] = other._castlingRights[Color::Black];
         
@@ -390,5 +392,26 @@ namespace chessbox {
         
         return _kingDangerLines;
     }
+
+    bool Position::hasMoves() const {
+        return Movegen::allMoves(this).size() == 0;
+    }
+    
+    bool Position::isKingChecked() const {
+        Color side = sideToMove();
+        Color other = flip(side);
+        
+        Square kingsSquare = kingPosition(side);
+        return Control::isControlling(this, kingsSquare, other);
+    }
+    
+    bool Position::isMate() const {
+        return isKingChecked() && !hasMoves();
+    }
+    
+    bool Position::isStaleMate() const {
+        return !isKingChecked() && !hasMoves();
+    }
+
 
 }  // namespace chessbox

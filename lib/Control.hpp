@@ -41,6 +41,12 @@ namespace chessbox {
         // Returns the squares from which any of the given squares is under control by a piece of either side.
         static Squares squaresControlling(const Position *position, const Squares& squares);
 
+        // Returns if there would be any piece of color `side` controlling any of the squares in `squares` considering the changes in `pieces` removed and `piecesAdded`
+        static bool isControlling(const Position *position, const Squares& squares, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
+        
+        // Returns if there would be any piece of color `side` controlling square considering the changes in `pieces` removed and `piecesAdded`
+        static bool isControlling(const Position *position, const Square square, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
+        
     private:
         // Returns the squares from which the given square is controlled by a rook of the given side.
         static Squares rooksControlling(const Position *position, const Square square, Color side);
@@ -61,12 +67,6 @@ namespace chessbox {
         static Squares kingsControlling(const Position *position, const Square square, Color side);
         
     private:
-        // Returns if there would be any piece of color `side` controlling any of the squares in `squares` considering the changes in `pieces` removed and `piecesAdded`
-        static bool isControlling(const Position *position, const Squares& squares, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
-
-        // Returns if there would be any piece of color `side` controlling square considering the changes in `pieces` removed and `piecesAdded`
-        static bool isControlling(const Position *position, const Square square, Color side, const Squares& piecesRemoved = 0, const Squares& piecesAdded = 0);
-        
         // Returns if there would be any rook or queen of color `side` controlling square considering the changes in `pieces` removed and `piecesAdded`
         // Only the pieces on squares in `mask` are checked.
         static bool isControllingByRookOrQueen(const Position *position, const Square square, Color side, const Squares& piecesRemoved, const Squares& piecesAdded, const Squares mask = BB::allSquares);

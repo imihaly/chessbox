@@ -19,13 +19,6 @@
 
 namespace chessbox {
     
-    // position status
-    typedef enum {
-        Ongoing,
-        Mate,
-        StaleMate,
-    } Status;
-    
     // sides
     typedef enum {
         Kingside = 1,
@@ -75,6 +68,12 @@ namespace chessbox {
         Square kingPosition(Color color) const;
         
     public:
+        bool hasMoves() const;
+        bool isKingChecked() const;
+        bool isMate() const;
+        bool isStaleMate() const;
+        
+    public:
         const Squares& squaresControlledBy(Color side) const;
         
     public:
@@ -120,7 +119,6 @@ namespace chessbox {
         
     private:
         Piece* _pieces;
-        Status _status;
         Color _sideToMove;
         
         // en-passant

@@ -7,6 +7,8 @@
 //
 
 
+#include <cassert>
+
 #include "UnitTesting.hpp"
 #include "Position.hpp"
 #include "FEN.hpp"
