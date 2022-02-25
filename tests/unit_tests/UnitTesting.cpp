@@ -92,4 +92,11 @@ Squares UnitTesting::squaresFromString(const char *string) {
     return squares;
 }
 
+bool UnitTesting::isEqual(Moves& op1, Moves& op2) {
+    if (op1.size() != op2.size()) return false;
+    for(Move m: op1) {
+        if(!op2.contains(m)) return false;
+    }
+    return true;
+}
 

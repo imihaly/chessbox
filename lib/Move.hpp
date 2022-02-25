@@ -36,6 +36,9 @@ namespace chessbox {
         
     // Collection of moves.
     class Moves: public std::vector<Move> {
+    public:
+        Moves() = default;
+        Moves( std::initializer_list<Move> init ) : std::vector<Move>(init) {}
 
     public:
         Moves& operator+=(Move move);

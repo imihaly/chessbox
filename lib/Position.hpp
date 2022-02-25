@@ -137,6 +137,7 @@ namespace chessbox {
         // lines with potential attacker on it
         mutable Squares _kingDangerLines;
         mutable bool _kingDangerLinesMessed;
+        
     public:
         const Squares& kingDangerLines() const;
     };

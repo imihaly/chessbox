@@ -395,7 +395,7 @@ namespace chessbox {
     }
 
     bool Position::hasMoves() const {
-        return Movegen::allMoves(this).size() == 0;
+        return Movegen::allMoves(this).size() != 0;
     }
     
     bool Position::isKingChecked() const {

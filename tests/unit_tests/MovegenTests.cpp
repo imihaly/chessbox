@@ -12,471 +12,165 @@
 #include "FEN.hpp"
 
 
-// MARK: - helpers
+// MARK: - Pawn moves
 
 TEST(Movegen, pawnOnBaseline) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....P..."
-                                                         "....K..."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/8/8/4P3/4K3 w - - 0 1");
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           "....x..."
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves expected  = { Move(Square::E2, Square::E3), Move(Square::E2, Square::E4) };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E2);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E2, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
 TEST(Movegen, pawnNotOnBaseline) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....P..."
-                                                         "........"
-                                                         "....K..."
-                                                         );
-    
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           );
-    
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/8/4P3/8/4K3 w - - 0 1");
 
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E3, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
+    Moves expected  = { Move(Square::E3, Square::E4) };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E3);
     
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
 TEST(Movegen, pawnJumpBlocked) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....p..."
-                                                         "....P..."
-                                                         "....K..."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/8/4p3/4P3/4K3 w - - 0 1");
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves expected  = { /* empty */ };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E2);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E2, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
 TEST(Movegen, pawnBlocked) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....p..."
-                                                         "........"
-                                                         "....P..."
-                                                         "....K..."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/4p3/8/4P3/4K3 w - - 0 1");
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves expected  = { Move(Square::E2, Square::E3) };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E2);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E2, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
 TEST(Movegen, pawnCapturing) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "...p.b.."
-                                                         "....P..."
-                                                         "....K..."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/8/3p1b2/4P3/4K3 w - - 0 1");
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           "...xxx.."
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves expected  = { Move(Square::E2, Square::E3), Move(Square::E2, Square::E4), Move(Square::E2, Square::D3), Move(Square::E2, Square::F3) };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E2);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E2, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
 TEST(Movegen, pawnEnpassant) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         ".....pP."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....K..."
-                                                         );
-    position->setEnPassantSquare(Square::F6);
+    Position *position = FEN::positionFromFEN("5k2/8/8/5pP1/8/8/8/4K3 w - f6 0 1");
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           ".....xx."
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves expected  = { Move(Square::G5, Square::G6), Move(Square::G5, Square::F6)};
+    Moves moves     = Movegen::allMovesFrom(position, Square::G5);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::G5, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
 TEST(Movegen, pawnPromotion) {
-    Position *pos = new Position();
-    pos->setPiece(Piece(Color::White, Piece::King), Square::E1);
-    pos->setPiece(Piece(Color::Black, Piece::King), Square::E8);
-    pos->setPiece(Piece(Color::White, Piece::Pawn), Square::A7);
-
-    Moves moves;
-    Movegen::allMovesFrom(pos, Square::A7, moves);
+    Position *position = FEN::positionFromFEN("4k3/P7/8/8/8/8/8/4K3 w - - 0 1");
+    Moves expected  = { Move(Square::A7, Square::A8, Piece::Rook), Move(Square::A7, Square::A8, Piece::Knight), Move(Square::A7, Square::A8, Piece::Bishop), Move(Square::A7, Square::A8, Piece::Queen) };
+    Moves moves     = Movegen::allMovesFrom(position, Square::A7);
     
-    // Checking that a pawn reaching the last row promotes
-    CHECK_FALSE(moves.contains(Move(Square::A7, Square::A8)));
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
-    // Checking that a pawn cannot promote neither to a pawn nor a king
-    CHECK_FALSE(moves.contains(Move(Square::A7, Square::A8, Piece::Pawn)));
-    CHECK_FALSE(moves.contains(Move(Square::A7, Square::A8, Piece::King)));
-    
-    // Checking valid promotions
-    CHECK_TRUE(moves.contains(Move(Square::A7, Square::A8, Piece::Rook)));
-    CHECK_TRUE(moves.contains(Move(Square::A7, Square::A8, Piece::Knight)));
-    CHECK_TRUE(moves.contains(Move(Square::A7, Square::A8, Piece::Bishop)));
-    CHECK_TRUE(moves.contains(Move(Square::A7, Square::A8, Piece::Queen)));
-    delete pos;
-
-    // checking that a pawn cannot promote without reaching the last rank
-    pos = new Position();
-    pos->setPiece(Piece(Color::White, Piece::King), Square::E1);
-    pos->setPiece(Piece(Color::Black, Piece::King), Square::E8);
-    pos->setPiece(Piece(Color::White, Piece::Pawn), Square::A6);
-    
-    moves.clear();
-    Movegen::allMovesFrom(pos, Square::A6, moves);
-
-    CHECK_TRUE(moves.contains(Move(Square::A6, Square::A7)));
-    CHECK_FALSE(moves.contains(Move(Square::A6, Square::A7, Piece::Rook)));
-    CHECK_FALSE(moves.contains(Move(Square::A6, Square::A7, Piece::Knight)));
-    CHECK_FALSE(moves.contains(Move(Square::A6, Square::A7, Piece::Bishop)));
-    CHECK_FALSE(moves.contains(Move(Square::A6, Square::A7, Piece::Queen)));
-
-    delete pos;
+    delete position;
 }
+
+// MARK: - Rook moves
 
 TEST(Movegen, rookGeometry) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....R..."
-                                                         "........"
-                                                         "........"
-                                                         ".....K.."
-                                                         );
-    
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "....x..."
-                                                           "....x..."
-                                                           "....x..."
-                                                           "....x..."
-                                                           "xxxxRxxx"
-                                                           "....x..."
-                                                           "....x..."
-                                                           "....x..."
-                                                           );
-    
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/4R3/8/8/5K2 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::E1), Move(Square::E4, Square::E2), Move(Square::E4, Square::E3), Move(Square::E4, Square::E5), Move(Square::E4, Square::E6), Move(Square::E4, Square::E7), Move(Square::E4, Square::E8),
+        Move(Square::E4, Square::A4), Move(Square::E4, Square::B4), Move(Square::E4, Square::C4), Move(Square::E4, Square::D4), Move(Square::E4, Square::F4), Move(Square::E4, Square::G4), Move(Square::E4, Square::H4)
+    };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E4);
 
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
 TEST(Movegen, rookCapturing) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "....p..."
-                                                         "........"
-                                                         "b...R.n."
-                                                         "........"
-                                                         "........"
-                                                         ".....K.."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/4p3/8/b3R1n1/8/8/5K2 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::E1), Move(Square::E4, Square::E2), Move(Square::E4, Square::E3), Move(Square::E4, Square::E5), Move(Square::E4, Square::E6),
+        Move(Square::E4, Square::A4), Move(Square::E4, Square::B4), Move(Square::E4, Square::C4), Move(Square::E4, Square::D4), Move(Square::E4, Square::F4), Move(Square::E4, Square::G4)
+    };
+    Moves moves     = Movegen::allMovesFrom(position, Square::E4);
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           "....x..."
-                                                           "xxxxRxx."
-                                                           "....x..."
-                                                           "....x..."
-                                                           "....x..."
-                                                           );
-    
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
 TEST(Movegen, rookObstructed) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "....P..."
-                                                         "........"
-                                                         "B...R.N."
-                                                         "........"
-                                                         "........"
-                                                         ".....K.."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/4P3/8/B3R1N1/8/8/5K2 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::E1), Move(Square::E4, Square::E2), Move(Square::E4, Square::E3), Move(Square::E4, Square::E5),
+        Move(Square::E4, Square::B4), Move(Square::E4, Square::C4), Move(Square::E4, Square::D4), Move(Square::E4, Square::F4)
+    };
+             
+    Moves moves = Movegen::allMovesFrom(position, Square::E4);
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           "....x..."
-                                                           ".xxxRx.."
-                                                           "....x..."
-                                                           "....x..."
-                                                           "....x..."
-                                                           );
-    
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
+// MARK: - Knight moves
 
 TEST(Movegen, knightGeometry) {
-    Position *position = UnitTesting::positionFromString(
-                                                         ".....k.."
-                                                         "........"
-                                                         "........"
-                                                         "........"
-                                                         "....N..."
-                                                         "........"
-                                                         "........"
-                                                         ".....K.."
-                                                         );
+    Position *position = FEN::positionFromFEN("5k2/8/8/8/4N3/8/8/5K2 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::C5), Move(Square::E4, Square::D6), Move(Square::E4, Square::F6), Move(Square::E4, Square::G5),
+        Move(Square::E4, Square::G3), Move(Square::E4, Square::F2), Move(Square::E4, Square::D2), Move(Square::E4, Square::C3),
+    };
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "...x.x.."
-                                                           "..x...x."
-                                                           "....N..."
-                                                           "..x...x."
-                                                           "...x.x.."
-                                                           "........"
-                                                           );
+    Moves moves     = Movegen::allMovesFrom(position, Square::E4);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
 TEST(Movegen, knightCaptures) {
-    Position *position = UnitTesting::positionFromString(
-                                                         "K......."
-                                                         "........"
-                                                         ".....p.."
-                                                         "......b."
-                                                         "....N..."
-                                                         "..r...n."
-                                                         "...k.q.."
-                                                         "........"
-                                                         );
+    Position *position = FEN::positionFromFEN("K7/8/5p2/6b1/4N3/2r3n1/3k1q2/8 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::C5), Move(Square::E4, Square::D6), Move(Square::E4, Square::F6), Move(Square::E4, Square::G5),
+        Move(Square::E4, Square::G3), Move(Square::E4, Square::F2), Move(Square::E4, Square::C3),
+    };
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "...x.x.."
-                                                           "..x...x."
-                                                           "....N..."
-                                                           "..x...x."
-                                                           ".....x.."
-                                                           "........"
-                                                           );
+    Moves moves     = Movegen::allMovesFrom(position, Square::E4);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
 TEST(Movegen, knightObstructed) {
-    Position *position = UnitTesting::positionFromString(
-                                                         "........"
-                                                         "........"
-                                                         ".....P.."
-                                                         "......B."
-                                                         "....N..."
-                                                         "..R...N."
-                                                         "...K.Q.."
-                                                         "........"
-                                                         );
+    Position *position = FEN::positionFromFEN("8/8/5P2/6B1/4N3/2R3N1/3K1Q2/8 w - - 0 1");
+    Moves expected  = {
+        Move(Square::E4, Square::C5), Move(Square::E4, Square::D6),
+    };
     
-    Squares expected = UnitTesting::squaresFromString(
-                                                           "........"
-                                                           "........"
-                                                           "...x...."
-                                                           "..x....."
-                                                           "....N..."
-                                                           "........"
-                                                           "........"
-                                                           "........"
-                                                           );
+    Moves moves     = Movegen::allMovesFrom(position, Square::E4);
     
-
-    Moves moves;
-    Movegen::allMovesFrom(position, Square::E4, moves);
-    Squares landingSquares = 0;
-    for(Move move: moves) {
-        landingSquares.add(move.to);
-    }
-    
-    CHECK_TRUE(landingSquares == expected);
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
     
     delete position;
 }
+
+// MARK: - Bishop moves
 
 TEST(Movegen, bishopGeometry) {
     Position *position = UnitTesting::positionFromString(

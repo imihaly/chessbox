@@ -13,6 +13,14 @@
 #include "Position.hpp"
 #include "FEN.hpp"
 
+
+TEST(Position, basePosition) {
+    Position *position = Position::basePosition();
+    std::string fen = FEN::FENFromPosition(position);
+    delete position;
+    CHECK_TRUE(fen == "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+}
+
 TEST(Position, performMove) {
     struct TestData {
         std::string startFen;
@@ -49,3 +57,42 @@ TEST(Position, performMove) {
 }
 
 
+bool isMate(std::string fen) {
+    Position *pos = FEN::positionFromFEN(fen);
+    assert(pos != NULL);
+    
+    bool ret = pos->isMate();
+    delete pos;
+    
+    return ret;
+}
+
+TEST(Position, isMate) {
+    
+    CHECK_FALSE(isMate("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
+    
+    CHECK_TRUE(isMate("rnbqkbnr/ppppp2p/5p2/6pQ/3PP3/8/PPP2PPP/RNB1KBNR b KQkq - 1 3"));
+    CHECK_TRUE(isMate("k7/8/8/8/8/8/R7/1R5K b - - 0 1"));
+    CHECK_TRUE(isMate("6rk/5Npp/8/8/8/8/8/4K3 b - - 0 1"));
+    CHECK_TRUE(isMate("6rk/6pp/6N1/8/8/8/8/4K2R b - - 0 1"));
+    CHECK_TRUE(isMate("3rk3/3p4/6B1/2B5/8/8/8/3K4 b - - 0 1"));
+}
+
+bool isStaleMate(std::string fen) {
+    Position *pos = FEN::positionFromFEN(fen);
+    assert(pos != NULL);
+    
+    bool ret = pos->isStaleMate();
+    delete pos;
+    
+    return ret;
+}
+
+TEST(Position, isStaleMate) {
+    CHECK_FALSE(isStaleMate("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
+
+    CHECK_TRUE(isStaleMate("3k4/3P4/3K4/8/8/8/8/8 b - - 0 1"));
+    CHECK_TRUE(isStaleMate("7k/3PR3/3K4/8/8/8/8/6R1 b - - 0 1"));
+    CHECK_TRUE(isStaleMate("4R1nk/3P4/3K4/8/8/8/8/1Q4R1 b - - 0 1"));
+    CHECK_TRUE(isStaleMate("2k5/8/1Q1K4/8/8/8/8/8 b - - 0 1"));
+}
