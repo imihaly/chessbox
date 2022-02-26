@@ -21,11 +21,11 @@ TEST(Square, rowAndCol) {
 
 
 TEST(Square, description) {
-    CHECK_TRUE(Square::A1.description() == "a1");
-    CHECK_TRUE(Square::B2.description() == "b2");
-    CHECK_TRUE(Square::C3.description() == "c3");
-    CHECK_TRUE(Square::D4.description() == "d4");
-    CHECK_TRUE(Square::E5.description() == "e5");
+    CHECK_TRUE(Square::A1.notation() == "a1");
+    CHECK_TRUE(Square::B2.notation() == "b2");
+    CHECK_TRUE(Square::C3.notation() == "c3");
+    CHECK_TRUE(Square::D4.notation() == "d4");
+    CHECK_TRUE(Square::E5.notation() == "e5");
 }
 
 TEST(Square, addStep) {

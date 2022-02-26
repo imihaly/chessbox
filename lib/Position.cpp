@@ -316,17 +316,6 @@ namespace chessbox {
         _kingDangerLinesMessed = true;
     }
     
-    std::string Position::description() const {
-        std::string ret;
-        for(int row = 7; row >= 0; row--) {
-            for(int col = 0; col < 8; col++) {
-                ret += pieceOnSquare(Square(col, row)).description();
-            }
-            ret += '\n';
-        }
-        return ret;
-    }
-    
     void Position::setEnPassantSquare(const Square square) {
         _enPassantSquare = square;
     }

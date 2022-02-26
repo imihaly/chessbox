@@ -67,7 +67,7 @@ namespace chessbox {
             return v >= 0;
         };
         
-        std::string description() const;
+        std::string notation() const;
     };
     
     inline Square operator+(const Square square, const Step& step) {

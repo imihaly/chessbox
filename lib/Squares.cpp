@@ -13,7 +13,7 @@ namespace chessbox {
     std::string Squares::description() const {
         std::string ret;
         for(Squares::Iterator it = begin(); it != end(); it++) {
-            ret += (*it).description() + " ";
+            ret += (*it).notation() + " ";
         }
         return ret;
     }    

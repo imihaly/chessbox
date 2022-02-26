@@ -281,7 +281,7 @@ namespace chessbox {
         if(position->enPassantSquare() == Square::None) {
             fen << " -";
         } else {
-            fen << " " << position->enPassantSquare().description();
+            fen << " " << position->enPassantSquare().notation();
         }
         
         if(addMoveFields) {

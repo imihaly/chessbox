@@ -47,9 +47,7 @@ namespace chessbox {
             return p.type != type || p.color != color;
         }
         
-        static char typeName(Type type);
-        char typeName() const;
-        std::string description() const;
+        static char typeSymbol(Type type);
     };
     
 } // namespace chessbox

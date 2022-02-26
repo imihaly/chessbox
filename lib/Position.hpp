@@ -114,9 +114,6 @@ namespace chessbox {
         const Squares& squaresOccupied(Color side)  const { return _squaresOccupied[side]; };
         const Squares& squaresOccupied(Color side, Piece::Type type) const { return _squaresOccupiedPerPieceType[side][type]; };
         
-    public:
-        std::string description() const;
-        
     private:
         Piece* _pieces;
         Color _sideToMove;

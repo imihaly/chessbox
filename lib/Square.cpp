@@ -20,7 +20,7 @@ namespace chessbox {
     const Square Square::None(-1);
     
     
-    std::string Square::description() const {
+    std::string Square::notation() const {
         static const char * columnNames = "abcdefgh";
         static char buff[2];
         buff[0] = columnNames[col()];

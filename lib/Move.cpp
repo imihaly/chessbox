@@ -16,9 +16,9 @@
 namespace chessbox {
     std::string Move::description() const {
         std::string ret;
-        ret += from.description() + "-" + to.description();
+        ret += from.notation() + "-" + to.notation();
         if(promotion != Piece::Type::None) {
-            ret += Piece::typeName(promotion);
+            ret += Piece::typeSymbol(promotion);
         }
         return ret;
     }
