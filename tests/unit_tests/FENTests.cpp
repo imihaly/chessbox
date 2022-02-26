@@ -64,7 +64,6 @@ TEST(FEN, invalidFens) {
 
 TEST(FEN, validFens) {
     
-    
     // just a couple of random, valid fens
     std::string validFens[] = {
         "5rk1/5p1p/1p1P2p1/8/2Pp1P1q/3Br3/P5Q1/3R1RK1 b - - 0 32",
