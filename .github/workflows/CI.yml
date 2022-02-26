@@ -57,10 +57,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [windows-2019]
         compiler: [cl]
         include:
-          - os: windows-latest
+          - os: windows-2019
             compiler: cl
             target: Windows            
 
