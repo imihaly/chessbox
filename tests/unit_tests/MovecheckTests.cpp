@@ -1067,16 +1067,6 @@ TEST(Movecheck, kingLeftInDiscoveredCheck2) {
 }
 
 TEST(Movecheck, kingLeftInCheck) {
-//    Position *position = UnitTesting::positionFromString(
-//                                                         ".......k"
-//                                                         "........"
-//                                                         "........"
-//                                                         "........"
-//                                                         "........"
-//                                                         "........"
-//                                                         "..K.Q..."
-//                                                         "...q...."
-//                                                         );
     Position *position = FEN::positionFromFEN("3r2k1/p4p1p/2p3p1/4p3/2P5/1P3PP1/P1K1Q2P/3q4 w - - 0 30");
     
     CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E2, Square::E1)));

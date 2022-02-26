@@ -27,4 +27,5 @@ namespace chessbox {
         buff[1] = '1' + row();
         return std::string(buff, 2);
     }
+
 }  // namespace chessbox

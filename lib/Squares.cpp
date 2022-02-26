@@ -16,6 +16,6 @@ namespace chessbox {
             ret += (*it).description() + " ";
         }
         return ret;
-    }
+    }    
 }  // namespace chessbox
 

@@ -8,6 +8,7 @@
 
 
 #include "UnitTesting.hpp"
+#include "FEN.hpp"
 
 TAU_NO_MAIN()
 
@@ -92,6 +93,13 @@ Squares UnitTesting::squaresFromString(const char *string) {
     return squares;
 }
 
+Squares UnitTesting::squaresFromFEN(std::string FEN) {
+    Position *position = FEN::positionFromFEN(FEN);
+    Squares squares = position->squaresOccupied();
+    delete position;
+    return squares;
+}
+
 bool UnitTesting::isEqual(Moves& op1, Moves& op2) {
     if (op1.size() != op2.size()) return false;
     for(Move m: op1) {
@@ -99,4 +107,31 @@ bool UnitTesting::isEqual(Moves& op1, Moves& op2) {
     }
     return true;
 }
+
+// TODO: idle, transform
+std::string longDescription(const Square& square) {
+    static const char * columnNames = "ABCDEFGH";
+    static char buff[2];
+    buff[0] = columnNames[square.col()];
+    buff[1] = '1' + square.row();
+    return "Square::" + std::string(buff, 2);
+}
+
+std::string longDescription(const Squares& squares, const Square& to) {
+    std::string ret;
+    for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
+        ret += "Move(" +  longDescription(*it) + ", " + longDescription(to) + "), ";
+    }
+    return ret;
+}
+
+std::string FENfromSquares(const Squares& squares) {
+    Position position;
+    for(Squares::Iterator it = squares.begin(); it != squares.end(); it++) {
+        position.setPiece(Piece(Color::White, Piece::Type::Pawn), *it);
+    }
+    
+    return FEN::FENFromPosition(&position, true);
+}
+
 

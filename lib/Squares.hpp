@@ -114,7 +114,6 @@ namespace chessbox {
         }
         
         std::string description() const;
-        
     };
     
 } // namespace chessbox
