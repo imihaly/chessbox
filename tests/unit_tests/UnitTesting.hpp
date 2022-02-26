@@ -21,17 +21,10 @@ using namespace chessbox;
 
 class UnitTesting {
 public:
-    static Position *positionFromString(const char *string);
     static Squares squaresFromString(const char *string);
     static Squares squaresFromFEN(std::string FEN);
 
     static bool isEqual(Moves& op1, Moves& op2);
 };
-
-// TODO: idle, transform
-std::string longDescription(const Square& square);
-std::string longDescription(const Squares& squares, const Square& to);
-std::string FENfromSquares(const Squares& squares);
-
 
 #endif /* UnitTesting_hpp */
