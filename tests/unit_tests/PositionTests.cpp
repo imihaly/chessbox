@@ -14,11 +14,46 @@
 #include "FEN.hpp"
 
 
+// MARK: - helpers
+
+bool isMate(std::string fen) {
+    Position *pos = FEN::positionFromFEN(fen);
+    assert(pos != NULL);
+    
+    bool ret = pos->isMate();
+    delete pos;
+    
+    return ret;
+}
+
+bool isStaleMate(std::string fen) {
+    Position *pos = FEN::positionFromFEN(fen);
+    assert(pos != NULL);
+    
+    bool ret = pos->isStaleMate();
+    delete pos;
+    
+    return ret;
+}
+
+// MARK: - tests
+
 TEST(Position, basePosition) {
     Position *position = Position::basePosition();
     std::string fen = FEN::FENFromPosition(position);
     delete position;
     CHECK_TRUE(fen == "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+}
+
+TEST(Position, copy) {
+    // Checking if a copied position is identical to the source in all properties stored in a FEN.
+    std::string originalFEN = "r4k1r/p2n1p1p/1p1N1np1/2pPp3/2P3P1/3B3P/PP3P2/2KR3R b - - 1 18";
+    Position *position = FEN::positionFromFEN(originalFEN);
+    Position other(*position);
+    std::string regenereatedFEN = FEN::FENFromPosition(&other);
+    delete position;
+    
+    CHECK_TRUE(regenereatedFEN == originalFEN);
 }
 
 TEST(Position, performMove) {
@@ -56,16 +91,34 @@ TEST(Position, performMove) {
     }
 }
 
-
-bool isMate(std::string fen) {
-    Position *pos = FEN::positionFromFEN(fen);
-    assert(pos != NULL);
+TEST(Position, kingPosition) {
+    Position *position = Position::basePosition();
     
-    bool ret = pos->isMate();
-    delete pos;
-    
-    return ret;
+    CHECK_TRUE(position->kingPosition(Color::White) == Square::E1);
+    CHECK_TRUE(position->kingPosition(Color::Black) == Square::E8);
 }
+
+TEST(Position, kingPositionAfterKingsideCastle) {
+    Position *position = FEN::positionFromFEN("r4k1r/p2n1p1p/1p1N1np1/2pPp3/2P3P1/3B3P/PP3P2/R3K2R w KQ - 0 18");
+    position->performMove(Move(Square::E1, Square::G1));
+    
+    CHECK_TRUE(position->kingPosition(Color::White) == Square::G1);
+}
+
+TEST(Position, kingPositionAfterQueensideCastle) {
+    Position *position = FEN::positionFromFEN("r4k1r/p2n1p1p/1p1N1np1/2pPp3/2P3P1/3B3P/PP3P2/R3K2R w KQ - 0 18");
+    position->performMove(Move(Square::E1, Square::C1));
+    
+    CHECK_TRUE(position->kingPosition(Color::White) == Square::C1);
+}
+
+TEST(Position, kingPositionAfterKingMoving) {
+    Position *position = FEN::positionFromFEN("r4k1r/p2n1p1p/1p1N1np1/2pPp3/2P3P1/3B3P/PP3P2/2KR3R b - - 1 18");
+    position->performMove(Move(Square::F8, Square::G8));
+    
+    CHECK_TRUE(position->kingPosition(Color::Black) == Square::G8);
+}
+
 
 TEST(Position, isMate) {
     
@@ -76,16 +129,6 @@ TEST(Position, isMate) {
     CHECK_TRUE(isMate("6rk/5Npp/8/8/8/8/8/4K3 b - - 0 1"));
     CHECK_TRUE(isMate("6rk/6pp/6N1/8/8/8/8/4K2R b - - 0 1"));
     CHECK_TRUE(isMate("3rk3/3p4/6B1/2B5/8/8/8/3K4 b - - 0 1"));
-}
-
-bool isStaleMate(std::string fen) {
-    Position *pos = FEN::positionFromFEN(fen);
-    assert(pos != NULL);
-    
-    bool ret = pos->isStaleMate();
-    delete pos;
-    
-    return ret;
 }
 
 TEST(Position, isStaleMate) {

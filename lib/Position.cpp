@@ -68,8 +68,8 @@ namespace chessbox {
     _enPassantSquare(Square::None),
     _controlledSquares{0, 0},
     _kingDangerLines(0),
-    _squaresOccupiedByAny(0),
-    _squaresOccupied{0, 0},
+    _squaresOccupied(0),
+    _squaresOccupiedPerSide{0, 0},
     _squaresOccupiedPerPieceType{{0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}},
     _controlledSquaresNeedsRefresh(false)
     {
@@ -88,8 +88,8 @@ namespace chessbox {
     _enPassantSquare(other.enPassantSquare()),
     _controlledSquares{0, 0},
     _kingDangerLines(0),
-    _squaresOccupiedByAny(0),
-    _squaresOccupied{0, 0},
+    _squaresOccupied(0),
+    _squaresOccupiedPerSide{0, 0},
     _squaresOccupiedPerPieceType{{0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}},
     _controlledSquaresNeedsRefresh(false),
     _kingPositions {other._kingPositions[0], other._kingPositions[1] }
@@ -110,9 +110,9 @@ namespace chessbox {
         _castlingRights[Color::Black] = other._castlingRights[Color::Black];
         
         _controlledSquaresNeedsRefresh = true;
-        _squaresOccupied[Color::White] = other._squaresOccupied[Color::White];
-        _squaresOccupied[Color::Black] = other._squaresOccupied[Color::Black];
-        _squaresOccupiedByAny = other._squaresOccupiedByAny;
+        _squaresOccupiedPerSide[Color::White] = other._squaresOccupiedPerSide[Color::White];
+        _squaresOccupiedPerSide[Color::Black] = other._squaresOccupiedPerSide[Color::Black];
+        _squaresOccupied = other._squaresOccupied;
         _kingPositions[Color::White] = other._kingPositions[Color::White];
         _kingPositions[Color::Black] = other._kingPositions[Color::Black];
     }
@@ -292,16 +292,16 @@ namespace chessbox {
     void Position::setPiece(Piece piece, const Square square) {
         _pieces[(int)square] = piece;
         if(piece == Piece::NoPiece) {
-            _squaresOccupied[Color::White].remove(square);
-            _squaresOccupied[Color::Black].remove(square);
-            _squaresOccupiedByAny.remove(square);
+            _squaresOccupiedPerSide[Color::White].remove(square);
+            _squaresOccupiedPerSide[Color::Black].remove(square);
+            _squaresOccupied.remove(square);
             for(int pieceType = 0; pieceType < Piece::Type::Count; pieceType++) {
                 _squaresOccupiedPerPieceType[Color::White][pieceType].remove(square);
                 _squaresOccupiedPerPieceType[Color::Black][pieceType].remove(square);
             }
         } else {
-            _squaresOccupied[piece.color].add(square);
-            _squaresOccupiedByAny.add(square);
+            _squaresOccupiedPerSide[piece.color].add(square);
+            _squaresOccupied.add(square);
             _squaresOccupiedPerPieceType[piece.color][piece.type].add(square);
         }
         
