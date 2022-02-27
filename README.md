@@ -7,6 +7,7 @@ A simple C++ chess library.
 - Build the static lib: `make -C build cbox`
 - Run unit tests: `make -C build unit_tests`
 - Run performance tests: `make -C perf_tests`
+- Generate Xcode project on OSX: `cmake -B build -G Xcode`
 
 ## Features
 ### 1. Create a chess position:
