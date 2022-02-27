@@ -12,6 +12,7 @@ A simple C++ chess library.
 1. Create a chess position:
 - Standard starting position: `Position *position = Position::basePosition();`
 - An empty position: `Position *position = new Position();`
+- Custom position from a FEN: `Position *position = FEN::positionFromFEN("7K/8/5k2/8/8/8/8/8 w - - 0 1");`
 
 2. Query various properties of the position:
 - Side to move: `Color side = position->sideToMove();`
@@ -35,12 +36,7 @@ Movecheck::isValidMove(position, move);
 Moves allMoves = Movegen::allMoves(position);
 ```
 
-6. Create chess position from FEN:
-```
-Position *position = FEN::positionFromFEN("7K/8/5k2/8/8/8/8/8 w - - 0 1");
-```
-
-7. Create FEN from a chess position:
+6. Create FEN from a chess position:
 ```
 std::string FEN = FEN::FENfromPosition(position);
 ```
