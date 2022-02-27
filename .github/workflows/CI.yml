@@ -1,0 +1,87 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build_and_test:
+    name: Build & test chessbox on ${{ matrix.os }} with ${{ matrix.compiler }}.
+    
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        compiler: [g++-10]
+        include:
+          - os: ubuntu-latest
+            compiler: g++-10
+            target: Linux
+            
+          - os: macos-latest
+            compiler: g++-10
+            target: Macos
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+     
+      - name: cmake
+        run: cmake .
+        
+      - name: run unit test
+        run: make unit_tests
+
+      - name: run performance tests
+        run: make perf_tests
+        
+  build_and_test_on_windows:
+    name: Build & test chessbox on ${{ matrix.os }} with ${{ matrix.compiler }}.
+    
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2019]
+        compiler: [cl]
+        include:
+          - os: windows-2019
+            compiler: cl
+            target: Windows            
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+     
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+        
+      - name: create solution
+        run: cmake -G "Visual Studio 16 2019"
+        
+      - name: build unit tests
+        run: MSBuild.exe Chessbox.sln /t:Rebuild /p:Configuration=Release
+        
+      - name: execute unit tests
+        run: Release\cbox_tests.exe
+        
+      - name: execute perf tests
+        run: Release\cbox_perf_tests.exe
