@@ -21,6 +21,15 @@ namespace chessbox {
         // Performs all required checks including check-detection in the resulting position.
         static bool isValidMove(const Position *position, const Move& move);
         
+        // Checks if the given move is valid and is a capture
+        static bool isCaptureMove(const Position *position, const Move& move);
+        
+        // Checks if the given move is valid and is a kingside castle
+        static bool isKingsideCastleMove(const Position *position, const Move& move);
+
+        // Checks if the given move is valid and is a kingside castle
+        static bool isQueensideCastleMove(const Position *position, const Move& move);
+
         // Detects that the moving side's king wouldn't be in check after making this move.
         // Returns true if moving side would be checked after the move.
         // In this function the move can be anything, not needs to be valid by chess rules, it means only a piece relocation.

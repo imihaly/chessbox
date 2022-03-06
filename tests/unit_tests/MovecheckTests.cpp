@@ -6,7 +6,7 @@
 
 #include "Movecheck.hpp"
 #include "UnitTesting.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 
 // Helper method to validate that valid moves are and are only the ones landing on squares in `to`/
 bool validMovesAre(Position* position, const Square& from, const Squares& to) {
@@ -443,3 +443,56 @@ TEST(Movecheck, kingLeftInCheck) {
     CHECK_TRUE(Movecheck::detectChecks(position, Move(Square::E2, Square::E1)));
 }
 
+TEST(Movecheck, isCaptureMove) {
+    Position *position = FEN::positionFromFEN("3r2k1/p4p1p/2p3p1/4p3/2P5/1P3PP1/P1K1Q2P/3q4 w - - 0 30");
+    
+    CHECK_TRUE(Movecheck::isCaptureMove(position, Move(Square::E2, Square::D1)));
+    CHECK_FALSE(Movecheck::isCaptureMove(position, Move(Square::C2, Square::C3)));
+}
+
+TEST(Movecheck, isCaptureMoveEnPassant) {
+    Position *position = FEN::positionFromFEN("4k3/8/8/4pP2/8/8/8/4K3 w - e6 0 2");
+    
+    CHECK_TRUE(Movecheck::isCaptureMove(position, Move(Square::F5, Square::E6)));
+    CHECK_FALSE(Movecheck::isCaptureMove(position, Move(Square::F5, Square::F6)));
+}
+
+TEST(Movecheck, isKingsideCastleMove_White) {
+    Position *position = FEN::positionFromFEN("r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    
+    CHECK_TRUE(Movecheck::isKingsideCastleMove(position, Move(Square::E1, Square::G1)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E1, Square::F1)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E1, Square::E2)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E1, Square::E3)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E1, Square::C1)));
+}
+
+TEST(Movecheck, isQueensideCastleMove_White) {
+    Position *position = FEN::positionFromFEN("r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    
+    CHECK_TRUE(Movecheck::isQueensideCastleMove(position, Move(Square::E1, Square::C1)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E1, Square::D1)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E1, Square::E2)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E1, Square::E3)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E1, Square::G1)));
+}
+
+TEST(Movecheck, isKingsideCastleMove_Black) {
+    Position *position = FEN::positionFromFEN("r3k2r/8/8/8/8/8/8/R3K2R b KQkq - 0 1");
+    
+    CHECK_TRUE(Movecheck::isKingsideCastleMove(position, Move(Square::E8, Square::G8)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E8, Square::F8)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E8, Square::E7)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E8, Square::E6)));
+    CHECK_FALSE(Movecheck::isKingsideCastleMove(position, Move(Square::E8, Square::C8)));
+}
+
+TEST(Movecheck, isQueensideCastleMove_Black) {
+    Position *position = FEN::positionFromFEN("r3k2r/8/8/8/8/8/8/R3K2R b KQkq - 0 1");
+    
+    CHECK_TRUE(Movecheck::isQueensideCastleMove(position, Move(Square::E8, Square::C8)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E8, Square::D8)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E8, Square::E7)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E8, Square::E6)));
+    CHECK_FALSE(Movecheck::isQueensideCastleMove(position, Move(Square::E8, Square::G8)));
+}

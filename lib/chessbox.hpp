@@ -12,6 +12,9 @@
 #include "Control.hpp"
 #include "Movecheck.hpp"
 #include "Movegen.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
+#include "Formats/LAN.hpp"
+#include "Formats/PAN.hpp"
+#include "Formats/SAN.hpp"
 
 #endif /* chessbox_h */

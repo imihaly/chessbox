@@ -4,6 +4,7 @@ project(Chessbox)
 set(CMAKE_CXX_STANDARD 14)
 
 set(LIB_SOURCES
+    lib/bitscan.hpp
     lib/chessbox.hpp
     lib/Color.cpp
     lib/Color.hpp
@@ -11,8 +12,8 @@ set(LIB_SOURCES
     lib/Control.hpp
     lib/Direction.cpp
     lib/Direction.hpp
-    lib/FEN.cpp
-    lib/FEN.hpp
+    lib/Error.cpp
+    lib/Error.hpp
     lib/BB.cpp
     lib/BB.hpp
     lib/Move.cpp
@@ -21,10 +22,15 @@ set(LIB_SOURCES
     lib/Movecheck.hpp
     lib/Movegen.cpp
     lib/Movegen.hpp
+    lib/ParseError.cpp
+    lib/ParseError.hpp
     lib/Piece.cpp
     lib/Piece.hpp
     lib/Position.cpp
     lib/Position.hpp
+    lib/Result.hpp
+    lib/SemanticError.cpp
+    lib/SemanticError.hpp
     lib/Square.cpp
     lib/Square.hpp
     lib/Squares.cpp
@@ -41,6 +47,21 @@ set(LIB_SOURCES
     lib/Generators/RangeGenerator.hpp
     lib/Generators/RankGenerator.hpp
     lib/Generators/SquareGenerator.hpp
+    lib/Formats/AlgebraicNotation.hpp
+    lib/Formats/AlgebraicNotation.cpp
+    lib/Formats/FEN.hpp
+    lib/Formats/FEN.cpp
+    lib/Formats/LAN.hpp
+    lib/Formats/LAN.cpp
+    lib/Formats/PAN.hpp
+    lib/Formats/PAN.cpp
+    lib/Formats/SAN.hpp
+    lib/Formats/SAN.cpp
+    lib/Formats/Grammar/GrammarDecl.hpp
+    lib/Formats/Grammar/GrammarDef.hpp
+    lib/Formats/Grammar/LANGrammar.hpp
+    lib/Formats/Grammar/PANGrammar.hpp
+    lib/Formats/Grammar/SANGrammar.hpp
     )
 
 message("libfiles: ${LIB_SOURCES}")
@@ -56,6 +77,9 @@ set (TEST_SOURCES
     tests/unit_tests/DirectionTests.cpp
     tests/unit_tests/FENTests.cpp
     tests/unit_tests/BBTests.cpp
+    tests/unit_tests/LANTests.cpp
+    tests/unit_tests/PANTests.cpp
+    tests/unit_tests/SANTests.cpp
     tests/unit_tests/MoveTests.cpp
     tests/unit_tests/MovecheckTests.cpp
     tests/unit_tests/MovegenTests.cpp

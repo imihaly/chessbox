@@ -8,7 +8,7 @@
 
 #include "UnitTesting.hpp"
 #include "Position.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 
 
 // MARK: - helpers

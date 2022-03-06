@@ -67,7 +67,6 @@ struct Benchmark {
     }
     
     bool check() {
-        assert(referenceValue);
         assert(refVal);
         long int avg = count ? sum / count : 0;
         bool succeed = avg < refVal;

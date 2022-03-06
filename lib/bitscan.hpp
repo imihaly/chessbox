@@ -1,11 +1,8 @@
 //
-// bitscan.hpp
-//
 // Created by Imre Mihaly on 2022.
 //
-// All rights reserved.
+// This code is licensed under MIT license (see LICENSE for more details).
 //
-
 
 #ifndef bitscan_h
 #define bitscan_h

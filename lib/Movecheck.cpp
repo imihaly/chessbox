@@ -36,6 +36,25 @@ namespace chessbox {
         return !detectChecks(position, move);
     }
     
+    bool Movecheck::isCaptureMove(const Position *position, const Move& move) {
+        if(!isValidMove(position, move)) return false;
+        return !position->isEmpty(move.to) || move.to == position->enPassantSquare();
+    }
+    
+    bool Movecheck::isKingsideCastleMove(const Position *position, const Move& move) {
+        if(!isValidMove(position, move)) return false;
+        if(move.from != position->kingPosition(position->sideToMove())) return false;
+        Step diff = move.step();
+        return diff == Step(2, 0);
+    }
+    
+    bool Movecheck::isQueensideCastleMove(const Position *position, const Move& move) {
+        if(!isValidMove(position, move)) return false;
+        if(move.from != position->kingPosition(position->sideToMove())) return false;
+        Step diff = move.step();
+        return diff == Step(-2, 0);
+    }
+    
     bool Movecheck::isValidPawnMove(const Position *position, const Move& move) {
         // checking promotion status
         int baseRow = position->sideToMove() == Color::White ? 1 : 6;
