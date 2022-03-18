@@ -4,7 +4,7 @@
 // This code is licensed under MIT license (see LICENSE for more details).
 //
 
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 #include "UnitTesting.hpp"
 
 TEST(FEN, invalidFens) {

@@ -52,6 +52,34 @@ namespace chessbox {
         return result;
     }
     
+    const Moves Movegen::allMovesTo(const Position *position, const Square to, Piece::Type pieceType) {
+        Moves result;
+        switch (pieceType) {
+            case Piece::Type::Pawn:
+                allPawnMovesTo(position, to, result);
+                break;
+            case Piece::Type::Rook:
+                allRookMovesTo(position, to, result);
+                break;
+            case Piece::Type::Knight:
+                allKnightMovesTo(position, to, result);
+                break;
+            case Piece::Type::Bishop:
+                allBishopMovesTo(position, to, result);
+                break;
+            case Piece::Type::Queen:
+                allQueenMovesTo(position, to, result);
+                break;
+            case Piece::Type::King:
+                allKingMovesTo(position, to, result);
+                break;
+            default:
+                break;
+        }
+        return result;
+    }
+
+    
     const void Movegen::allMovesTo(const Position *position, const Square to, Moves& result) {
         allPawnMovesTo(position, to, result);
         allRookMovesTo(position, to, result);
@@ -219,10 +247,9 @@ namespace chessbox {
             Square from = to - forward;
             if (from.isValid() &&
                 position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Pawn) &&
-                Movecheck::precheckMove(position, Move(from, to)) &&
-                Movecheck::isValidPawnMove(position, Move(from, to)))
+                Movecheck::precheckMove(position, Move(from, to)))
             {
-                result += Move(from, to);
+                unfoldPromotionMoves(position, from, to, result);
             }
         }
         {
@@ -241,10 +268,9 @@ namespace chessbox {
             Square from = to - forward - Step(1, 0);
             if (from.isValid() &&
                 position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Pawn) &&
-                Movecheck::precheckMove(position, Move(from, to)) &&
-                Movecheck::isValidPawnMove(position, Move(from, to)))
+                Movecheck::precheckMove(position, Move(from, to)))
             {
-                result += Move(from, to);
+                unfoldPromotionMoves(position, from, to, result);
             }
         }
         {
@@ -252,12 +278,35 @@ namespace chessbox {
             Square from = to - forward + Step(1, 0);
             if (from.isValid() &&
                 position->pieceOnSquare(from) == Piece(position->sideToMove(), Piece::Type::Pawn) &&
-                Movecheck::precheckMove(position, Move(from, to)) &&
-                Movecheck::isValidPawnMove(position, Move(from, to))) {
+                Movecheck::precheckMove(position, Move(from, to))) {
+                unfoldPromotionMoves(position, from, to, result);
+            }
+        }
+    }
+    
+    const void Movegen::unfoldPromotionMoves(const Position *position, const Square from, const Square to, Moves& result) {
+        bool isPromotion = to.row() == (position->sideToMove() == Color::White ? 7 : 0);
+        if (isPromotion) {
+            if(Movecheck::isValidPawnMove(position, Move(from, to, Piece::Type::Rook))) {
+                result += Move(from, to, Piece::Type::Rook);
+            }
+            if(Movecheck::isValidPawnMove(position, Move(from, to, Piece::Type::Knight))) {
+                result += Move(from, to, Piece::Type::Knight);
+            }
+            if(Movecheck::isValidPawnMove(position, Move(from, to, Piece::Type::Bishop))) {
+                result += Move(from, to, Piece::Type::Bishop);
+            }
+            if(Movecheck::isValidPawnMove(position, Move(from, to, Piece::Type::Queen))) {
+                result += Move(from, to, Piece::Type::Queen);
+            }
+
+        } else {
+            if(Movecheck::isValidPawnMove(position, Move(from, to))) {
                 result += Move(from, to);
             }
         }
     }
+
     
     const void Movegen::allRookMovesTo(const Position *position, const Square to, Moves& result) {
         allLineMovesTo(position, to, Piece::Type::Rook, result);

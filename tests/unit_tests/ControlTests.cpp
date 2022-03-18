@@ -6,7 +6,7 @@
 
 #include "Control.hpp"
 #include "UnitTesting.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 
 TEST(Control, rookControl) {
     Position *position = FEN::positionFromFEN("8/8/8/4r3/8/8/8/8 w - - 0 1");

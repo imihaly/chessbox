@@ -6,7 +6,7 @@
 
 #include "Movegen.hpp"
 #include "UnitTesting.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 
 
 // MARK: - Pawn moves
@@ -206,6 +206,8 @@ TEST(Movegen, bishopObstruction) {
     delete position;
 }
 
+// MARK: - Queen moves
+
 TEST(Movegen, queenGeometry) {
     Position *position = FEN::positionFromFEN("5k2/8/8/8/4Q3/8/8/5K2 w - - 0 1");
     
@@ -242,6 +244,8 @@ TEST(Movegen, queenObstruction) {
     
     delete position;
 }
+
+// MARK:- King moves
 
 TEST(Movegen, kingGeometry) {
     Position *position = FEN::positionFromFEN("8/8/8/8/4K3/8/8/8 w - - 0 1");
@@ -392,6 +396,8 @@ TEST(Movegen, checkBlockedCastle5) {
     delete position;
 }
 
+// MARK:- Pawn moves to square
+
 TEST(Movegen, allPawnMovesTo) {
     Position *position = FEN::positionFromFEN("4k3/8/8/8/8/8/4P3/4K3 w - - 0 1");
 
@@ -441,6 +447,24 @@ TEST(Movegen, allPawnMovesTo_EnPassant) {
     delete position;
 }
 
+TEST(Movegen, allPawnMovesTo_Promotion) {
+    Position *position = FEN::positionFromFEN("k7/5P2/8/8/8/8/8/K7 w - - 0 1");
+    
+    Moves expected = {
+        Move(Square::F7, Square::F8, Piece::Type::Rook),
+        Move(Square::F7, Square::F8, Piece::Type::Knight),
+        Move(Square::F7, Square::F8, Piece::Type::Bishop),
+        Move(Square::F7, Square::F8, Piece::Type::Queen),
+    };
+    Moves moves = Movegen::allMovesTo(position, Square::F8);
+    
+    CHECK_TRUE(UnitTesting::isEqual(moves, expected));
+    
+    delete position;
+}
+
+// MARK:- Pawn rook to square
+
 TEST(Movegen, allRookMovesTo) {
     Position *position = FEN::positionFromFEN("4k3/8/8/8/1R5R/8/8/4K3 w - - 0 1");
 
@@ -476,6 +500,8 @@ TEST(Movegen, allRookMovesTo_Capture) {
     delete position;
 }
 
+// MARK:- Knight moves to square
+
 TEST(Movegen, allKnightMovesTo) {
     Position *position = FEN::positionFromFEN("4k3/8/3N1N2/2N3N1/8/2N3N1/3N1N2/4K3 w - - 0 1");
     Moves expected = {
@@ -500,6 +526,8 @@ TEST(Movegen, allKnightMovesTo_Capture) {
     
     delete position;
 }
+
+// MARK:- Bishop moves to square
 
 TEST(Movegen, allBishopMovesTo) {
     Position *position = FEN::positionFromFEN("4k2B/8/1B6/8/8/8/8/B3K1B1 w - - 0 1");
@@ -535,6 +563,8 @@ TEST(Movegen, allBishopMovesTo_Capture) {
     delete position;
 }
 
+// MARK:- Queen moves to square
+
 TEST(Movegen, allQueenMovesTo) {
     Position *position = FEN::positionFromFEN("4k2Q/3Q4/1Q6/8/Q5Q1/8/3Q4/Q3K1Q1 w - - 0 1");
     Moves expected = {
@@ -569,6 +599,8 @@ TEST(Movegen, allQueenMovesTo_Capture) {
     
     delete position;
 }
+
+// MARK:- King moves to square
 
 TEST(Movegen, allKingMovesTo) {
     Position *position = FEN::positionFromFEN("3k4/8/KKKKKKKK/KKKKKKKK/KKK1KKKK/KKKKKKKK/KKKKKKKK/8 w - - 0 1");

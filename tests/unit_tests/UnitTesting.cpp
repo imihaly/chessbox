@@ -5,7 +5,7 @@
 //
 
 #include "UnitTesting.hpp"
-#include "FEN.hpp"
+#include "Formats/FEN.hpp"
 
 TAU_NO_MAIN()
 
