@@ -19,11 +19,11 @@
 namespace chessbox {
     class PAN {
     public:
-        using Result = Result<Move, std::shared_ptr<Error>>;
+        using Result = chessbox::Result<Move, std::shared_ptr<Error>>;
 
     public:
         static std::string notationForMove(const Position* position, const Move& move);
-        static Result moveFromNotation(const Position *position, const std::string notation);
+        static PAN::Result moveFromNotation(const Position *position, const std::string notation);
     };
 }
 
