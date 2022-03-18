@@ -196,7 +196,7 @@ TEST(LAN, parseError) {
     delete position;
 }
 
-TEST(PAN, semanticError) {
+TEST(LAN, semanticError) {
     Position *position = Position::basePosition();
     
     CHECK_TRUE(*LAN::moveFromNotation(position, "O-O").error() == SemanticError("Decoded move (e1-g1) is invalid in the given position!"));
